@@ -1,7 +1,7 @@
 # Laravel
 /bootstrap/compiled.php
 /vendor
-
+/nbproject
 # Configuration
 /app/config/local
 /app/config/staging
