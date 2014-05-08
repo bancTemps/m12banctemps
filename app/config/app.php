@@ -52,7 +52,7 @@ return array(
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'es',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -199,6 +199,6 @@ return array(
 
     ),
 
-    'available_language' => array('en', 'pt', 'es'),
+    'available_language' => array('ca', 'es'),
 
 );
