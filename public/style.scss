@@ -1,0 +1,146 @@
+//azul turquesa
+$color1: #23A38F;
+//verde
+$color2: #B7C11E;
+//crema
+$color3: #EFF1C2;
+//rojo
+$color4: #F0563D;
+//azul marino
+$color5: #2E313D;
+
+
+
+html, body {
+	font-size: 100%;
+	font-family: 'Oswald', serif;
+	font-weight: 300; 
+}
+
+/*
+	USERS: PROFILE
+*/
+#profile {
+	background-color: $color1; 	
+	height: 100%;
+	padding-right: 0;	
+	position: fixed;
+
+	img {
+		padding: 20px 0;	
+		width: 40%;			
+	}
+
+	ul {
+		position: fixed;
+		bottom: 0;
+	}
+}
+
+/*
+	MENU DEL USUARIO
+*/
+#user-menu {
+	background-color: $color1;
+	font-weight: 400; 
+	padding: 10px;
+	text-transform: uppercase;
+	position: fixed;
+
+	ul {		
+		display: inline;
+		list-style: none;	
+		padding-left: 0;	
+
+		li {			
+			display: inline;			
+			padding: 0 20px;			
+		}
+	}
+}
+
+#user-info {
+	background-color: darken($color1, 5%);
+	padding: 10px 0 10px 6%;
+	color: #fff;
+
+	p:first-child {
+		text-shadow: 0px 1px 1px #4d4d4d;
+		font-weight: 400; 
+	}
+}
+
+@media (max-width: 768px){
+	#profile, #user-menu {
+		position: static;
+
+		ul {
+			position: static;
+		}
+	}
+
+}
+
+/*
+	CONTENIDO DE LA PAGINA
+*/
+#menu-content {
+	margin-top: 80px;
+	z-index: -5;
+}
+
+.user-margin {
+	//margin-top: 50px;
+	display: block;
+}
+
+
+
+/*
+	TEXT FORMATTING
+*/
+.embossed {
+	color: #dadada;
+	text-shadow: 0px 1px 1px #4d4d4d;
+}
+
+
+
+
+
+
+/*
+	OTROS CAMBIOS
+*/
+
+// Centrar cualquier elemento
+.center {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#wrap > .container {
+	margin-top: 20px;
+}
+
+#wrap > .navbar{
+	border-radius: 0;
+	margin-bottom: 0;
+	position: fixed;
+	background-image: linear-gradient(to bottom, $color5 0, darken( $color5, 5% ) 100%);
+	background-repeat: repeat-x;
+	z-index: 5;
+}
+
+
+@media (max-width: 768px){
+	.container {
+		padding-left: 20px;
+	}
+}
+
+.row {
+	margin: 0;
+}
