@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<!-- Basic Page Needs
 		================================================== -->
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			Laravel 4 Sample Site
+                            Banc del temps
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
@@ -60,8 +60,8 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">Home</a></li>
-					</ul>
+                            <li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">Home</a></li>
+                    </ul>
 
                     <ul class="nav navbar-nav pull-right">
                         @if (Auth::check())
@@ -101,7 +101,7 @@
 
 	    <div id="footer">
 	      <div class="container">
-	        <p class="muted credit">Laravel 4 Starter Site on <a href="https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site">Github</a>.</p>
+	        <p class="muted credit">Banc del temps TM</p>
 	      </div>
 	    </div>
 

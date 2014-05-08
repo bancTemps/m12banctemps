@@ -68,7 +68,7 @@
 
 <body>
 	<!-- Container -->
-	<div class="container">
+	
 		<!-- Navbar -->
 		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -128,7 +128,7 @@
 		</footer>
 		<!-- ./ Footer -->
 
-	</div>
+	
 	<!-- ./ container -->
 
 	<!-- Javascripts -->
