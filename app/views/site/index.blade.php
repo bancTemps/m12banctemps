@@ -1,8 +1,17 @@
 @extends('site.layouts.default')
+{{-- styles --}}
+@section('styles')
 
+@stop
 {{-- Content --}}
 @section('content')
+    <div id="mapas"  style="height: 300px;></div>
+    
+@stop
+{{-- scripts --}}
+@section('scripts')
 
-<h1>M6 Rules</h1
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="{{asset('assets/js/gmaps.js')}}"></script>
 
 @stop
