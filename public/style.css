@@ -89,3 +89,23 @@ html, body {
     padding-left: 20px; } }
 .row {
   margin: 0; }
+
+#mapas {
+  height: 300px; }
+
+.divopaco {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2; }
+
+.searchbox {
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 400px;
+  height: 55px; }
