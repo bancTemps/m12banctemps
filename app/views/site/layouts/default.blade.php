@@ -108,15 +108,6 @@
 <div id="push"></div>
 </div>
 <!-- ./wrap -->
-
-
-<div id="footer">
-  <div class="container">
-    <p class="muted credit">Laravel 4 Starter Site on <a href="https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site">Github</a>.</p>
-  </div>
-</div>
-
-<<<<<<< HEAD
 <!-- Javascripts
 ================================================== -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -124,7 +115,7 @@
 
 	    <div id="footer">
 	      <div class="container">
-	        <p class="muted credit">Banc del temps TM</p>
+	        <p class="muted credit">Banc del temps todas las perras reservadas.</p>
 	      </div>
 	    </div>
 
