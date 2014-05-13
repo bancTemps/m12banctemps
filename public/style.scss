@@ -162,7 +162,9 @@ html, body {
    height:300px;
 }
 //Para el index, boton de busqueda:
-
+input{
+   text-align:center;
+}
 .divopaco{
     position:absolute;
     width: 100%;
@@ -174,6 +176,6 @@ html, body {
 .searchbox{   
     margin:0 auto;
     @include vertical-align;
-    width: 400px;
+    width: 55%;
     height: 55px;    
 }

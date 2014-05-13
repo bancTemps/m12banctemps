@@ -15,14 +15,17 @@
     <!--Contenido-->
     <div class="container">
         <div class="row">
+            <div class="col-md-12"><h2>Ultims serveis afegits:</h2></div>
+        </div>
+        <div class="row">
             <div class="col-lg-4 col-sm-12">
-                <h3>Masajes asiaticos,</h3> imperdiet eu molestie ut, sagittis eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed feugiat tortor. Integer lacus nibh, convallis sit amet augue eget, interdum aliquam sapien. Mauris vel nisi varius massa vestibulum ultricies eu sit amet ipsum. 
+                <h3>Masajes asiaticos,</h3> imperdiet eu molestie ut, sagittis eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed feugiat tortor. Integer lacus nibh, convallis sit amet augue eget, interdum aliquam sapien. Mauris vel nisi varius massa vestibulum ultricies eu sit amet <a href="#">ipsum.</a> 
             </div>
             <div class="col-lg-4 col-sm-12">
-                <h3>Cocina asiatica,</h3> imperdiet eu molestie ut, sagittis eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed feugiat tortor. Integer lacus nibh, convallis sit amet augue eget, interdum aliquam sapien. Mauris vel nisi varius massa vestibulum ultricies eu sit amet ipsum. 
+                <h3>Cocina asiatica,</h3> imperdiet eu molestie ut, sagittis eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed feugiat tortor. Integer lacus nibh, convallis sit amet augue eget, interdum aliquam sapien. Mauris vel nisi varius massa vestibulum ultricies eu sit amet <a href="#">ipsum.</a> 
             </div>
             <div class="col-lg-4 col-sm-12">
-                <h3>Taller de pollicultura,</h3> imperdiet eu molestie ut, sagittis eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed feugiat tortor. Integer lacus nibh, convallis sit amet augue eget, interdum aliquam sapien. Mauris vel nisi varius massa vestibulum ultricies eu sit amet ipsum. 
+                <h3>Taller de pollicultura,</h3> imperdiet eu molestie ut, sagittis eget libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sed feugiat tortor. Integer lacus nibh, convallis sit amet augue eget, interdum aliquam sapien. Mauris vel nisi varius massa vestibulum ultricies eu sit amet <a href="#">ipsum.</a> . 
             </div>
         </div>
         <div class="row">

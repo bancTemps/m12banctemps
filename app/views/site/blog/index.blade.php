@@ -3,6 +3,7 @@
 {{-- Content --}}
 @section('content')
 @foreach ($posts as $post)
+<div class="container">
 <div class="row">
 	<div class="col-md-12">
 		<!-- Post Title -->
@@ -41,7 +42,7 @@
 		<!-- ./ post footer -->
 	</div>
 </div>
-
+</div>
 <hr />
 @endforeach
 

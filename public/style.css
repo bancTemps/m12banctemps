@@ -93,6 +93,9 @@ html, body {
 #mapas {
   height: 300px; }
 
+input {
+  text-align: center; }
+
 .divopaco {
   position: absolute;
   width: 100%;
@@ -107,5 +110,5 @@ html, body {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  width: 400px;
+  width: 55%;
   height: 55px; }
