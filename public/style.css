@@ -1,6 +1,12 @@
+@font-face {
+  font-family: 'Oswald';
+  /*a name to be used later*/
+  src: url("assets/fonts/Oswald-Light.ttf");
+  /*URL to font*/ }
+
 html, body {
   font-size: 100%;
-  font-family: 'Oswald', serif;
+  font-family: 'Oswald';
   font-weight: 300; }
 
 /*
