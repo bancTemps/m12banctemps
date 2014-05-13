@@ -45,11 +45,7 @@
 
     <link rel="stylesheet" href="{{asset('style.css')}}">
 
-    	<!-- Google fonts
-	================================================== -->
-	<link href='http://fonts.googleapis.com/css?family=Oswald:700,300,400' rel='stylesheet' type='text/css'>
-
-	
+    
 
 	@yield('styles')
 
