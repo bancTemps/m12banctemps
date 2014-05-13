@@ -9,9 +9,7 @@ $color4: #F0563D;
 //azul marino
 $color5: #2E313D;
 
-//negro
-$oscar :#000000;
-
+$oscar: black;
 
 html, body {
 	font-size: 100%;
@@ -25,18 +23,15 @@ html, body {
 #profile {
 	background-color: $color1; 	
 	height: 100%;
-	padding-right: 0;	
+	padding: 0;
 	position: fixed;
 
 	img {
-		padding: 20px 0;	
+		background-color: #dadada;
+		margin: 40px auto;
 		width: 40%;			
 	}
 
-	ul {
-		position: fixed;
-		bottom: 0;
-	}
 }
 
 /*
@@ -44,12 +39,18 @@ html, body {
 */
 #user-menu {
 	background-color: $color1;
-	font-weight: 400; 
-	padding: 10px;
-	text-transform: uppercase;
 	position: fixed;
+	z-index: 1;
+
+	div {
+		 
+		padding: 10px;
+		text-transform: uppercase;
+		
+	}
 
 	ul {		
+		font-weight: 400;
 		display: inline;
 		list-style: none;	
 		padding-left: 0;	
@@ -59,16 +60,27 @@ html, body {
 			padding: 0 20px;			
 		}
 	}
+
+	a {
+		color: #dadada;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #fff;
+	}
 }
 
 #user-info {
 	background-color: darken($color1, 5%);
-	padding: 10px 0 10px 6%;
 	color: #fff;
+	padding: 20px;
 
 	p:first-child {
 		text-shadow: 0px 1px 1px #4d4d4d;
 		font-weight: 400; 
+		font-size: 2em;
+		text-align: center;
 	}
 }
 
@@ -87,14 +99,11 @@ html, body {
 	CONTENIDO DE LA PAGINA
 */
 #menu-content {
+	float: right;
 	margin-top: 80px;
-	z-index: -5;
+	line-height: 2em;
 }
 
-.user-margin {
-	//margin-top: 50px;
-	display: block;
-}
 
 
 
@@ -136,6 +145,7 @@ html, body {
 	z-index: 5;
 }
 
+
 @media (max-width: 768px){
 	.container {
 		padding-left: 20px;
@@ -145,6 +155,12 @@ html, body {
 .row {
 	margin: 0;
 }
+
+.chart {
+	height: 300px;
+}
+
+
 
 
 //Hoja de estilos reshulona del oscar:
@@ -168,14 +184,14 @@ input{
 .divopaco{
     position:absolute;
     width: 100%;
-    height:300px;    
+    height:300px;
     background-color: rgba($oscar, .7);
     z-index: 2;
 }
 
-.searchbox{   
+.searchbox{
     margin:0 auto;
     @include vertical-align;
     width: 55%;
-    height: 55px;    
+    height: 55px;
 }

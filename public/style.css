@@ -9,39 +9,46 @@ html, body {
 #profile {
   background-color: #23a38f;
   height: 100%;
-  padding-right: 0;
+  padding: 0;
   position: fixed; }
   #profile img {
-    padding: 20px 0;
+    background-color: #dadada;
+    margin: 40px auto;
     width: 40%; }
-  #profile ul {
-    position: fixed;
-    bottom: 0; }
 
 /*
 	MENU DEL USUARIO
 */
 #user-menu {
   background-color: #23a38f;
-  font-weight: 400;
-  padding: 10px;
-  text-transform: uppercase;
-  position: fixed; }
+  position: fixed;
+  z-index: 1; }
+  #user-menu div {
+    padding: 10px;
+    text-transform: uppercase; }
   #user-menu ul {
+    font-weight: 400;
     display: inline;
     list-style: none;
     padding-left: 0; }
     #user-menu ul li {
       display: inline;
       padding: 0 20px; }
+  #user-menu a {
+    color: #dadada;
+    text-decoration: none; }
+  #user-menu a:hover {
+    color: #fff; }
 
 #user-info {
   background-color: #1e8e7d;
-  padding: 10px 0 10px 6%;
-  color: #fff; }
+  color: #fff;
+  padding: 20px; }
   #user-info p:first-child {
     text-shadow: 0px 1px 1px #4d4d4d;
-    font-weight: 400; }
+    font-weight: 400;
+    font-size: 2em;
+    text-align: center; }
 
 @media (max-width: 768px) {
   #profile, #user-menu {
@@ -52,11 +59,9 @@ html, body {
 	CONTENIDO DE LA PAGINA
 */
 #menu-content {
+  float: right;
   margin-top: 80px;
-  z-index: -5; }
-
-.user-margin {
-  display: block; }
+  line-height: 2em; }
 
 /*
 	TEXT FORMATTING
@@ -89,6 +94,9 @@ html, body {
     padding-left: 20px; } }
 .row {
   margin: 0; }
+
+.chart {
+  height: 300px; }
 
 #mapas {
   height: 300px; }
