@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
-<head id="Starter-Site">
-
+<head>
 	<meta charset="UTF-8">
-
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
+	<meta charset="utf-8" />
 	<title>
 		@section('title')
 			Administration
@@ -17,10 +12,7 @@
 
 	<meta name="keywords" content="@yield('keywords')" />
 	<meta name="author" content="@yield('author')" />
-	<!-- Google will often use this as its description of your page/site. Make it good. -->
 	<meta name="description" content="@yield('description')" />
-
-	<!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
 	<meta name="google-site-verification" content="">
 
 	<!-- Dublin Core Metadata : http://dublincore.org/ -->
@@ -51,11 +43,9 @@
     <link rel="stylesheet" href="{{asset('assets/css/datatables-bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/colorbox.css')}}">
 
-	<style>
-	body {
-		padding: 60px 0;
-	}
-	</style>
+    <link rel="stylesheet" href="{{asset('style.css')}}">
+
+    
 
 	@yield('styles')
 
@@ -67,60 +57,78 @@
 </head>
 
 <body>
-	<!-- Container -->
+
+<div id="wrap">
 	
-		<!-- Navbar -->
-		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-    			<div class="collapse navbar-collapse navbar-ex1-collapse">
-    				<ul class="nav navbar-nav">
-    					<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-    					<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
-    					<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><span class="glyphicon glyphicon-bullhorn"></span> Comments</a></li>
-    					<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
-    						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
-    							<span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
-    						</a>
-    						<ul class="dropdown-menu">
-    							<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
-    							<li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
-    						</ul>
-    					</li>
-    				</ul>
-    				<ul class="nav navbar-nav pull-right">
-    					<li><a href="{{{ URL::to('/') }}}">View Homepage</a></li>
-    					<li class="divider-vertical"></li>
-    					<li class="dropdown">
-    							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    								<span class="glyphicon glyphicon-user"></span> {{{ Auth::user()->username }}}	<span class="caret"></span>
-    							</a>
-    							<ul class="dropdown-menu">
-    								<li><a href="{{{ URL::to('user/settings') }}}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-    								<li class="divider"></li>
-    								<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-share"></span> Logout</a></li>
-    							</ul>
-    					</li>
-    				</ul>
-    			</div>
-            </div>
-		</div>
-		<!-- ./ navbar -->
+<!-- Navbar -->
+<div class="navbar navbar-default navbar-inverse col-xs-12 col-sm-12 col-md-12">
+	<div class="container">
+        <div class="navbar-header">
+			<a href="{{{ URL::to('') }}}">
+			<!--<img src="{{asset('img/logo-banc.png')}}" title="Logo">-->
+                                Banc del Temps
+			</a>
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	        </button>
+	    </div>
 
-		<!-- Notifications -->
-		@include('notifications')
-		<!-- ./ notifications -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
 
-		<!-- Content -->
-		@yield('content')
-		<!-- ./ content -->
+			<ul class="nav navbar-nav pull-right">
+
+				<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
+
+				<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><span class="glyphicon glyphicon-bullhorn"></span> Comments</a></li>
+
+	            <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
+
+					<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
+						<span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+
+						<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+						<li class="divider"></li>
+
+						<li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
+
+					</ul>
+				</li> 
+	           
+	            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span>{{{ Auth::user()->username }}}<span class="caret"></span></a>
+	            	<ul class="dropdown-menu">
+
+	            		<li{{ (Request::is('admin*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
+						<li class="divider"></li>
+						
+	            		<li{{ (Request::is('user/settings*') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/settings') }}}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+	            		<li class="divider"></li>
+
+	            		<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+	            	</ul>
+	            </li>
+
+	        </ul>
+		</div><!-- ./ nav-collapse -->
+    </div><!-- ./ container -->
+</div><!-- ./ navbar -->
+
+
+	<div style="height: 50px;"></div>
+
+	<!-- Notifications -->
+	@include('notifications')
+	<!-- ./ notifications -->
+
+	<!-- Content -->
+	@yield('content')
+	<!-- ./ content -->
+
+</div><!-- ./ wrap -->
 
 		<!-- Footer -->
 		<footer class="clearfix">
@@ -132,11 +140,11 @@
 	<!-- ./ container -->
 
 	<!-- Javascripts -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/wysihtml5/wysihtml5-0.3.0.js')}}"></script>
     <script src="{{asset('assets/js/wysihtml5/bootstrap-wysihtml5.js')}}"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+    <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/js/datatables-bootstrap.js')}}"></script>
     <script src="{{asset('assets/js/datatables.fnReloadAjax.js')}}"></script>
     <script src="{{asset('assets/js/jquery.colorbox.js')}}"></script>
