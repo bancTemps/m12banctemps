@@ -22,13 +22,7 @@
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
     <link rel="stylesheet" href="{{asset('style.css')}}">
 
-	<style>
-    body {
-        /*padding: 60px 0;*/
-    }
-	@section('styles')
-	@show
-	</style>        
+	  
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -71,17 +65,60 @@
             
 
             <ul class="nav navbar-nav pull-right">
-                <li><a href="{{{ URL::to('blog') }}}">Blog</a></li>
-                @if (Auth::check())
+            @if (Auth::check())
                 @if (Auth::user()->hasRole('admin'))
-                <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
-                @endif
-                <li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>
-                <li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
+
+				<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
+
+				<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><span class="glyphicon glyphicon-bullhorn"></span> Comments</a></li>
+
+                <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
+						<span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+						<li class="divider"></li>
+
+						<li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
+					</ul>
+				</li>                
+
                 @else
+                <!--<li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>-->
+                <li><a href="{{{ URL::to('user/messages') }}}"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
+
+				@endif
+
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span>{{{ Auth::user()->username }}}<span class="caret"></span></a>
+                	<ul class="dropdown-menu">
+
+                		@if (Auth::user()->hasRole('admin'))
+
+                		<li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
+						<li class="divider"></li>
+
+						@else
+
+						<li><a href="{{{ URL::to('user') }}}">Profile</a></li>
+						<li class="divider"></li>
+
+						@endif
+
+                		<li><a href="{{{ URL::to('user/settings') }}}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+                		<li class="divider"></li>
+
+                		<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                	</ul>
+                </li>
+                
+            @else
+
                 <li {{(Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">Login</a></li>
+
                 <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('Sign Up') }}}</a></li>
-                @endif
+
+            @endif
             </ul>
 			<!-- ./ nav-collapse -->
 		</div>

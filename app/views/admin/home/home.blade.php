@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('admin.layouts.default')
 
 {{-- Content --}}
 @section('content')
@@ -6,7 +6,7 @@
 <div id="user-menu" class="col-xs-12 col-sm-12 col-md-12 embossed">
     <div class="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-3 col-md-9">
         <ul>
-            <li>Estadísticas</li>
+            <li><a href="{{{ URL::to('admin/statistics') }}}" title="statistics">Estadísticas</a></li>
             <li>Denuncias</li>
             <li>...</li>
         </ul>
