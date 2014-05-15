@@ -24,6 +24,7 @@
             <p><span class="embossed">Dirección:</span> {{Input::old('address', $user->address) }}</p>
         </div>
     </div>     
+    
 
     <div id="menu-content" class="col-xs-12 col-sm-7 col-md-9">
 
