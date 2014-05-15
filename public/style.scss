@@ -124,9 +124,6 @@ html, body {
 
 
 
-
-
-
 /*
 	OTROS CAMBIOS
 */
@@ -167,6 +164,35 @@ html, body {
 	height: 300px;
 }
 
+//paupatu cosas
+
+#profile-in-service {
+    position: fixed;
+    height: 100%;
+    right: 0;
+    background-color: #23a38f;
+    padding: 0;
+}
+
+#service {
+    background-color: #fff;
+    position: absolute;
+    height: 100%;
+}
+
+
+.cuadro-flotante {
+    background-color: darken($color1, 5%);
+    border-radius: 10px;
+    padding: 30px;
+    top: 50px;
+    
+    li {
+        list-style-type: none;
+    }
+}
+
+
 
 
 
@@ -178,6 +204,7 @@ html, body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
 
 //MAPA
 

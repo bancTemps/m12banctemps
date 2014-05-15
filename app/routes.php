@@ -109,6 +109,7 @@ Route::get('contact-us', function()
 });
 
 #Serveis.
+Route::get('service','ServiceController@getIndex');
 
 
 
