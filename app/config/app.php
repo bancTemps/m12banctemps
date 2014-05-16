@@ -1,5 +1,4 @@
 <?php
-
 return array(
 
 	/*
@@ -52,7 +51,7 @@ return array(
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'es_ES',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -202,3 +201,4 @@ return array(
     'available_language' => array('en', 'pt', 'es'),
 
 );
+
