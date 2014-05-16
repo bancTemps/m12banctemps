@@ -319,12 +319,22 @@ class UserController extends BaseController {
         return View::make('site/user/profile', compact('user'));
     }
 
+    // Settings del usuario
     public function getSettings()
     {
         list($user,$redirect) = User::checkAuthAndRedirect('user/settings');
         if($redirect){return $redirect;}
 
         return View::make('site/user/profile', compact('user'));
+    }
+
+    // Mensajes del usuario
+    public function getMessages()
+    {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+        if($redirect){return $redirect;}
+
+        return View::make('site/user/messages', compact('user'));
     }
 
     /**
