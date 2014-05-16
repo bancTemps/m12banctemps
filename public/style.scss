@@ -24,6 +24,7 @@ html, body {
 	font-weight: 300; 
 }
 
+
 /*
 	USERS: PROFILE
 */
@@ -40,6 +41,59 @@ html, body {
 	}
 
 }
+
+#friends {	
+	background-color: $color3;	
+	float: left;
+	height: 92%;
+	padding: 0;
+	position: fixed;
+	overflow: auto;
+}
+
+.message-friend{
+	float: left;
+	background-color: darken($color3, 20%); 
+	padding: 10px;
+	margin: 10px 0;
+
+	img {
+		width: 90px;
+		height: 90px;
+		float: left;
+	}
+
+	p {
+		float: left;
+		margin-left: 20px;
+	}
+}
+
+.message-friend:hover {
+	background-color: darken($color3, 40%); 
+}
+
+#messages {
+	right: 0;
+	float: right;
+	height: 92%;	
+	position: fixed;
+	line-height: 2em;
+}
+
+#historial {
+	height: 80%;
+	position: fixed;
+	overflow: auto;
+}
+
+.message-input-text {
+	bottom: 20px;
+	width: 94%;
+	position: absolute;
+	text-align: left;
+}
+
 
 /*
 	MENU DEL USUARIO
@@ -91,16 +145,6 @@ html, body {
 	}
 }
 
-@media (max-width: 768px){
-	#profile, #user-menu {
-		position: static;
-
-		ul {
-			position: static;
-		}
-	}
-
-}
 
 /*
 	CONTENIDO DE LA PAGINA
@@ -157,6 +201,27 @@ html, body {
 	.container {
 		padding-left: 20px;
 	}
+
+	#profile, #user-menu, #messages, #friends, #historial, .message-input-text {
+		position: static;
+
+		ul {
+			position: static;
+		}
+	}
+
+	#friends {
+		height: 220px;
+	}
+
+	.message-friend{
+
+		img {
+			width: 80px;
+			height: 80px;
+		}
+	}
+
 }
 
 .row {
