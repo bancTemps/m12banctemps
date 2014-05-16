@@ -110,7 +110,7 @@ Route::get('contact-us', function()
 
 #Serveis.
 Route::get('service','ServiceController@getIndex');
-
+Route::get('service/{serviceSlug}','ServiceController@getDetail');
 
 
 #Blog y cosas del blog
