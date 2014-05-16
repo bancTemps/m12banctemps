@@ -38,7 +38,7 @@ class ServiceController extends BaseController {
 		//$posts = $this->post->orderBy('created_at', 'DESC')->paginate(10);
 
 		// Show the page
-		return View::make('service/index', compact('posts'));
+		return View::make('service/index', compact('services'));
 	}
 
 	/**
