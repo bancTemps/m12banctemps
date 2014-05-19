@@ -15,13 +15,22 @@ class ConfideSetupUsersTable extends Migration {
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('username');
-            $table->string('email');
+            $table->string('username', 25);
+            $table->string('name', 25);
+            $table->string('surname', 25);
+            $table->string('email', 30);
+            $table->integer('telephone');
             $table->string('password');
+            $table->integer('points');
+            $table->string('photo', 25);
+            $table->integer('status');
+            $table->string('address', 25);
+            $table->string('city', 25);
+            $table->integer('postalCode');
             $table->string('confirmation_code');
-            $table->string('foto');
             $table->string('remember_token')->nullable();
             $table->boolean('confirmed')->default(false);
+            
             $table->timestamps();
         });
 
