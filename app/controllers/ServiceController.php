@@ -44,7 +44,7 @@ class ServiceController extends BaseController {
         /*Funcion echa para probar*/
         public function getDetail($slug)
 	{
-		return View::make('service/view_service', compact('services'));
+		return View::make('service/view_service', compact('service'));
 	}
 	/**
 	 * View a blog post.
