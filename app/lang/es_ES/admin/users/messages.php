@@ -3,7 +3,7 @@
 return array(
 
 	'already_exists'    => 'El Usuario ya existe!',
-	'does_not_exist'    => 'El usuari no existe.',
+	'does_not_exist'    => 'El usuario no existe.',
 	'login_required'    => 'El campo login es necesario.',
 	'password_required' => 'La contraseña es necesaria.',
 	'password_does_not_match' => 'Las contraseñas no coinciden.',
