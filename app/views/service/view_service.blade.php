@@ -18,16 +18,22 @@ body {
                 <h2>{{ $service->nom  }}</h2>
                 <h3>Descripcion del servicio : {{ $service->descripcio  }}</h3>
 
-                
 
-                <br/>
-                <ul class="col-md-offset-1 col-md-6 col-sm-6 col-xs-12 cuadro-flotante embossed">
-                    <li> Data d'inici: <b>{{ $service->dataInici }}</b></li>
-                    <li> Data de fi: <b>{{ $service->dataFinal }}</b></li>
-                    <li> Duració en hores: <b>{{ $service->duracio }}</b></li>
-                    <li> Localització: <b>{{ $service->localitzacio }}</b></li>
-                    <li> Punts: <b>{{ $service->punts }}</b></li>
-                </ul>
+                <div class="row cuadro-flotante col-md-12 col-sm-12 col-xs-12 embossed">
+                    <ul class="col-md-4 col-sm-4 col-xs-4">
+                        <li> Data d'inici: <b>{{ $service->dataInici }}</b></li>
+                        <li> Data de fi: <b>{{ $service->dataFinal }}</b></li>
+                        <li> Duració en hores: <b>{{ $service->duracio }}</b></li>
+                        <li> Localització: <b>{{ $service->localitzacio }}</b></li>
+                        <li> Punts: <b>{{ $service->punts }}</b></li>
+                    </ul>
+                    
+                    <div class="col-md-8 col-sm-8 col-xs-8" style="border-left: thick solid #000000; height: 100%">
+                        <center>
+                        <img class="img-responsive" src=" http://placecage.com/500/500" />
+                        </center>
+                    </div>
+                </div>
    
                 FALTAN MOSTRAR LAS VALORACIONES, WEBONSITOS
         </div>
