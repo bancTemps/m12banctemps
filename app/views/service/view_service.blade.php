@@ -15,38 +15,35 @@ body {
         <!-- Columna del srevicio -->
         <div class="col-md-9 col-sm-9 col-xs-12" id="service">
             
-                <h2>Titulo servicio</h2>
-                <h3>Descripcion del servicio : Inventore, aspernatur, facere, totam vel provident excepturi recusandae sint voluptatum</h3>
+                <h2>{{ $service->nom  }}</h2>
+                <h3>Descripcion del servicio : {{ $service->descripcio  }}</h3>
 
-    mo, similique odio velit quod dolore optio illo ipsa sint libero fugiat accusamus aliquam distinctio architecto dolores porro quisquam sed quasi quia aperiam repellendus consequuntur odit quis aliquid!
-    Inventore, aspernatur, facere, totam vel provident excepturi recusandae sint voluptatum voluptatibus necessitatibus quod et veniam eos vero deleniti asperiores amet sequi veritatis perferendis sit repudiandae quam quisquam culpa repellendus cum.
-    Fuga molestiae nesciunt harum incidunt perspiciatis recusandae totam quidem et nulla cupiditate. Sit, beatae, hic reprehenderit facere sed inventore saepe neque veritatis ea odio explicabo dignissimos harum provident amet tempore!
-    Eaque, corporis, enim, in nam quidem quis dolorem soluta saepe provident
+                
 
                 <br/>
-                <ul class="col-md-offset-1 col-md-6 col-sm-6 col-xs-6 cuadro-flotante embossed">
-                    <li>Dato1</li>
-                    <li>Dato2</li>
-                    <li>Dato3</li>
-                    <li>Dato4</li>
-                    <li>Dato5</li>
+                <ul class="col-md-offset-1 col-md-6 col-sm-6 col-xs-12 cuadro-flotante embossed">
+                    <li> Data d'inici: <b>{{ $service->dataInici }}</b></li>
+                    <li> Data de fi: <b>{{ $service->dataFinal }}</b></li>
+                    <li> Duració en hores: <b>{{ $service->duracio }}</b></li>
+                    <li> Localització: <b>{{ $service->localitzacio }}</b></li>
+                    <li> Punts: <b>{{ $service->punts }}</b></li>
                 </ul>
    
-                
+                FALTAN MOSTRAR LAS VALORACIONES, WEBONSITOS
         </div>
         
         <!-- columna del usuario que ofrece el servicio -->
         <div class="col-md-3 col-sm-3 col-xs-12" id="profile-in-service">
             <center>
-            <h3>Informacion del usuario solicitante</h3>
-            <div id="user-info">
-            <ul>
-                <li>Dato1</li>
-                <li>Dato2</li>
-                <li>Dato3</li>
-                <li>Dato4</li>
-                <li>Dato5</li>
-            </ul>
+            <h3>Informacion del propietario del servicio</h3>
+            <img src="{{ $service->author->photo }}" width="135px" height="135px" />
+            <div id="user-info" class="embossed">
+                <ul>
+                    <li><b>{{ $service->author->name }}</b></li>
+                    <li><b>{{ $service->author->surname }}</b></li>
+                    <li>E-mail: <b>{{ $service->author->email }}</b></li>
+                    <li>Tlf: <b>{{ $service->author->telephone }}</b></li>
+                </ul>
             </div><br/>
             <input type="button" class="col-md-offset-1 btn-primary" value="Envia una sol·licitud"/></center>
         </div>
