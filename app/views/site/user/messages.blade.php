@@ -35,7 +35,7 @@ body {
         <?php
         for ($i=0 ; $i<40 ; $i++) {
             ?>
-        <div class="message-friend col-sm-12 col-md-6">
+        <div class="message-friend col-xs-12 col-sm-12 col-md-12">
             <img class="cropper" src="http://img2.wikia.nocookie.net/__cb20140210145556/lovecraft/es/images/7/72/Lovecraft-cthulhu.jpg"/>
             <p>Cthulhu</p>
         </div>
