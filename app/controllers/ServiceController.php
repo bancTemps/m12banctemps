@@ -40,7 +40,12 @@ class ServiceController extends BaseController {
 		// Show the page
 		return View::make('service/index', compact('services'));
 	}
-
+        
+        /*Funcion echa para probar*/
+        public function getDetail($slug)
+	{
+		return View::make('service/view_service', compact('service'));
+	}
 	/**
 	 * View a blog post.
 	 *
@@ -124,6 +129,7 @@ class ServiceController extends BaseController {
 //		}
 //
 //		// Redirect to this blog post page
+//		
 //		return Redirect::to($slug)->withInput()->withErrors($validator);
 	}
 }

@@ -7,6 +7,8 @@
 
 {{-- Content --}}
 @section('content')
+
+<div class="container">
 	<div class="page-header">
 		<h3>
 			{{{ $title }}}
@@ -31,6 +33,7 @@
 		<tbody>
 		</tbody>
 	</table>
+</div>
 @stop
 
 {{-- Scripts --}}
