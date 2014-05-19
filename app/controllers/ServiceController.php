@@ -43,6 +43,21 @@ class ServiceController extends BaseController {
         
         /*Funcion echa para probar*/
     public function getDetail($slug) {
+        
+            // Get this blog post data
+		$service = $this->service->where('slug', '=', $slug)->first();
+
+		// Check if the blog post exists
+		if (is_null($service))
+		{
+			// If we ended up in here, it means that
+			// a page or a blog post didn't exist.
+			// So, this means that it is time for
+			// 404 error page.
+			return App::abort(404);
+		}
+
+        
 		return View::make('service/view_service', compact('service'));
 	}
 	/**
