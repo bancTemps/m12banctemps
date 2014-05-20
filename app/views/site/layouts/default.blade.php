@@ -63,9 +63,10 @@
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            
-
             <ul class="nav navbar-nav pull-right">
+            <li><a href="{{ URL::to('service') }}"><span class="glyphicon glyphicon-time"></span> Services</a></li>
+            <li><a href="{{ URL::to('blog') }}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
+            
             @if (Auth::check())
                     @if (Auth::user()->hasRole('admin'))
                                     <li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
@@ -85,30 +86,29 @@
                                     </li>                
 
                     @else
-                    <li><a href="{{ URL::to('user/messages') }}"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
+                    <li><a href="{{ URL::to('user/messages') }}"><span class="glyphicon glyphicon-comment"></span> Messages</a></li>
 
 		@endif
 
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span>{{{ Auth::user()->username }}}<span class="caret"></span></a>
                 	<ul class="dropdown-menu">
+                            @if (Auth::user()->hasRole('admin'))
 
-                		@if (Auth::user()->hasRole('admin'))
+                                <li><a href="{{ URL::to('admin') }}">Panel de administración</a></li>
+                                <li class="divider"></li>
 
-                		<li><a href="{{ URL::to('admin') }}">Admin Panel</a></li>
-						<li class="divider"></li>
+                            @elseif(Auth::user()->hasRole('user'))
 
-						@else
+                            <li><a href="{{ URL::to('user') }}">Perfil</a></li>
+                            <li class="divider"></li>
 
-						<li><a href="{{ URL::to('user') }}">Profile</a></li>
-						<li class="divider"></li>
+                            @endif
 
-						@endif
+                            <li><a href="{{ URL::to('user/settings') }}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+                            <li class="divider"></li>
 
-                		<li><a href="{{ URL::to('user/settings') }}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-                		<li class="divider"></li>
-
-                		<li><a href="{{ URL::to('user/logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-                	</ul>
+                            <li><a href="{{ URL::to('user/logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                        </ul>
                 </li>
                 
             @else

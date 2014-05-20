@@ -2,6 +2,7 @@
 {{-- styles --}}
 
 @section('styles')
+
 @stop
 {{-- Content --}}
 @section('content')
