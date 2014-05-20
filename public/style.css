@@ -9,6 +9,9 @@ html, body {
   font-family: 'Oswald';
   font-weight: 300; }
 
+.border-fade:hover {
+  color: #fff; }
+
 /*
 	USERS: PROFILE
 */

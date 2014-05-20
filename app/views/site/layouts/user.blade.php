@@ -49,10 +49,11 @@
 <div class="navbar navbar-default navbar-inverse col-xs-12 col-sm-12 col-md-12">
     <div class="container">
         <div class="navbar-header">
-                <a href="{{{ URL::to('') }}}">
-                <!--<img src="{{asset('img/logo-banc.png')}}" title="Logo">-->
-                                    Banc del Temps
-                </a>
+            <a href="{{{ URL::to('') }}}">
+            <!--<img src="{{asset('img/logo-banc.png')}}" title="Logo">-->
+                                Banc del Temps
+            </a>
+
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -154,7 +155,7 @@
 
         <div id="user-info" class="row col-xs-7 col-sm-12 col-md-12">
             <p>{{Input::old('name', $user->points) }}<span class="embossed"> pts</span></p>
-            <p><span class="embossed">Nombre:</span> {{Input::old('name', $user->name) }}</p>
+            <p><span class="embossed">Nombre:</span> {{Input::old('name', $user->name) }} {{Input::old('surname', $user->surname) }}</p>
             <p><span class="embossed">Correo:</span> {{Input::old('email', $user->email) }}</p>
             <p><span class="embossed">Dirección:</span> {{Input::old('address', $user->address) }}</p>
         </div>
