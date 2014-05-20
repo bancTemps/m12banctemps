@@ -337,6 +337,24 @@ class UserController extends BaseController {
         return View::make('site/user/messages', compact('user'));
     }
 
+    // Amigos del usuario
+    public function getFriends()
+    {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+        if($redirect){return $redirect;}
+
+        return View::make('site/user/friends', compact('user'));
+    }
+
+    // Servicios del usuario
+    public function getServices()
+    {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+        if($redirect){return $redirect;}
+
+        return View::make('site/user/services', compact('user'));
+    }
+
     /**
      * Process a dumb redirect.
      * @param $url1

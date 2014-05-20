@@ -1,4 +1,4 @@
-@extends('site.layouts.default')
+@extends('site.layouts.user')
 
 {{-- Web site Title --}}
 @section('title')
@@ -8,30 +8,17 @@
 
 {{-- New Laravel 4 Feature in use --}}
 @section('styles')
-@parent
-body {
-    background: #f2f2f2;
-}
+
+
 @stop
 
 {{-- Content --}}
-@section('content')
+@section('menu-content')
 
 <div class="row">
-    <div id="profile" class="col-xs-12 col-sm-4 col-md-3">
-        <center>
-            <img src="{{asset('img/avatar').'/'.Input::old('avatar', $user->avatar) }}" title="avatar" class="center" />
-        </center>
+   
 
-        <div id="user-info" class="row col-xs-12 col-sm-12 col-md-12">
-            <p>{{Input::old('name', $user->points) }}<span class="embossed"> pts</span></p>
-            <p><span class="embossed">Nombre:</span> {{Input::old('name', $user->name) }}</p>
-            <p><span class="embossed">Correo:</span> {{Input::old('email', $user->email) }}</p>
-            <p><span class="embossed">Dirección:</span> {{Input::old('address', $user->address) }}</p>
-        </div>
-    </div>
-
-    <div id="friends" class="col-xs-12 col-sm-offset-4 col-sm-3 col-md-offset-3 col-md-4">
+    <div id="friends" class="col-xs-12 col-sm-3 col-md-4">
         <?php
         for ($i=0 ; $i<40 ; $i++) {
             ?>

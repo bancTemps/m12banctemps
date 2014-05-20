@@ -3,6 +3,7 @@
   /*a name to be used later*/
   src: url("assets/fonts/Oswald-Light.ttf");
   /*URL to font*/ }
+
 html, body {
   font-size: 100%;
   font-family: 'Oswald';
@@ -18,8 +19,8 @@ html, body {
   position: fixed; }
   #profile img {
     background-color: #dadada;
-    margin: 40px auto;
-    width: 40%; }
+    padding: 0;
+    margin-top: 42px; }
 
 #friends {
   background-color: #eff1c2;
@@ -102,7 +103,8 @@ html, body {
 */
 #menu-content {
   float: right;
-  margin-top: 80px;
+  margin-top: 40px;
+  padding-left: 0;
   line-height: 2em; }
 
 /*
@@ -145,7 +147,13 @@ html, body {
 
   .message-friend img {
     width: 80px;
-    height: 80px; } }
+    height: 80px; }
+
+  #profile img {
+    margin-top: 0; }
+
+  #menu-content {
+    margin-top: 0; } }
 .row {
   margin: 0; }
 
@@ -178,10 +186,10 @@ html, body {
   #service {
     margin-bottom: 60px; } }
 .cuadro-flotante {
-  background-color: #1e8e7d;
-  border-radius: 10px;
+  background-color: #1c8172;
   padding: 30px;
-  top: 50px; }
+  top: 50px;
+  height: 100%; }
   .cuadro-flotante li {
     list-style-type: none;
     font-size: 20px;
