@@ -12,7 +12,7 @@ class ServicesTableSeeder extends Seeder {
         DB::table('services')->insert( array(
             array(
                 'user_id'    => $user_id,
-                'nom'      => 'Pinto paredes, coño',
+                'nom'      => 'Pinto paredes',
                 'descripcio'       => 'lorem-ipsum-dolor-sit-amet',
                 'dataInici'    => new DateTime('2014-01-01'),
                 'dataFinal' => new DateTime('2014-01-01'),
@@ -25,7 +25,7 @@ class ServicesTableSeeder extends Seeder {
             ),
             array(
                 'user_id'    => $user_id,
-                'nom'      => 'Pinto paredes, coño',
+                'nom'      => 'Cambio Puertas',
                 'descripcio'       => 'lorem-ipsum-dolor-sit-amet',
                 'dataInici'    => new DateTime('2014-01-01'),
                 'dataFinal' => new DateTime('2014-01-01'),
@@ -38,7 +38,7 @@ class ServicesTableSeeder extends Seeder {
             ),
             array(
                 'user_id'    => $user_id,
-                'nom'      => 'Pinto casuchas, coño',
+                'nom'      => 'Pinto casuchas',
                 'descripcio'       => 'lorem-penes-dolor-sit-amet',
                 'dataInici'    => new DateTime('2014-01-01'),
                 'dataFinal' => new DateTime('2014-01-01'),
@@ -51,7 +51,7 @@ class ServicesTableSeeder extends Seeder {
             ),
             array(
                 'user_id'    => $user_id,
-                'nom'      => 'Sueldo tuercas, coño',
+                'nom'      => 'Sueldo tuercas',
                 'descripcio'       => 'lorem-ipsum-dolor-sit-amet',
                 'dataInici'    => new DateTime('2014-01-01'),
                 'dataFinal' => new DateTime('2014-01-01'),

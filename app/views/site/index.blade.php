@@ -1,7 +1,7 @@
 @extends('site.layouts.default')
 {{-- styles --}}
-@section('styles')
 
+@section('styles')
 @stop
 {{-- Content --}}
 @section('content')
