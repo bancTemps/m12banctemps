@@ -11,5 +11,5 @@
 <div class="page-header">
 	<h1>Registro</h1>
 </div>
-{{ Confide::makeSignupForm()->render() }}
+{{ Confide::makeSignupServiceForm()->render() }}
 @stop
