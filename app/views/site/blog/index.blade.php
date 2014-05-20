@@ -2,8 +2,8 @@
 
 {{-- Content --}}
 @section('content')
-@foreach ($posts as $post)
 <div class="container">
+@foreach ($posts as $post)
 <div class="row">
 	<div class="col-md-12">
 		<!-- Post Title -->
@@ -17,7 +17,7 @@
 		<!-- Post Content -->
 		<div class="row">
 			<div class="col-md-2">
-				<a href="{{{ $post->url() }}}" class="thumbnail"><img src="http://placehold.it/260x180" alt=""></a>
+				<a href="{{{ $post->url() }}}" class="thumbnail"><img src="http://placecage.com/260/180/" alt=""></a>
 			</div>
 			<div class="col-md-10">
 				<p>
@@ -42,10 +42,10 @@
 		<!-- ./ post footer -->
 	</div>
 </div>
-</div>
+
 <hr />
 @endforeach
-
+</div>
 {{ $posts->links() }}
 
 @stop

@@ -3,10 +3,10 @@
 class ServiceController extends BaseController {
 
     /**
-     * Post Model
-     * @var Post
+     * Service Model
+     * @var Services
      */
-    protected $post;
+    protected $service;
 
     /**
      * User Model
@@ -16,14 +16,14 @@ class ServiceController extends BaseController {
     
     /**
      * Inject the models.
-     * @param Post $post
+     * @param Service $service
      * @param User $user
      */
-    public function __construct(Post $post, User $user)
+    public function __construct(Service $service, User $user)
     {
         parent::__construct();
 
-        $this->post = $post;
+        $this->service = $service;
         $this->user = $user;
     }
     
@@ -35,15 +35,29 @@ class ServiceController extends BaseController {
 	public function getIndex()
 	{
 		// Get all the blog posts
-		//$posts = $this->post->orderBy('created_at', 'DESC')->paginate(10);
+		$services = $this->service->orderBy('created_at', 'DESC')->paginate(10);
 
 		// Show the page
 		return View::make('service/index', compact('services'));
 	}
         
         /*Funcion echa para probar*/
-        public function getDetail($slug)
-	{
+    public function getDetail($slug) {
+        
+            // Get this blog post data
+		$service = $this->service->where('slug', '=', $slug)->first();
+
+		// Check if the blog post exists
+		if (is_null($service))
+		{
+			// If we ended up in here, it means that
+			// a page or a blog post didn't exist.
+			// So, this means that it is time for
+			// 404 error page.
+			return App::abort(404);
+		}
+
+        
 		return View::make('service/view_service', compact('service'));
 	}
 	/**

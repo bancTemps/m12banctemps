@@ -17,49 +17,25 @@ body {
     <div id="mapas"></div>
 <div class="container">
     <div class="col-md-4">
-        <h3>Servicio Destacado</h3>
+        <h3>Canta con el divo paco</h3>
         <img src=" http://placecage.com/300/300" />
     </div>
-    <div class="col-md-8">
-        <div class="row">
-        
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-            </div>
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-                Servicio 2            </div>
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-            </div>
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-            </div>
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-            </div>
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-            </div>
-            <div class="col-md-4">
-                <img src="http://placekitten.com/200/200" />
-            </div>
-        </div>
-    </div>
-    
-</div>
 
+    
+    <div class="col-md-8">
+        <div class="row">    
+            @foreach ($services as $service)    
+                        <div class="col-md-4">
+                            <a href="{{{ $service->url() }}}" class="thumbnail">
+                                <h4>{{$service->nom}}</h4>
+                            </a>
+                            <img src="http://placekitten.com/200/200" />
+                        </div>
+
+            @endforeach
+        </div>    
+    </div>
+</div>
 @stop
 
 {{-- scripts --}}
