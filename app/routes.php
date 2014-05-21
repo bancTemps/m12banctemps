@@ -131,5 +131,8 @@ Route::get('blog', 'BlogController@getIndex');
 Route::get('blog/{postSlug}', 'BlogController@getView');
 Route::post('blog/{postSlug}', 'BlogController@postView');
 
+#NICOLAS CAGE EN: La busqueda del servicio perdido (parte 1)
+Route::post('/', 'HomeController@postIndex');
+
 # Index Page - Last route, no matches
 Route::get('/', array('before' => 'detectLang','uses' => 'HomeController@getIndex'));
