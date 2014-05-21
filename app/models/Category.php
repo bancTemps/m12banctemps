@@ -2,24 +2,17 @@
 
 use Illuminate\Support\Facades\URL;
 
-class Service extends Eloquent {
+class Category extends Eloquent {
 
-	public function author() {
-		return $this->belongsTo('User', 'user_id');
-	}
+	
 
-	public function comments() {
-		return $this->hasMany('Comment');
+        public function service() {
+		return $this->hasMany('Service');
 	}
-        public function category() {
-		return $this->belongsTo('Category','id');
-	}
-
 	public function date($date = null) {
 		if (is_null($date)) {
 			$date = $this->created_at;
 		}
-
 		return String::date($date);
 	}
 
@@ -28,7 +21,7 @@ class Service extends Eloquent {
 	}
 
 	public function url() {
-		return Url::to('service/'.$this->slug);
+		return Url::to('category/'.$this->slug);
 	}
 
 	public function created_at() {
