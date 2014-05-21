@@ -51,7 +51,7 @@
         <div class="navbar-header">
 				<a href="{{ URL::to('') }}">
 				<!--<img src="{{asset('img/logo-banc.png')}}" title="Logo">-->
-                                    Banc del Temps
+                    Banc del Temps
 				</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -68,39 +68,40 @@
             <li><a href="{{ URL::to('blog') }}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
             
             @if (Auth::check())
-                    @if (Auth::user()->hasRole('admin'))
-                                    <li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
+                @if (Auth::user()->hasRole('admin'))
+                    <li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Manage blog</a></li>
 
-                                    <li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><span class="glyphicon glyphicon-bullhorn"></span> Comments</a></li>
+                    <li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><span class="glyphicon glyphicon-bullhorn"></span> Comments</a></li>
 
                     <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
-                                                    <span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                    <li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
-                                                    <li class="divider"></li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
+                                <span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+                            <li class="divider"></li>
 
-                                                    <li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
-                                            </ul>
-                                    </li>                
+                            <li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
+                        </ul>   
+                    </li>                
 
-                    @else
+                @else
                     <li><a href="{{ URL::to('user/messages') }}"><span class="glyphicon glyphicon-comment"></span> Messages</a></li>
 
-		@endif
+		        @endif
 
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span>{{{ Auth::user()->username }}}<span class="caret"></span></a>
                 	<ul class="dropdown-menu">
+
                             @if (Auth::user()->hasRole('admin'))
 
-                                <li><a href="{{ URL::to('admin') }}">Panel de administración</a></li>
+                                <li><a href="{{ URL::to('admin') }}">Admin Panel</a></li>
                                 <li class="divider"></li>
 
-                            @elseif(Auth::user()->hasRole('user'))
+                            @else
 
-                            <li><a href="{{ URL::to('user') }}">Perfil</a></li>
-                            <li class="divider"></li>
+                                <li><a href="{{ URL::to('user') }}">Perfil</a></li>
+                                <li class="divider"></li>
 
                             @endif
 
