@@ -73,7 +73,7 @@ class UserController extends BaseController {
         if ( $this->user->id ) {
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
             return Redirect::to('user/login')
-                ->with( 'notice', Lang::get('user/user.user_account_created') );
+                ->with('notice', Lang::get('user/user.user_account_created') );
         } else {
             // Get validation errors (see Ardent package)
             $error = $this->user->errors()->all();

@@ -63,7 +63,7 @@ class ServiceController extends BaseController {
         {
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
             return Redirect::to('service')
-                ->with( 'notice', 'Servicio creado exitosamente bitch' );
+               ->with('servicio', 'Servicio añadido correctamente');
         }
         /*if(!empty($password)) {
             if($password === $passwordConfirmation) {
