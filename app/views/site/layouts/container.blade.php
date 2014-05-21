@@ -131,17 +131,13 @@
 <!-- ./ navbar -->
 
 <!-- Container -->
-<!--<div class="container">-->
-<!-- Notifications -->
-@include('notifications')
-<!-- ./ notifications -->
+<div class="container">
 
-<!-- Content -->
-@yield('content')
-<!-- ./ content -->
+    @include('notifications')
 
+	@yield('content')
 
-<!--</div>-->
+</div>
 <!-- ./ container -->
 
 <!-- the following div is needed to make a sticky footer -->
