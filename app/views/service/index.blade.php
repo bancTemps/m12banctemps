@@ -10,7 +10,9 @@
 @section('content')
     <div class="divopaco">
         <div class="form-group searchbox">
-            <input type="text" class="searchbox form-control" placeholder="Busca persones o serveis a prop teu">
+            {{ Form::open(array('url' => '/'))}}
+                {{ Form::text('search', null, array('placeholder' => 'Busca persones o serveis a prop teu', 'class' => 'searchbox form-control')) }}      
+            {{ Form::close() }}
         </div>
     </div>
     <div id="mapas"></div>
