@@ -1,10 +1,21 @@
-@extends('site.layouts.default')
+@extends('site.layouts.container')
+
 
 {{-- Web site Title --}}
 @section('title')
 {{{ Lang::get('user/user.login') }}} ::
 @parent
 @stop
+
+
+@section('styles')
+<style>
+    input {
+        text-align: left;
+    }
+</style>
+@show
+
 
 {{-- Content --}}
 @section('content')
@@ -41,11 +52,11 @@
         </div>
 
         @if ( Session::get('error') )
-        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+            <div class="alert alert-danger">{{ Session::get('error') }}</div>
         @endif
 
         @if ( Session::get('notice') )
-        <div class="alert">{{ Session::get('notice') }}</div>
+            <div class="alert">{{ Session::get('notice') }}</div>
         @endif
 
         <div class="form-group">
