@@ -64,7 +64,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('users/{user}/delete', 'AdminUsersController@getDelete');
     Route::post('users/{user}/delete', 'AdminUsersController@postDelete');
     Route::controller('users', 'AdminUsersController');
-
+    
     # User Role Management
     Route::get('roles/{role}/show', 'AdminRolesController@getShow');
     Route::get('roles/{role}/edit', 'AdminRolesController@getEdit');
@@ -89,10 +89,12 @@ Route::get('user/reset/{token}', 'UserController@getReset');
 Route::post('user/reset/{token}', 'UserController@postReset');
 //:: User Account Routes ::
 Route::post('user/{user}/edit', 'UserController@postEdit');
-
 //:: User Account Routes ::
 Route::post('user/login', 'UserController@postLogin');
 
+
+
+Route::get('user/service/create','UserController@createService');
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
 
@@ -108,9 +110,19 @@ Route::get('contact-us', function()
     return View::make('site/contact-us');
 });
 
+
+
+
+
 #Serveis.
 Route::get('service','ServiceController@getIndex');
+Route::post('service/create','ServiceController@store');
 Route::get('service/{serviceSlug}','ServiceController@getDetail');
+
+//Crear Servicio
+
+
+
 
 
 #Blog y cosas del blog

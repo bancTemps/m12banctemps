@@ -355,4 +355,9 @@ class UserController extends BaseController {
         }
         return $redirect;
     }
+    
+    public function createService(){
+        
+        return View::make('service/signup_service_view');
+    }
 }

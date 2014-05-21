@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 class ServiceController extends BaseController {
 
     /**
@@ -41,7 +43,65 @@ class ServiceController extends BaseController {
 		return View::make('service/index', compact('services'));
 	}
         
-        /*Funcion echa para probar*/
+        public function store(){
+        // Lista de caracteres latinos y sus correspondientes para slug
+
+
+        $this->service->nom = Input::get( 'servicename' );
+        $this->service->descripcio = Input::get( 'description' );
+        $this->service->dataInici = Input::get( 'dateI' );
+        $this->service->dataFinal = Input::get( 'dateF' );
+        $this->service->duracio = Input::get( 'duration' );
+        $this->service->localitzacio = Input::get( 'city' );
+        $this->service->punts = Input::get( 'points' );
+        $this->service->user_id = Auth::user()->id;;
+        $slug =Input::get('servicename'); //remover espacios vacios
+        $slugName = Str::slug($slug ,'-');
+        $this->service->slug = $slugName;
+        $this->service->save();
+        if ($slugName)
+        {
+            // Redirect with success message, You may replace "Lang::get(..." for your custom message.
+            return Redirect::to('service')
+                ->with( 'notice', 'Servicio creado exitosamente bitch' );
+        }
+        /*if(!empty($password)) {
+            if($password === $passwordConfirmation) {
+                $this->user->password = $password;
+                // The password confirmation will be removed from model
+                // before saving. This field will be used in Ardent's
+                // auto validation.
+                $this->user->password_confirmation = $passwordConfirmation;
+            } else {
+                // Redirect to the new user page
+                return Redirect::to('user/create')
+                    ->withInput(Input::except('password','password_confirmation'))
+                    ->with('error', Lang::get('admin/users/messages.password_does_not_match'));
+            }
+        } else {
+            unset($this->user->password);
+            unset($this->user->password_confirmation);
+        }*/
+
+        // Save if valid. Password field will be hashed before save
+
+        /*if ( $this->user->id )
+        {
+            // Redirect with success message, You may replace "Lang::get(..." for your custom message.
+            return Redirect::to('user/login')
+                ->with( 'notice', Lang::get('user/user.user_account_created') );
+        }
+        else
+        {
+            // Get validation errors (see Ardent package)
+            $error = $this->user->errors()->all();
+
+            return Redirect::to('user/create')
+                ->withInput(Input::except('password'))
+                ->with( 'error', $error );
+        }*/
+        }
+        
     public function getDetail($slug) {
         
             // Get this blog post data
