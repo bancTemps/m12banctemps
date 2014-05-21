@@ -36,6 +36,16 @@ class HomeController extends BaseController {
           // Show the page
             return View::make('site/index', compact('services'));
 	}
+	
+	public function postIndex()
+        {
+            $search = Input::get('search');
+            
+            $services = $this->service->where('slug', 'LIKE', '%'.$search.'%')->get();
+            //$users = $this->user->where('username', 'LIKE', '%'.$search.'%')->get();
+            
+            return View::make('site/search', compact('search','services'));
+        }
 
 
 
