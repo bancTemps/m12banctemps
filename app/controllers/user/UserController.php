@@ -343,7 +343,7 @@ class UserController extends BaseController {
     // Amigos del usuario
     public function getFriends()
     {
-        list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+        list($user,$redirect) = User::checkAuthAndRedirect('user/friends');
         if($redirect){return $redirect;}
 
         return View::make('site/user/friends', compact('user'));
@@ -352,10 +352,19 @@ class UserController extends BaseController {
     // Servicios del usuario
     public function getServices()
     {
-        list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+        list($user,$redirect) = User::checkAuthAndRedirect('user/services');
         if($redirect){return $redirect;}
 
         return View::make('site/user/services', compact('user'));
+    }
+
+    // Cuenta del usuario
+    public function getAccount()
+    {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/account');
+        if($redirect){return $redirect;}
+
+        return View::make('site/user/account', compact('user'));
     }
 
     /**

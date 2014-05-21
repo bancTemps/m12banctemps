@@ -3,7 +3,9 @@
 
 @section('menu-content')
 
-<h3><strong>Servicios creados</strong></h3>
+<div class="page-header">
+	<h3><strong>Servicios creados</strong></h3>
+</div>
 
 <table id="my_services" class="table table-striped table-hover">
 	<thead>
@@ -19,7 +21,9 @@
 	</tbody>
 </table>
 
-<h3><strong>Servicios realizados</strong></h3>
+<div class="page-header">
+	<h3><strong>Servicios realizados</strong></h3>
+</div>
 
 <table id="realized_services" class="table table-striped table-hover">
 	<thead>
