@@ -51,7 +51,7 @@
         <div class="navbar-header">
             <a href="{{{ URL::to('') }}}">
             <!--<img src="{{asset('img/logo-banc.png')}}" title="Logo">-->
-                                Banc del Temps
+                Banc del Temps
             </a>
 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -64,6 +64,9 @@
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav pull-right">
+            <li><a href="{{ URL::to('service') }}"><span class="glyphicon glyphicon-time"></span> Services</a></li>
+            <li><a href="{{ URL::to('blog') }}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
             
 
             <ul class="nav navbar-nav pull-right">
@@ -97,13 +100,13 @@
 
                         @if (Auth::user()->hasRole('admin'))
 
-                        <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
-                        <li class="divider"></li>
+                            <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
+                            <li class="divider"></li>
 
                         @else
 
-                        <li><a href="{{{ URL::to('user') }}}">Profile</a></li>
-                        <li class="divider"></li>
+                            <li><a href="{{{ URL::to('user') }}}">Profile</a></li>
+                            <li class="divider"></li>
 
                         @endif
 

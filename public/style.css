@@ -41,10 +41,8 @@ html, body {
   .message-friend img {
     width: 90px;
     height: 90px;
-    float: left; }
-  .message-friend p {
     float: left;
-    margin-left: 20px; }
+    margin-right: 10px; }
 
 .message-friend:hover {
   background-color: #b6bc2b; }
