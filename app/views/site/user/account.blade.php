@@ -3,12 +3,25 @@
 
 @section('menu-content')
 
-<div class="page-header">
-    <h3 class="col-md-offset-3">Datos personales</h3>
-</div>
+
 
 <form class="form-horizontal" method="post" action="{{ URL::to('user/' . $user->id . '/edit') }}"  autocomplete="off">
     <!-- CSRF Token -->
+    <div class="page-header">
+        <h3 class="col-md-offset-3">Datos personales</h3>
+    </div>
+
+     <!-- Form Actions -->
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-1">
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </div>        
+    </div>
+    <!-- ./ form actions -->
+    
     
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
@@ -110,13 +123,7 @@
     </div>
     <!-- ./ general tab -->
 
-    <!-- Form Actions -->
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-8">
-            <button type="submit" class="btn btn-success">Update</button>
-        </div>
-    </div>
-    <!-- ./ form actions -->
+   
 </form>
 </form>
 
