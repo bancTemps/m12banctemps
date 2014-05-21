@@ -1,10 +1,9 @@
 @extends('site.layouts.default')
 
+
+{{-- styles --}}
 @section('styles')
-@parent
-body {
-    background: #f2f2f2;
-}
+    {{ HTML::style('assets/css/ihover.css')}} 
 @stop
 
 {{-- Content --}}
@@ -16,22 +15,23 @@ body {
     </div>
     <div id="mapas"></div>
 <div class="container">
-    <div class="col-md-4">
-        <h3>Canta con el divo paco</h3>
-        <img src=" http://placecage.com/300/300" />
-    </div>
-
-    
-    <div class="col-md-8">
+       
+    <div class="col-md-12">
         <div class="row">    
-            @foreach ($services as $service)    
-                        <div class="col-md-4">
-                            <a href="{{{ $service->url() }}}" class="thumbnail">
-                                <h4>{{$service->nom}}</h4>
-                            </a>
-                            <img src="http://placekitten.com/200/200" />
+            @foreach ($services as $service)          
+             <div class="col-md-4">
+                <!-- normal -->
+                <div class="ih-item square effect3 bottom_to_top">
+                    <a href="{{ $service->url() }}">
+                        <div class="img"><img class="img-responsive" src="http://placekitten.com/300/200" alt="img"></div>
+                        <div class="info">
+                          <h3>{{ $service->nom }}</h3>
+                          <p>{{ $service->descripcio }}</p>
                         </div>
-
+                    </a>
+                </div>
+                <!-- end normal -->
+              </div>
             @endforeach
         </div>    
     </div>
@@ -40,8 +40,7 @@ body {
 
 {{-- scripts --}}
 @section('scripts')
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src="{{asset('assets/js/gmaps.js')}}"></script>
+    {{ HTML::script('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'); }}
+    {{ HTML::script('assets/js/gmaps.js'); }}
 
 @stop

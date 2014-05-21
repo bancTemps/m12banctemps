@@ -12,15 +12,16 @@
 	<meta name="keywords" content="your, awesome, keywords, here" />
 	<meta name="author" content="Jon Doe" />
 	<meta name="description" content="Lorem ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei." />
-		<!-- Mobile Specific Metas
-		================================================== -->
+		<!-- Mobile Specific Metas================================================== -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- CSS
-	================================================== -->
-    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
-    <link rel="stylesheet" href="{{asset('style.css')}}">
+		<!-- CSS================================================= -->
+    {{ HTML::style('bootstrap/css/bootstrap.min.css')}}
+    {{ HTML::style('bootstrap/css/bootstrap-theme.min.css')}}
+    {{ HTML::style('style.css')}}
+    
+    
+    @yield('styles')
 
 	  
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -48,9 +49,9 @@
 <div class="navbar navbar-default navbar-inverse col-xs-12 col-sm-12 col-md-12">
 	<div class="container">
         <div class="navbar-header">
-				<a href="{{{ URL::to('') }}}">
+				<a href="{{ URL::to('') }}">
 				<!--<img src="{{asset('img/logo-banc.png')}}" title="Logo">-->
-                                    Banc del Temps
+                    Banc del Temps
 				</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -62,61 +63,60 @@
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            
-
             <ul class="nav navbar-nav pull-right">
+            <li><a href="{{ URL::to('service') }}"><span class="glyphicon glyphicon-time"></span> Services</a></li>
+            <li><a href="{{ URL::to('blog') }}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
+            
             @if (Auth::check())
                 @if (Auth::user()->hasRole('admin'))
+                    <li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Manage blog</a></li>
 
-				<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
+                    <li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><span class="glyphicon glyphicon-bullhorn"></span> Comments</a></li>
 
-				<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/comments') }}}"><span class="glyphicon glyphicon-bullhorn"></span> Comments</a></li>
+                    <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
+                                <span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+                            <li class="divider"></li>
 
-                <li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
-						<span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
-						<li class="divider"></li>
-
-						<li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
-					</ul>
-				</li>                
+                            <li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
+                        </ul>   
+                    </li>                
 
                 @else
-                <!--<li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>-->
-                <li><a href="{{{ URL::to('user/messages') }}}"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
+                    <li><a href="{{ URL::to('user/messages') }}"><span class="glyphicon glyphicon-comment"></span> Messages</a></li>
 
-				@endif
+		        @endif
 
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span>{{{ Auth::user()->username }}}<span class="caret"></span></a>
                 	<ul class="dropdown-menu">
 
-                		@if (Auth::user()->hasRole('admin'))
+                            @if (Auth::user()->hasRole('admin'))
 
-                		<li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
-						<li class="divider"></li>
+                                <li><a href="{{ URL::to('admin') }}">Admin Panel</a></li>
+                                <li class="divider"></li>
 
-						@else
+                            @else
 
-						<li><a href="{{{ URL::to('user') }}}">Profile</a></li>
-						<li class="divider"></li>
+                                <li><a href="{{ URL::to('user') }}">Perfil</a></li>
+                                <li class="divider"></li>
 
-						@endif
+                            @endif
 
-                		<li><a href="{{{ URL::to('user/settings') }}}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-                		<li class="divider"></li>
+                            <li><a href="{{ URL::to('user/settings') }}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+                            <li class="divider"></li>
 
-                		<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-                	</ul>
+                            <li><a href="{{ URL::to('user/logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                        </ul>
                 </li>
                 
             @else
 
-                <li {{(Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">Login</a></li>
+                <li {{(Request::is('user/login') ? ' class="active"' : '') }}><a href="{{ URL::to('user/login') }}">Login</a></li>
 
-                <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('Sign Up') }}}</a></li>
+                <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{ URL::to('user/create') }}">{{ Lang::get('Sign Up') }}</a></li>
 
             @endif
             </ul>

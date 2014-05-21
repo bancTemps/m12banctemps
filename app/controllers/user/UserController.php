@@ -38,6 +38,11 @@ class UserController extends BaseController {
      */
     public function postIndex()
     {
+        // Natu
+        $this->user->name = Input::get( 'name' );
+        $this->user->surname = Input::get( 'surname' );
+        // !Natu
+
         $this->user->username = Input::get( 'username' );
         $this->user->email = Input::get( 'email' );
 
@@ -65,14 +70,11 @@ class UserController extends BaseController {
         // Save if valid. Password field will be hashed before save
         $this->user->save();
 
-        if ( $this->user->id )
-        {
+        if ( $this->user->id ) {
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
             return Redirect::to('user/login')
                 ->with( 'notice', Lang::get('user/user.user_account_created') );
-        }
-        else
-        {
+        } else {
             // Get validation errors (see Ardent package)
             $error = $this->user->errors()->all();
 
@@ -335,6 +337,24 @@ class UserController extends BaseController {
         if($redirect){return $redirect;}
 
         return View::make('site/user/messages', compact('user'));
+    }
+
+    // Amigos del usuario
+    public function getFriends()
+    {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+        if($redirect){return $redirect;}
+
+        return View::make('site/user/friends', compact('user'));
+    }
+
+    // Servicios del usuario
+    public function getServices()
+    {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+        if($redirect){return $redirect;}
+
+        return View::make('site/user/services', compact('user'));
     }
 
     /**

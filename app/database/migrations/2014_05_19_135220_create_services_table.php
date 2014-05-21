@@ -17,8 +17,9 @@ class CreateServicesTable extends Migration {
 			$table->increments('id');
 			$table->string('user_id');
 			$table->string('nom', 25);
-			$table->string('descripcio');	
-                        $table->date('dataInici');
+			$table->string('descripcio');
+                        $table->integer('categoria_id');
+			$table->date('dataInici');
 			$table->date('dataFinal');
 			$table->integer('duracio');
 			$table->string('localitzacio', 25);
