@@ -136,9 +136,7 @@
 
 <!-- Container -->
 <!--<div class="container">-->
-    <!-- Notifications -->
-    @include('notifications')
-    <!-- ./ notifications -->
+   
 
     <!-- Content -->
     <div id="user-menu" class="col-xs-12 col-sm-12 col-md-12 embossed">
@@ -165,6 +163,10 @@
     </div>   
 
     <div id="menu-content" class="col-xs-12 col-sm-8 col-md-9">
+         <!-- Notifications -->
+        @include('notifications')
+        <!-- ./ notifications -->
+        
         @yield('menu-content')
     </div>
 
