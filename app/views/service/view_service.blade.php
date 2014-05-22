@@ -20,7 +20,7 @@
 
             <!-- Imagen del servicio + boton solicitud -->
             <div class="col-xs-5 col-sm-5 col-md-3">                
-                <div class="col-sm-12 col-md-12">
+                <div class="hidden-xs col-sm-12 col-md-12">
                     <img class="img-responsive" src=" http://placecage.com/500/500" />
                 </div>    
 
@@ -47,9 +47,9 @@
         <div class="col-md-3 col-sm-4 col-xs-12" id="profile-in-service">
 
             <div id="profile" class="col-xs-12 col-sm-4 col-md-3">
-               <img src="{{ $service->author->photo }}" title="avatar" class="col-xs-offset-1 col-xs-3 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6"/>
+               <img src="{{ $service->author->photo }}" title="avatar" class="hidden-xs col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6"/>
 
-                <div id="user-info" class="row col-xs-7 col-sm-12 col-md-12">
+                <div id="user-info" class="row col-xs-12 col-sm-12 col-md-12">
                     <p>Propietario del servicio</p>
                     <p><span class="embossed">Nombre:</span>{{ $service->author->name }}</p>
                     <p><span class="embossed">Email: </span>{{ $service->author->email }}</p>
