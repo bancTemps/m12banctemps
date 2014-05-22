@@ -36,6 +36,9 @@
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{{ asset('assets/ico/apple-touch-icon-72-precomposed.png') }}}">
 		<link rel="apple-touch-icon-precomposed" href="{{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}}">
 		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
+
+
+        <link rel="stylesheet" href="{{asset('assets/css/hover.css')}}">
 </head>
 
 <body>
@@ -146,6 +149,14 @@
 
 <!-- the following div is needed to make a sticky footer -->
 <div id="push"></div>
+
+<div id="footer">
+  <div class="container">
+    <p class="muted credit">Banc del temps todas las perras reservadas.</p>
+  </div>
+</div>
+
+
 </div>
 <!-- ./wrap -->
 <!-- Javascripts
@@ -153,11 +164,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
-<div id="footer">
-  <div class="container">
-    <p class="muted credit">Banc del temps todas las perras reservadas.</p>
-  </div>
-</div>
+
 
 
 @yield('scripts')

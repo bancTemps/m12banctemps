@@ -113,11 +113,25 @@ class UserController extends BaseController {
         $validator = Validator::make(Input::all(), $user->getUpdateRules());
 
 
-        if ($validator->passes())
-        {
-            $oldUser = clone $user;
+        if ($validator->passes()) {
+            $file = Input::file("photo");
+
+            $oldUser = clone $user;            
+            
+            // Borrar la imagen anterior
+            unlink("public/img/avatar/".$user->photo);
+            // Guardar la imagen actual
+            $file->move("public/img/avatar", $file->getClientOriginalName());
+
+            $user->photo =  Input::file("photo")->getClientOriginalName();
             $user->username = Input::get( 'username' );
             $user->email = Input::get( 'email' );
+            $user->name = Input::get( 'name' );
+            $user->surname = Input::get( 'surname' );
+            $user->address = Input::get( 'address' );
+            $user->city = Input::get( 'city' );
+            $user->postalCode = Input::get( 'postalCode' );
+            $user->telephone = Input::get( 'telephone' );
 
             $password = Input::get( 'password' );
             $passwordConfirmation = Input::get( 'password_confirmation' );
@@ -393,6 +407,35 @@ class UserController extends BaseController {
         if($redirect){return $redirect;}
 
         return View::make('site/user/account', compact('user'));
+    }
+
+    // Formulario para borrar usuario
+    public function getDelete()
+    {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/friends');
+        if($redirect){return $redirect;}
+
+        return View::make('site/user/delete', compact('user'));
+    }
+
+
+    // Borrar usuario
+    public function postDelete($user) {       
+
+        AssignedRoles::where('user_id', $user->id)->delete();
+
+        $id = $user->id;
+        $user->delete();
+
+        // Was the comment post deleted?
+        $user = User::find($id);
+        if ( empty($user) ) {
+            // TODO needs to delete all of that user's content
+            return Redirect::to('admin/users')->with('success', Lang::get('admin/users/messages.delete.success'));
+        } else {
+            // There was a problem deleting the user
+            return Redirect::to('admin/users')->with('error', Lang::get('admin/users/messages.delete.error'));
+        }
     }
 
     /**

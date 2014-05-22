@@ -22,26 +22,28 @@
 <div class="page-header">
 	<h1>Login de la cuenta</h1>
 </div>
+
 <form class="form-horizontal" method="POST" action="{{ URL::to('user/login') }}" accept-charset="UTF-8">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>
         <div class="form-group">
-            <label class="col-md-offset-2 col-md-2 control-label" for="email">{{ Lang::get('confide::confide.username_e_mail') }}</label>
-            <div class="col-md-4">
+            <label class="col-sm-3 col-md-offset-2 col-md-2 control-label" for="email">{{ Lang::get('confide::confide.username_e_mail') }}</label>
+            <div class="col-sm-9 col-md-4">
                 <input class="form-control" tabindex="1" placeholder="{{ Lang::get('confide::confide.username_e_mail') }}" type="text" name="email" id="email" value="{{ Input::old('email') }}">
             </div>
         </div>
+
         <div class="form-group">
-            <label class="col-md-offset-2 col-md-2 control-label" for="password">
+            <label class="col-sm-3 col-md-offset-2 col-md-2 control-label" for="password">
                 {{ Lang::get('confide::confide.password') }}
             </label>
-            <div class=" col-md-4">
+            <div class="col-sm-9 col-md-4">
                 <input class="form-control" tabindex="2" placeholder="{{ Lang::get('confide::confide.password') }}" type="password" name="password" id="password">
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-4 col-md-10">
+            <div class="col-sm-offset-3 col-md-offset-4 col-md-10">
                 <div class="checkbox">
                     <label for="remember">{{ Lang::get('confide::confide.login.remember') }}
                         <input type="hidden" name="remember" value="0">
@@ -60,7 +62,7 @@
         @endif
 
         <div class="form-group">
-            <div class="col-md-offset-4 col-md-10">
+            <div class="col-sm-offset-3 col-md-offset-4 col-md-10">
                 <button tabindex="3" type="submit" class="btn btn-primary">{{ Lang::get('confide::confide.login.submit') }}</button>
                 <a class="btn btn-default" href="forgot">{{ Lang::get('confide::confide.login.forgot_password') }}</a>
             </div>

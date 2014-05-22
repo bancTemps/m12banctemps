@@ -22,11 +22,11 @@ class ConfideSetupUsersTable extends Migration {
             $table->integer('telephone');
             $table->string('password');
             $table->integer('points');
-            $table->string('photo', 25);
+            $table->string('photo');
             $table->integer('status');
             $table->string('address', 25);
             $table->string('city', 25);
-            $table->integer('postalCode');
+            $table->string('postalCode', 5);
             $table->string('confirmation_code');
             $table->string('remember_token')->nullable();
             $table->boolean('confirmed')->default(false);

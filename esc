@@ -1,0 +1,23 @@
+[1mdiff --git a/app/views/admin/blogs/index.blade.php b/app/views/admin/blogs/index.blade.php[m
+[1mindex c270180..2bb2c8b 100644[m
+[1m--- a/app/views/admin/blogs/index.blade.php[m
+[1m+++ b/app/views/admin/blogs/index.blade.php[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-@extends('admin.layouts.default')[m
+[32m+[m[32m@extends('site.layouts.container')[m
+ [m
+ {{-- Web site Title --}}[m
+ @section('title')[m
+[1mdiff --git a/app/views/site/user/services.blade.php b/app/views/site/user/services.blade.php[m
+[1mindex a43960d..bf037ce 100644[m
+[1m--- a/app/views/site/user/services.blade.php[m
+[1m+++ b/app/views/site/user/services.blade.php[m
+[36m@@ -12,7 +12,7 @@[m
+ 		<tr>[m
+ 			<th class="col-md-4">{{{ Lang::get('admin/roles/table.name') }}}</th>[m
+ 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.participants') }}}</th>[m
+[31m-			<th class="col-md-2">{{{ Lang::get('admin/roles/table.created_at') }}}</th>[m
+[32m+[m			[32m<th class="col-md-2">{{{ Lang::get('admin/roles/table.start_at') }}}</th>[m
+ 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.finish_at') }}}</th>[m
+ 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.points') }}}</th>[m
+ 		</tr>[m
