@@ -92,7 +92,8 @@ Route::post('user/{user}/edit', 'UserController@postEdit');
 //:: User Account Routes ::
 Route::post('user/login', 'UserController@postLogin');
 
-
+Route::get('user/view/{view}/service', 'UserController@viewOtherService');
+Route::get('user/view/{view}', 'UserController@viewOther');
 
 Route::get('user/service/create','UserController@createService');
 # User RESTful Routes (Login, Logout, Register, etc)
