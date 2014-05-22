@@ -1,9 +1,12 @@
 <?php
 
 return array(
-
-	'name'       => 'Nombre',
-	'users'      => '# de Usuarios',
-	'created_at' => 'Creado en',
+	'name'				=> 'Nombre',
+	'participants'		=> 'Participantes',
+	'users'				=> '# de Usuarios',
+	'created_at'		=> 'Iniciado el',
+	'finish_at'			=> 'Finalizado el',
+	'points'			=> 'Puntos',
+	'author'			=> 'Autor',
 
 );

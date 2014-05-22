@@ -113,14 +113,20 @@ class UserController extends BaseController {
         if ($validator->passes()) {
             $file = Input::file("photo");
 
-            $oldUser = clone $user;            
+            $oldUser = clone $user;
             
-            // Borrar la imagen anterior
-            unlink("public/img/avatar/".$user->photo);
             // Guardar la imagen actual
-            $file->move("public/img/avatar", $file->getClientOriginalName());
+            if ($file != "") {
+                $file->move("public/img/avatar", $file->getClientOriginalName());
+                // Borrar la imagen anterior
+                if ($user->photo != "user-controller.jpg" && $user->photo != "") {
+                    unlink("public/img/avatar/".$user->photo);
+                }
+                $user->photo =  Input::file("photo")->getClientOriginalName();
+            }
+            
 
-            $user->photo =  Input::file("photo")->getClientOriginalName();
+            
             $user->username = Input::get( 'username' );
             $user->email = Input::get( 'email' );
             $user->name = Input::get( 'name' );
@@ -384,7 +390,7 @@ class UserController extends BaseController {
     public function getServices()
     {
          $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
-                    ->select(array('services.id', 'services.nom','services.dataInici', 'services.dataFinal','services.punts'));
+                    ->select(array('services.nom','services.id', 'services.dataInici', 'services.dataFinal','services.punts'));
 
         return Datatables::of($services)->make();
 

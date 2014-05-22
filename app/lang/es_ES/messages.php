@@ -11,7 +11,8 @@ return array(
 	'telephone'			=> 'Teléfono',
 	'email'				=> 'Email',
 	'password'			=> 'Contraseña',
-	'new_password'			=> 'Nueva contraseña',
+	'new_password'		=> 'Nueva contraseña',
 	'password_confirm'	=> 'Confirmar contraseña',
+	'photo'				=> 'Avatar',
 
 );
