@@ -84,6 +84,24 @@ class UserController extends BaseController {
                 ->with( 'error', $error );
         }
     }
+    
+    public function viewOther($view) {
+        $userModel = new User;
+        $user = $userModel->getUserByUsername($view);
+        
+        if (is_null($user)){
+            App::abort(404);
+        }
+        
+        return View::make('site/user/otherUser', compact('user'));
+    }
+    
+    public function viewOtherService($view) {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/services');
+        if($redirect){return $redirect;}
+        
+        return View::make('site/user/otherUserService', compact('user'));
+    }
 
     /**
      * Edits a user
