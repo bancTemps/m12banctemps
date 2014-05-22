@@ -1,6 +1,10 @@
 @extends('site.layouts.user')
 
 
+{{-- Web site Title --}}
+@section('title')
+	
+@stop
 @section('menu-content')
 
 <div class="page-header">
@@ -20,6 +24,7 @@
 		</tr>
 	</thead>
 	<tbody>
+            
 	</tbody>
 </table>
 
@@ -37,16 +42,20 @@
 		</tr>
 	</thead>
 	<tbody>
+            <tr>
+                
+            </tr>
 	</tbody>
 </table>
 
 <a class="button border-fade no-subrallado" href="{{{ URL::to('user/services/create')  }}}">Crear servicio</a>
 
 @stop
-
-
-
+{{//aqui nos hemos dado cuenta de somos unos "GENIOS"}}
+{{-- Scripts --}}
 @section('scripts')
+
+
 	<script type="text/javascript">
 		var oTable;
 		$(document).ready(function() {
@@ -58,23 +67,7 @@
 				},
 				"bProcessing": true,
 		        "bServerSide": true,
-		        "sAjaxSource": "{{ URL::to('admin/roles/data') }}",
-		        "fnDrawCallback": function ( oSettings ) {
-	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
-	     		}
-			});
-		});
-
-		$(document).ready(function() {
-				oTable = $('#realized_services').dataTable( {
-				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-				"sPaginationType": "bootstrap",
-				"oLanguage": {
-					"sLengthMenu": "_MENU_ records per page"
-				},
-				"bProcessing": true,
-		        "bServerSide": true,
-		        "sAjaxSource": "{{ URL::to('admin/roles/data') }}",
+		        "sAjaxSource": "{{ URL::to('user/servicelist') }}",
 		        "fnDrawCallback": function ( oSettings ) {
 	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 	     		}

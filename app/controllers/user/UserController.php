@@ -7,7 +7,7 @@ class UserController extends BaseController {
      * @var User
      */
     protected $user;
-
+    
     /**
      * Inject the models.
      * @param User $user
@@ -367,13 +367,23 @@ class UserController extends BaseController {
         return View::make('site/user/friends', compact('user'));
     }
 
+    
+    
     // Servicios del usuario
     public function getServices()
     {
-        list($user,$redirect) = User::checkAuthAndRedirect('user/services');
-        if($redirect){return $redirect;}
+         $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
+                    ->select(array('services.id', 'services.nom','services.dataInici', 'services.dataFinal'));
 
-        return View::make('site/user/services', compact('user'));
+        return Datatables::of($services)->make();
+
+    }
+    public function getServiceIndex()
+    {
+          list($user,$redirect) = User::checkAuthAndRedirect('user/account');
+          if($redirect){return $redirect;}
+          $services = $user->service();
+          return View::make('site/user/services/index', compact('user','services'));
     }
 
     // Cuenta del usuario

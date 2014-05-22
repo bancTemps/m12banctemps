@@ -103,4 +103,11 @@ class User extends ConfideUser implements UserInterface, RemindableInterface{
         return $this->email;
     }
 
+    /*Cosas echas por el oscar*/
+    public function service(){
+        return $this->hasMany('Service');
+    }
+    
+    
+    
 }

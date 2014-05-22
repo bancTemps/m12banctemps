@@ -95,7 +95,13 @@ Route::post('user/login', 'UserController@postLogin');
 Route::get('user/services/create','UserController@createService');
 Route::get('user/view/{view}/service', 'UserController@viewOtherService');
 Route::get('user/view/{view}', 'UserController@viewOther');
+Route::get('user/servicelist','UserController@getServices');
+Route::post('user/servicelist','UserController@getServices');
 Route::post('user/services','ServiceController@store');
+Route::get('user/services','UserController@getServiceIndex');
+
+
+
 
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
