@@ -92,10 +92,11 @@ Route::post('user/{user}/edit', 'UserController@postEdit');
 //:: User Account Routes ::
 Route::post('user/login', 'UserController@postLogin');
 
+Route::get('user/services/create','UserController@createService');
 Route::get('user/view/{view}/service', 'UserController@viewOtherService');
 Route::get('user/view/{view}', 'UserController@viewOther');
+Route::post('user/services','ServiceController@store');
 
-Route::get('user/service/create','UserController@createService');
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
 
@@ -114,10 +115,9 @@ Route::get('contact-us', function()
 
 
 
-
 #Serveis.
 Route::get('service','ServiceController@getIndex');
-Route::post('service/create','ServiceController@store');
+
 Route::get('service/{serviceSlug}','ServiceController@getDetail');
 
 //Crear Servicio

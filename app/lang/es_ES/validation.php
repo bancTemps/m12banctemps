@@ -12,6 +12,13 @@ return array(
 	|
 	*/
 
+        'serviceValidator' => 'nombre de servicio obligatorio, alfanumerico entre 5 y 20 caracteres',
+        'descripcioValidator' => 'Descripcion obligatoria, minimo 4 caracteres alfanumerico',
+         'dataIniciValidator' => 'Fecha de inicio obligatoria de tipo date',
+        'dataFinalValidator' => 'Fecha final obligatoria de tipo date',
+        'duracioValitador' =>   'Duracion obligatoria, solo numeros',
+        'localitzacioValidator' => 'Localizacion obligatoria, alfanumerica',
+        'puntsValidator' => 'Puntos obligatorios, solo numeros',  
 	"accepted" 			=> "El :attribute debe ser aceptado.",
 	"active_url" 		=> "El :attribute no es una URL válida.",
 	"after" 			=> "El :attribute debe ser una fecha posterior :date.",
@@ -25,7 +32,7 @@ return array(
 		"string"  => "El campo :attribute debe estar entre :min - :max caracteres.",
 	),
 	"confirmed" 		=> "El :attribute de confirmación no coincide.",
-	"date" 				=> "El :attribute no és una data válida.",
+	"date" 				=> "El :attribute no és una fecha válida.",
 	"date_format" 		=> "El :attribute no corresponde al formato :format.",
 	"different" 		=> "El :attribute y :other debe ser diferente.",
 	"digits" 			=> "El :attribute debe tener :digits dígitos.",

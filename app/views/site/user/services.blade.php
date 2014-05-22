@@ -6,7 +6,9 @@
 <div class="page-header">
 	<h3><strong>Servicios creados</strong></h3>
 </div>
-
+       @if ( Session::get('servicio') )
+        <div class="alert alert-success">{{ Session::get('servicio') }}</div>
+       @endif
 <table id="my_services" class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -38,7 +40,7 @@
 	</tbody>
 </table>
 
-<a class="button border-fade no-subrallado" href="#">Crear servicio</a>
+<a class="button border-fade no-subrallado" href="{{{ URL::to('user/services/create')  }}}">Crear servicio</a>
 
 @stop
 

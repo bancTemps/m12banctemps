@@ -17,9 +17,6 @@
     </div>
     <div id="mapas"></div>
 <div class="container">
-       @if ( Session::get('servicio') )
-        <div class="alert">{{ Session::get('servicio') }}</div>
-       @endif
     <div class="col-md-12">
         <div class="row">    
             @foreach ($services as $service)          
