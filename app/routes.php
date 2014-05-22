@@ -92,6 +92,9 @@ Route::post('user/{user}/edit', 'UserController@postEdit');
 //:: User Account Routes ::
 Route::post('user/login', 'UserController@postLogin');
 
+// User delete user
+Route::post('user/delete/{user}', 'UserController@postDelete');
+
 
 
 Route::get('user/service/create','UserController@createService');

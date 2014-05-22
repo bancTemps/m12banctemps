@@ -373,7 +373,7 @@ class UserController extends BaseController {
         return View::make('site/user/account', compact('user'));
     }
 
-    // Borrar usuario
+    // Formulario para borrar usuario
     public function getDelete()
     {
         list($user,$redirect) = User::checkAuthAndRedirect('user/friends');
@@ -382,6 +382,8 @@ class UserController extends BaseController {
         return View::make('site/user/delete', compact('user'));
     }
 
+
+    // Borrar usuario
     public function postDelete($user) {       
 
         AssignedRoles::where('user_id', $user->id)->delete();
