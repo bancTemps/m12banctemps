@@ -12,7 +12,7 @@
 		<tr>
 			<th class="col-md-4">{{{ Lang::get('admin/roles/table.name') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.participants') }}}</th>
-			<th class="col-md-2">{{{ Lang::get('admin/roles/table.created_at') }}}</th>
+			<th class="col-md-2">{{{ Lang::get('admin/roles/table.start_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.finish_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.points') }}}</th>
 		</tr>
