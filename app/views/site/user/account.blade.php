@@ -12,7 +12,13 @@
 @section('menu-content')
 
 
-<form class="form-horizontal" method="post" action="{{ URL::to('user/' . $user->id . '/edit') }}"  autocomplete="off">
+ <div class="form">
+              
+    
+
+</div>    
+
+<form class="form-horizontal" method="post" action="{{ URL::to('user/' . $user->id . '/edit') }}"  autocomplete="off" enctype="multipart/form-data">
     <div class="page-header">
         <h3 class="col-md-offset-3">Datos personales</h3>
     </div>
@@ -20,6 +26,11 @@
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
     <div class="tab-pane active" id="tab-general">
+
+       
+
+        <label for="photo">photo:</label>
+        <input type="file" name="photo" id="photo"><br>
 
         <!-- name -->
         <div class="form-group {{{ $errors->has('name') ? 'error' : '' }}}">

@@ -95,9 +95,17 @@ class UserController extends BaseController {
         $validator = Validator::make(Input::all(), $user->getUpdateRules());
 
 
-        if ($validator->passes())
-        {
-            $oldUser = clone $user;
+        if ($validator->passes()) {
+            $file = Input::file("photo");
+
+            $oldUser = clone $user;            
+            
+            // Borrar la imagen anterior
+            unlink("public/img/avatar/".$user->photo);
+            // Guardar la imagen actual
+            $file->move("public/img/avatar", $file->getClientOriginalName());
+
+            $user->photo =  Input::file("photo")->getClientOriginalName();
             $user->username = Input::get( 'username' );
             $user->email = Input::get( 'email' );
             $user->name = Input::get( 'name' );
