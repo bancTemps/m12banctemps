@@ -16,14 +16,14 @@
         </div>
     </div>
     <div id="mapas"></div>
-<div class="container">
+<div class="col-sm-12 col-md-offset-1 col-md-10">
        @if ( Session::get('servicio') )
         <div class="alert">{{ Session::get('servicio') }}</div>
        @endif
-    <div class="col-md-12">
+    <div class="col-sm-12 col-md-12">
         <div class="row">    
             @foreach ($services as $service)          
-             <div class="col-md-4">
+             <div class="col-sm-4 col-md-4">
                 <!-- normal -->
                 <div class="ih-item square effect3 bottom_to_top">
                     <a href="{{ $service->url() }}">

@@ -149,6 +149,14 @@
 
 <!-- the following div is needed to make a sticky footer -->
 <div id="push"></div>
+
+<div id="footer">
+  <div class="container">
+    <p class="muted credit">Banc del temps todas las perras reservadas.</p>
+  </div>
+</div>
+
+
 </div>
 <!-- ./wrap -->
 <!-- Javascripts
@@ -156,11 +164,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
-<div id="footer">
-  <div class="container">
-    <p class="muted credit">Banc del temps todas las perras reservadas.</p>
-  </div>
-</div>
+
 
 
 @yield('scripts')

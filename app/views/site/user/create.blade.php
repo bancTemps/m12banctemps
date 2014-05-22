@@ -1,4 +1,4 @@
-@extends('site.layouts.default')
+@extends('site.layouts.container')
 
 {{-- Web site Title --}}
 @section('title')
@@ -19,7 +19,7 @@ input {
 {{-- Content --}}
 @section('content')
 
-<div class="container">
+<div class="col-sm-offset-1 col-sm-8 col-md-8">
 	<div class="page-header">
 		<h1>Registro</h1>
 	</div>
