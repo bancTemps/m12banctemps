@@ -51,7 +51,7 @@
 <a class="button border-fade no-subrallado" href="{{{ URL::to('user/services/create')  }}}">Crear servicio</a>
 
 @stop
-{{//aqui nos hemos dado cuenta de somos unos "GENIOS"}}
+
 {{-- Scripts --}}
 @section('scripts')
 
