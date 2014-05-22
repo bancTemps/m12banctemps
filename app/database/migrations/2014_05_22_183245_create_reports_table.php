@@ -14,14 +14,13 @@ class CreateReportsTable extends Migration {
 	{
 		Schema::create('reports', function(Blueprint $table)
 		{
+                        
 			$table->increments('id');
-			$table->integer('emissor_id')->unsigned()->index();
-			$table->integer('denunciat_id')->unsigned()->index();
-                        $table->integer('estat');
-                        $table->text('descripcio');
+                        $table->integer('emisor_id');
+                        $table->integer('receptor_id');
+                        $table->integer('estado')->default(0);
+                        $table->string('descripcion');
 			$table->timestamps();
-                        $table->foreign('emissor_id')->references('id')->on('users')->onDelete('cascade');
-			$table->foreign('denunciat_id')->references('id')->on('users')->onDelete('cascade');
 		});
 	}
 
