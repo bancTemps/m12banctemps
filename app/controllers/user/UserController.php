@@ -53,9 +53,6 @@ class UserController extends BaseController {
         if(!empty($password)) {
             if($password === $passwordConfirmation) {
                 $this->user->password = $password;
-                // The password confirmation will be removed from model
-                // before saving. This field will be used in Ardent's
-                // auto validation.
                 $this->user->password_confirmation = $passwordConfirmation;
             } else {
                 // Redirect to the new user page
@@ -387,7 +384,7 @@ class UserController extends BaseController {
     public function getServices()
     {
          $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
-                    ->select(array('services.id', 'services.nom','services.dataInici', 'services.dataFinal'));
+                    ->select(array('services.id', 'services.nom','services.dataInici', 'services.dataFinal','services.punts'));
 
         return Datatables::of($services)->make();
 
