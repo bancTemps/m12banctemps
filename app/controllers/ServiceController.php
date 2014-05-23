@@ -46,10 +46,10 @@ class ServiceController extends BaseController {
             
           $validator =             
             array(
-                'nom' => 'required|unique:services|between:5,20|alpha_num',
-                'descripcio' => 'required|min:4|alpha_dash',
-                'dataInici' => 'required|date',
-                'dataFinal' => 'required|date',
+                'nom' => 'required|unique:services|between:5,20',
+                'descripcio' => 'required|min:4',
+                'dataInici' => 'required|date_format:"Y-m-d"',
+                'dataFinal' => 'required|date_format:"Y-m-d"',
                 'duracio' =>   'required|integer',
                 'localitzacio' => 'required|alpha',
                 'punts' => 'required|integer',
@@ -69,7 +69,7 @@ class ServiceController extends BaseController {
                 $this->service->duracio = Input::get( 'duracio' );
                 $this->service->localitzacio = Input::get( 'localitzacio' );
                 $this->service->punts = Input::get( 'punts' );
-                 $this->service->punts = Input::get( 'categoria' );
+                 $this->service->categoria_id = Input::get( 'categoria' );
                 $this->service->user_id = Auth::user()->id;;
                 $slug =Input::get('nom');
                 $slugName = Str::slug($slug ,'-');
