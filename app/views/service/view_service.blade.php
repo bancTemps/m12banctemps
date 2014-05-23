@@ -124,6 +124,7 @@
                     <p>Propietario del servicio</p>
                     <p><span class="embossed">Nombre:</span>{{ $service->author->name }}</p>
                     <p><span class="embossed">Email: </span>{{ $service->author->email }}</p>
+                    <p><span class="embossed"><a class="button border-fade no-subrallado" href="{{URL::to('view/'.$service->author->username)}}">Perfil</a></span></p>
                 </div>
                 
                 
