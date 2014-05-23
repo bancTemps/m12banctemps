@@ -3,7 +3,6 @@
 use Illuminate\Support\Str;
 
 class ServiceController extends BaseController {
-
     /**
      * Service Model
      * @var Services
@@ -14,8 +13,7 @@ class ServiceController extends BaseController {
      * User Model
      * @var User
      */
-    protected $user;
-    
+    protected $user;    
     /**
      * Inject the models.
      * @param Service $service
@@ -96,14 +94,7 @@ class ServiceController extends BaseController {
                 
 		return View::make('service/view_service', compact('service','comments', 'canComment'));
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     public function postDetail($slug){
         
         $user = $this->user->currentUser();

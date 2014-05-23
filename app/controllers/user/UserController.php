@@ -209,11 +209,6 @@ class UserController extends BaseController {
             'password' => Input::get( 'password' ),
             'remember' => Input::get( 'remember' ),
         );
-
-        // If you wish to only allow login from confirmed users, call logAttempt
-        // with the second parameter as true.
-        // logAttempt will check if the 'email' perhaps is the username.
-        // Check that the user is confirmed.
         if ( Confide::logAttempt( $input, true ) )
         {
             $r = Session::get('loginRedirect');
@@ -392,7 +387,12 @@ class UserController extends BaseController {
                     ->where('users.id','=',Auth::user()->id)
                     ->select(array('services.nom','services.id', 'services.dataInici', 'services.dataFinal','services.punts'));
 
-        return Datatables::of($services)->make();
+        return Datatables::of($services)->add_column('actions', '<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
+                                @if($username == \'admin\')
+                                @else
+                                    <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" class="iframe btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
+                                @endif
+            ')->remove_column('id')->make();
 
     }
     public function getServiceIndex()
