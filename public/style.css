@@ -3,7 +3,6 @@
   /*a name to be used later*/
   src: url("assets/fonts/Oswald-Light.ttf");
   /*URL to font*/ }
-
 html, body {
   font-size: 100%;
   font-family: 'Oswald';
@@ -196,6 +195,26 @@ html, body {
     list-style-type: none;
     font-size: 20px;
     padding: 3px; }
+
+.negrato {
+  width: 150px;
+  height: 50px;
+  margin-top: 10px;
+  margin-right: -7px; }
+
+input[type=range] {
+  -webkit-appearance: none;
+  background-color: silver;
+  width: 150px;
+  height: 20px;
+  margin-left: 22px; }
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #666;
+  opacity: 0.5;
+  width: 10px;
+  height: 26px; }
 
 #mapas {
   height: 300px; }

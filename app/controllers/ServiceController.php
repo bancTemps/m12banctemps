@@ -30,17 +30,16 @@ class ServiceController extends BaseController {
     }
     
 	/**
-	 * Returns all the blog posts.
+	 * Returns all the services.
 	 *
 	 * @return View
 	 */
 	public function getIndex()
 	{
-		// Get all the blog posts
-		$services = $this->service->orderBy('created_at', 'DESC')->paginate(10);
-
-		// Show the page
+		
+		$services = $this->service->orderBy('created_at', 'DESC')->paginate(10);		
 		return View::make('service/index', compact('services'));
+                
 	}
         
         public function store(){
@@ -132,19 +131,19 @@ class ServiceController extends BaseController {
 			$comment = new Valoration;
 			$comment->user_id = Auth::user()->id;
 			$comment->content = Input::get('comment');
-
+                        $comment->nota = Input::get('points');
 			// Was the comment saved with success?
 			if($service->comments()->save($comment))
 			{
-				// Redirect to this blog post page
+				// Redirect to services page
 				return Redirect::to( 'service/' .$slug . '#comments')->with('success', 'Your comment was added with success.');
 			}
 
-			// Redirect to this blog post page
+			// Redirect to services page
 			return Redirect::to('service/' .$slug . '#comments')->with('error', 'There was a problem adding your comment, please try again.');
 		}
 
-		// Redirect to this blog post page
+		// Redirect to this service page
 		return Redirect::to('service/' .$slug)->withInput()->withErrors($validator);
 	}
 

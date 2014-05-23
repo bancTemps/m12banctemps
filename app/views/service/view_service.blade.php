@@ -9,60 +9,71 @@
 
 
     <div class="row" >
-
+        
         <!-- Columna del servicio -->
         <div class="col-md-offset-1 col-md-8 col-sm-8 col-xs-12" id="service">
-            <!--  -->            
-            <!-- Titulo del servicio -->
-            <div class="page-header">
-                <h3><strong>{{ $service->nom  }}</strong></h3>
+            <!--  -->   
+            <div class="row">
+                <!-- Titulo del servicio -->
+                <div class="page-header">
+                    <h3><strong>{{ $service->nom  }}</strong></h3>
+                </div>
             </div>
-
+            <div class="row">
             <!-- Imagen del servicio + boton solicitud -->
-            <div class="col-xs-5 col-sm-5 col-md-3">                
-                <div class="hidden-xs col-sm-12 col-md-12">
-                    <img class="img-responsive" src=" http://placecage.com/500/500" />
+            <div class="col-xs-12 col-sm-9 col-md-9">              
+                
+                
+                
+                <div class="row">
+                    <div id="mapas"></div>
                 </div>    
 
-                <!-- Solicitar servicio -->
-                <center><a class="button border-fade no-subrallado" href="#" class="col-xs-12">Envia una sol·licitud</a></center>             
+              
+                
             </div>
+            
+            
+            <!-- Datos del servicio -->
+                <div class="col-xs-12 col-sm-3 col-md-3" id="service-data">
+                    <br />
+                    <p>Data d'inici: <b>{{ $service->dataInici }}</b></p>
+                    <p>Data de fi: <b>{{ $service->dataFinal }}</b></p>
+                    <p>Duració en hores: <b>{{ $service->duracio }}</b></p>
+                    <p>Localització: <b>{{ $service->localitzacio }}</b></p>
+                    <p>Punts: <b>{{ $service->punts }}</b></p>
+                    <!--Solicitar servicio-->
+                    <br /><br />
+                    <center><a class="button border-fade no-subrallado" href="#">Envia una sol·licitud</a></center> 
+                </div>
+            </div>           
             
             <!-- Descripcion -->
             <p class="col-xs-7 col-sm-7 col-md-5">{{ $service->descripcio  }}</p>
             
-            <!-- Datos del servicio -->
-            <div class="col-xs-12 col-sm-12 col-md-4" id="service-data">
-                <p>Data d'inici: <b>{{ $service->dataInici }}</b></p>
-                <p>Data de fi: <b>{{ $service->dataFinal }}</b></p>
-                <p>Duració en hores: <b>{{ $service->duracio }}</b></p>
-                <p>Localització: <b>{{ $service->localitzacio }}</b></p>
-                <p>Punts: <b>{{ $service->punts }}</b></p>
-            </div>
-   
-            
-            
+            <!--Bloque de comentarios-->
             <div class="row">
+                <br /><br/>
                 <div class="col-md-12">
                 @if ($comments->count())
                 @foreach ($comments as $comment)
                 <div class="row">
-                        <div class="col-md-1">
-                                <img class="thumbnail" src="{{asset($comment->author->photo)}}" alt="">
+                        <div class="col-md-2 hidden-xs">
+                                <img class="img-responsive" src="{{asset($comment->author->photo)}}" alt="">
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-10 col-xs-12">
                                 <div class="row">
-                                        <div class="col-md-11">
-                                                <span class="muted">{{{ $comment->author->username }}}</span>
+                                        <div class="col-md-10 col-xs-12">
+                                            <span class="muted"><strong>{{{ $comment->author->username }}}</strong></span>
                                                 &bull;
                                                 {{{ $comment->date() }}}
                                         </div>
 
-                                        <div class="col-md-11">
+                                        <div class="col-md-10 hidden-xs">
                                                 <hr />
                                         </div>
 
-                                        <div class="col-md-11">
+                                        <div class="col-md-10 col-xs-12">
                                                 {{{ $comment->content() }}}
                                         </div>
                                 </div>
@@ -78,7 +89,7 @@
                 You need to be logged in to add comments.<br /><br />
                 Click <a href="{{{ URL::to('user/login') }}}">here</a> to login into your account.
                 @elseif ( ! $canComment )
-                You don't have the correct permissions to add comments.
+                    No tienes permisos para comentar en esta pagina.
                 @else
 
                 @if($errors->has())
@@ -91,17 +102,35 @@
                 </div>
                 @endif
 
-                    <h4>Add a Comment</h4>
+                    <h4>Añadir comentario</h4>
                     <form  method="post" action="{{{ URL::to($service->url()) }}}">
                             <input type="hidden" name="_token" value="{{{ Session::getToken() }}}" />
-
-                            <textarea class="col-md-12 input-block-level" rows="4" name="comment" id="comment">{{{ Request::old('comment') }}}</textarea>
-
                             <div class="form-group">
-                                    <div class="col-md-12">
-                                            <input type="submit" class="btn btn-default" id="submit" value="Submit" />
+                                <textarea class="col-xs-12 col-md-9 input-block-level" rows="4" name="comment" id="comment">{{{ Request::old('comment') }}}</textarea>
+                                <div class="col-md-3 col-xs-12">
+                                    <p>Puntua el servei:</p>
+                                    <div class="col-md-12 hidden-xs">
+                                        <span class="col-md-2 glyphicon glyphicon-star"></span>
+                                        <span class="col-md-2 glyphicon glyphicon-star"></span>
+                                        <span class="col-md-2 glyphicon glyphicon-star"></span>
+                                        <span class="col-md-2 glyphicon glyphicon-star"></span>
+                                        <span class="col-md-2 glyphicon glyphicon-star"></span>                                     
                                     </div>
+                                    <div class="row">                                        
+                                        <div class="row">
+                                            
+                                            <input class="col-md-12" type="range" name="points" min="0" max="10">
+                                        </div>
+                                        <div class="row" style="text-align:center">
+                                            
+                                            <input type="submit" class="button border-fade negrato" id="submit" value="Enviar" />
+                                            
+                                        </div>
+                                    </div>
+                                    <br /><br /><br />
+                                </div>
                             </div>
+                            
                     </form>
                 @endif
                     
@@ -131,4 +160,9 @@
         </div>
     </div>
 
+@stop
+{{-- scripts --}}
+@section('scripts')
+    {{ HTML::script('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'); }}
+    {{ HTML::script('assets/js/gmaps.js'); }}
 @stop
