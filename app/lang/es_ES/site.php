@@ -15,5 +15,10 @@ return array(
 
 	'contact_us' => 'Contacto',
     'sign_up'    => 'Registrarse',
+    'admin_panel'    => 'Panel administrador',
+    'admin'    => 'Administrador',
+    'profile'    => 'Perfil',
+    'messages'    => 'Mensajes',
+    'services'    => 'Servicios',
 
 );

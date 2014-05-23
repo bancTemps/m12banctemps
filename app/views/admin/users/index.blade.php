@@ -1,14 +1,12 @@
-@extends('admin.layouts.default')
+@extends('site.layouts.container')
 
-{{-- Web site Title --}}
+
 @section('title')
 	{{{ $title }}} :: @parent
 @stop
 
-{{-- Content --}}
-@section('content')
 
-<div class="container">
+@section('content')
 	<div class="page-header">
 		<h3>
 			{{{ $title }}}
@@ -33,10 +31,9 @@
 		<tbody>
 		</tbody>
 	</table>
-</div>
 @stop
 
-{{-- Scripts --}}
+
 @section('scripts')
 	<script type="text/javascript">
 		var oTable;

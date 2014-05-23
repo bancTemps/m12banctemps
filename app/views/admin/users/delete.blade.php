@@ -1,6 +1,6 @@
 @extends('admin.layouts.modal')
 
-{{-- Content --}}
+
 @section('content')
     <!-- Tabs -->
         <ul class="nav nav-tabs">
