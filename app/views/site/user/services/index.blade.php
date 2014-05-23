@@ -6,6 +6,7 @@
 	
 @stop
 @section('menu-content')
+<div class="container">
 
 <div class="page-header">
 	<h3><strong>Servicios creados</strong></h3>
@@ -49,6 +50,8 @@
 </table>
 
 <a class="button border-fade no-subrallado" href="{{{ URL::to('user/services/create')  }}}">Crear servicio</a>
+
+</div>
 
 @stop
 

@@ -186,9 +186,7 @@ html, body {
     position: static; }
 
   #service {
-    margin-bottom: 60px; }
-    #service img {
-      width: 0; } }
+    margin-bottom: 60px; } }
 .cuadro-flotante {
   background-color: #1c8172;
   padding: 30px;

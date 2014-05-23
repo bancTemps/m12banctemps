@@ -155,9 +155,9 @@
 
 <div class="row">
     <div id="profile" class="col-xs-12 col-sm-4 col-md-3">
-       <img src="{{asset('img/avatar').'/'. $user->photo }}" title="avatar" class="col-xs-offset-1 col-xs-3 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6"/>
+       <img src="{{asset('img/avatar').'/'. $user->photo }}" title="avatar" class="hidden-xs col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6"/>
 
-        <div id="user-info" class="row col-xs-7 col-sm-12 col-md-12">
+        <div id="user-info" class="row col-xs-12 col-sm-12 col-md-12">
             <p>{{Input::old('name', $user->points) }}<span class="embossed"> pts</span></p>
             <p><span class="embossed">Nombre:</span> {{Input::old('name', $user->name) }} {{Input::old('surname', $user->surname) }}</p>
             <p><span class="embossed">Correo:</span> {{Input::old('email', $user->email) }}</p>

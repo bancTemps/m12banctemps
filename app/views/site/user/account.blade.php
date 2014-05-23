@@ -29,8 +29,16 @@
 
        
 
-        <label for="photo">photo:</label>
-        <input type="file" name="photo" id="photo"><br>
+        
+        <!-- photo -->
+        <div class="form-group {{{ $errors->has('photo') ? 'error' : '' }}}">
+            <label class="col-xs-offset-1 col-md-3 control-label" for="photo">{{ Lang::get('messages.photo')}}</label>
+            <div class="col-xs-10 col-md-6">
+                <input type="file" name="photo" id="photo" class="form-control">
+                {{ $errors->first('photo', '<span class="help-inline">:message</span>') }}
+            </div>
+        </div>
+        <!-- ./ photo -->
 
         <!-- name -->
         <div class="form-group {{{ $errors->has('name') ? 'error' : '' }}}">
