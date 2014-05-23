@@ -46,7 +46,7 @@
 	<script type="text/javascript">
 		var oTable;
 		$(document).ready(function() {
-				oTable = $('#my_services').dataTable( {
+			oTable = $('#my_services').dataTable( {
 				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 				"sPaginationType": "bootstrap",
 				"oLanguage": {
@@ -54,27 +54,11 @@
 				},
 				"bProcessing": true,
 		        "bServerSide": true,
-		        "sAjaxSource": "{{ URL::to('admin/roles/data') }}",
+		        "sAjaxSource": "{{ URL::to('view/getJson/'.$user->username) }}",
 		        "fnDrawCallback": function ( oSettings ) {
 	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 	     		}
 			});
-		});
-
-		$(document).ready(function() {
-				oTable = $('#realized_services').dataTable( {
-				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-				"sPaginationType": "bootstrap",
-				"oLanguage": {
-					"sLengthMenu": "_MENU_ records per page"
-				},
-				"bProcessing": true,
-		        "bServerSide": true,
-		        "sAjaxSource": "{{ URL::to('admin/roles/data') }}",
-		        "fnDrawCallback": function ( oSettings ) {
-	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
-	     		}
-			});
-		});
+		});		
 	</script>
 @stop

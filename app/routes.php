@@ -123,11 +123,13 @@ Route::get('contact-us', function()
 
 #Serveis.
 Route::get('service','ServiceController@getIndex');
-
 Route::post('service/{serviceSlug}','ServiceController@postDetail');
 Route::get('service/{serviceSlug}','ServiceController@getDetail');
-//Crear Servicio
 
+//Crear Servicio
+Route::get('view/getJson/{slug}', 'OtherUserController@getOtherServices');
+Route::get('view/{view}/service', 'OtherUserController@viewOtherService');
+Route::get('view/{view}', 'OtherUserController@viewOther');
 
 
 
