@@ -26,6 +26,7 @@ class CreateServicesTable extends Migration {
 			$table->integer('punts');
 			$table->string('slug', 25);
 			$table->timestamps();
+                        //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 		});
 	}
 

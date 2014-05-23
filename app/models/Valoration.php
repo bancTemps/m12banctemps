@@ -1,6 +1,6 @@
 <?php
 
-class Comment extends Eloquent {
+class Valoration extends Eloquent {
 
 	/**
 	 * Get the comment's content.
@@ -27,9 +27,9 @@ class Comment extends Eloquent {
 	 *
 	 * @return Blog\Post
 	 */
-	public function post()
+	public function service()
 	{
-		return $this->belongsTo('Post');
+		return $this->belongsTo('Service','service_id');
 	}
 
 

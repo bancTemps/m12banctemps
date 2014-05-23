@@ -82,22 +82,70 @@ class ServiceController extends BaseController {
         }
         
     public function getDetail($slug) {
-        
-            // Get this blog post data
 		$service = $this->service->where('slug', '=', $slug)->first();
-
-		// Check if the blog post exists
 		if (is_null($service))
 		{
-			// If we ended up in here, it means that
-			// a page or a blog post didn't exist.
-			// So, this means that it is time for
-			// 404 error page.
 			return App::abort(404);
+		}       
+                
+                $comments = $service->comments()->orderBy('created_at', 'ASC')->get();
+                $user = $this->user->currentUser();
+                $canComment = false;
+                if(!empty($user)) {
+                    $canComment = $user->can('post_comment');
+                }
+                
+		return View::make('service/view_service', compact('service','comments', 'canComment'));
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    public function postDetail($slug){
+        
+        $user = $this->user->currentUser();
+        $canComment = $user->can('post_comment');
+		if ( ! $canComment)
+		{
+			return Redirect::to($slug . '#comments')->with('error', 'You need to be logged in to post comments!');
 		}
 
-        
-		return View::make('service/view_service', compact('service'));
+		// Get this blog post data
+		$service = $this->service->where('slug', '=', $slug)->first();
+
+		// Declare the rules for the form validation
+		$rules = array(
+			'comment' => 'required|min:3'
+		);
+
+		// Validate the inputs
+		$validator = Validator::make(Input::all(), $rules);
+
+		// Check if the form validates with success
+		if ($validator->passes())
+		{
+			// Save the comment
+			$comment = new Valoration;
+			$comment->user_id = Auth::user()->id;
+			$comment->content = Input::get('comment');
+
+			// Was the comment saved with success?
+			if($service->comments()->save($comment))
+			{
+				// Redirect to this blog post page
+				return Redirect::to( 'service/' .$slug . '#comments')->with('success', 'Your comment was added with success.');
+			}
+
+			// Redirect to this blog post page
+			return Redirect::to('service/' .$slug . '#comments')->with('error', 'There was a problem adding your comment, please try again.');
+		}
+
+		// Redirect to this blog post page
+		return Redirect::to('service/' .$slug)->withInput()->withErrors($validator);
 	}
 
 }

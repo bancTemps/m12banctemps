@@ -21,7 +21,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('email', 30);
             $table->integer('telephone');
             $table->string('password');
-            $table->integer('points');
+            $table->integer('points')->default('200');
             $table->string('photo');
             $table->integer('status');
             $table->string('address', 25);

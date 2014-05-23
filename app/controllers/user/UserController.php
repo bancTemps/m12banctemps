@@ -41,7 +41,6 @@ class UserController extends BaseController {
         // Natu
         $this->user->name = Input::get( 'name' );
         $this->user->surname = Input::get( 'surname' );
-        $this->user->points = 200;
         // !Natu
 
         $this->user->username = Input::get( 'username' );

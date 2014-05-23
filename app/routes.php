@@ -124,8 +124,8 @@ Route::get('contact-us', function()
 #Serveis.
 Route::get('service','ServiceController@getIndex');
 
+Route::post('service/{serviceSlug}','ServiceController@postDetail');
 Route::get('service/{serviceSlug}','ServiceController@getDetail');
-
 //Crear Servicio
 
 

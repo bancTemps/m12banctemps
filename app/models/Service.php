@@ -9,7 +9,7 @@ class Service extends Eloquent {
 	}
 
 	public function comments() {
-		return $this->hasMany('Comment');
+		return $this->hasMany('Valoration');
 	}
         public function category() {
 		return $this->belongsTo('Category','id');

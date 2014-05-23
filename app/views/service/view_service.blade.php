@@ -25,13 +25,12 @@
                 </div>    
 
                 <!-- Solicitar servicio -->
-                <center><a class="button border-fade no-subrallado" href="#" class="col-xs-12">Envia una sol·licitud</a></center>       
-                
+                <center><a class="button border-fade no-subrallado" href="#" class="col-xs-12">Envia una sol·licitud</a></center>             
             </div>
             
             <!-- Descripcion -->
             <p class="col-xs-7 col-sm-7 col-md-5">{{ $service->descripcio  }}</p>
-
+            
             <!-- Datos del servicio -->
             <div class="col-xs-12 col-sm-12 col-md-4" id="service-data">
                 <p>Data d'inici: <b>{{ $service->dataInici }}</b></p>
@@ -41,6 +40,78 @@
                 <p>Punts: <b>{{ $service->punts }}</b></p>
             </div>
    
+            
+            
+            <div class="row">
+                <div class="col-md-12">
+                @if ($comments->count())
+                @foreach ($comments as $comment)
+                <div class="row">
+                        <div class="col-md-1">
+                                <img class="thumbnail" src="http://placehold.it/60x60" alt="">
+                        </div>
+                        <div class="col-md-11">
+                                <div class="row">
+                                        <div class="col-md-11">
+                                                <span class="muted">{{{ $comment->author->username }}}</span>
+                                                &bull;
+                                                {{{ $comment->date() }}}
+                                        </div>
+
+                                        <div class="col-md-11">
+                                                <hr />
+                                        </div>
+
+                                        <div class="col-md-11">
+                                                {{{ $comment->content() }}}
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <hr />
+                @endforeach
+                @else
+                <hr />
+                @endif
+
+                @if ( ! Auth::check())
+                You need to be logged in to add comments.<br /><br />
+                Click <a href="{{{ URL::to('user/login') }}}">here</a> to login into your account.
+                @elseif ( ! $canComment )
+                You don't have the correct permissions to add comments.
+                @else
+
+                @if($errors->has())
+                <div class="alert alert-danger alert-block">
+                <ul>
+                @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+                @endif
+
+                    <h4>Add a Comment</h4>
+                    <form  method="post" action="{{{ URL::to($service->url()) }}}">
+                            <input type="hidden" name="_token" value="{{{ Session::getToken() }}}" />
+
+                            <textarea class="col-md-12 input-block-level" rows="4" name="comment" id="comment">{{{ Request::old('comment') }}}</textarea>
+
+                            <div class="form-group">
+                                    <div class="col-md-12">
+                                            <input type="submit" class="btn btn-default" id="submit" value="Submit" />
+                                    </div>
+                            </div>
+                    </form>
+                @endif
+                    
+                </div>
+                
+                
+            </div>
+            
+            
+            
         </div>
         
         <!-- columna del usuario que ofrece el servicio -->
