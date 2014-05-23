@@ -60,9 +60,10 @@
 
 
 	<script type="text/javascript">
+
 		var oTable;
 		$(document).ready(function() {
-				oTable = $('#my_services').dataTable( {
+			oTable = $('#my_services').dataTable( {
 				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 				"sPaginationType": "bootstrap",
 				"oLanguage": {
@@ -76,5 +77,6 @@
 	     		}
 			});
 		});
+
 	</script>
 @stop
