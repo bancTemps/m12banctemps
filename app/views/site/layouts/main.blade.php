@@ -21,6 +21,7 @@
 	{{ HTML::style('bootstrap/css/bootstrap.min.css')}}
     {{ HTML::style('bootstrap/css/bootstrap-theme.min.css')}}
     {{ HTML::style('assets/css/hover.css')}}
+    {{ HTML::style('assets/css/ihover.css')}}
     {{ HTML::style('assets/css/colorbox.css')}}
     {{ HTML::style('style.css')}}
     

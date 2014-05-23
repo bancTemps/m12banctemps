@@ -1,12 +1,15 @@
 @extends('site.layouts.default')
 
-@section('styles')
 
+@section('title')
+{{ $service->nom  }} :: @parent
+@stop
+
+@section('styles')
 @stop
 
 {{-- Content --}}
 @section('content')
-
 
     <div class="row" >
 
