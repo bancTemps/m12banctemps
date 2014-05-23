@@ -165,8 +165,3 @@
     </div>
 
 @stop
-{{-- scripts --}}
-@section('scripts')
-    {{ HTML::script('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'); }}
-    {{ HTML::script('assets/js/gmaps.js'); }}
-@stop
