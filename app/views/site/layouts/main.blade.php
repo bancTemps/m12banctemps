@@ -185,6 +185,9 @@
 <script src="{{asset('assets/js/datatables.fnReloadAjax.js')}}"></script>
 <script src="{{asset('assets/js/jquery.colorbox.js')}}"></script>
 <script src="{{asset('assets/js/prettify.js')}}"></script>
+{{ HTML::script('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'); }}
+{{ HTML::script('assets/js/gmaps.js'); }}
+
 
 @yield('scripts')
 

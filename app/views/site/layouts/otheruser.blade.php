@@ -18,19 +18,15 @@
            <img src="{{asset($user->photo) }}" title="avatar" class="hidden-xs col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6"/>
 
             <div id="user-info" class="row col-xs-12 col-sm-12 col-md-12">
-                <p>{{Input::old('name', $user->points) }}<span class="embossed"> pts</span></p>
+                <p></p>
                 <p><span class="embossed">Nombre:</span> {{Input::old('name', $user->name) }} {{Input::old('surname', $user->surname) }}</p>
-                <p><span class="embossed">Correo:</span> {{Input::old('email', $user->email) }}</p>
-                <p><span class="embossed">Dirección:</span> {{Input::old('address', $user->address) }}, {{Input::old('city', $user->city) }}, {{Input::old('postalCode', $user->postalCode) }}</p>
-                <p><span class="embossed">Teléfono:</span> {{Input::old('telephone', $user->telephone) }}</p>
+                
             </div>
         </div>   
 
-        <div id="menu-content" class="col-xs-12 col-sm-8 col-md-9">
-             <!-- Notifications -->
-            @include('notifications')
-            <!-- ./ notifications -->
-            
+        <div id="menu-content" class="col-xs-12 col-sm-8 col-md-9" style="float:left; padding-left: 5%;">
+
+            @include('notifications')            
             @yield('menu-content')
         </div>
 
