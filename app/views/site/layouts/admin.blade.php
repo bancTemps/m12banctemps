@@ -6,10 +6,8 @@
     <div id="user-menu" class="col-xs-12 col-sm-12 col-md-12 embossed">
         <div class="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-3 col-md-9">
             <ul>
-                <li><a href="{{{ URL::to('user/services') }}}" title="account">Perfil</a></li>
-                <li><a href="{{{ URL::to('user/account') }}}" title="account">Cuenta</a></li>            
-                <li><a href="{{{ URL::to('user/friends') }}}" title="friends">Amigos</a></li>
-                <li><a href="{{{ URL::to('user/statistics') }}}" title="statistics">Estadísticas</a></li>
+                <li><a href="{{{ URL::to('admin/statistics') }}}" title="statistics">Estadísticas</a></li>
+            <li>Denuncias</li>
             </ul>
         </div>
     </div>
@@ -19,11 +17,10 @@
            <img src="{{asset($user->photo) }}" title="avatar" class="hidden-xs col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6"/>
 
             <div id="user-info" class="row col-xs-12 col-sm-12 col-md-12">
-                <p>{{Input::old('name', $user->points) }}<span class="embossed"> pts</span></p>
-                <p><span class="embossed">Nombre:</span> {{Input::old('name', $user->name) }} {{Input::old('surname', $user->surname) }}</p>
+                <p></p>
+                <p><span class="embossed">Nombre:</span> {{Input::old('name', $user->name) }}</p>
                 <p><span class="embossed">Correo:</span> {{Input::old('email', $user->email) }}</p>
-                <p><span class="embossed">Dirección:</span> {{Input::old('address', $user->address) }}, {{Input::old('city', $user->city) }}, {{Input::old('postalCode', $user->postalCode) }}</p>
-                <p><span class="embossed">Teléfono:</span> {{Input::old('telephone', $user->telephone) }}</p>
+                <p><span class="embossed">Dirección:</span> {{Input::old('address', $user->address) }}</p>
             </div>
         </div>   
 
