@@ -4,7 +4,7 @@
 <div id="user-menu" class="col-xs-12 col-sm-12 col-md-12 embossed">
     <div class="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-3 col-md-9">
         <ul>
-            <li><a href="{{{ URL::to('user/view/'.$user->username.'/service') }}}" title="services">Servicios</a></li>
+            <li><a href="{{{ URL::to('view/'.$user->username.'/service') }}}" title="services">Servicios</a></li>
             <li><a href="{{{ URL::to('user/friends') }}}" title="friends">Amigos</a></li>
             <li><a href="{{{ URL::to('user/statistics') }}}" title="statistics">Estadísticas</a></li>
         </ul>
@@ -27,6 +27,8 @@
         @yield('menu-content')
     </div>
 
+    
 </div>
 
 @stop
+
