@@ -118,10 +118,10 @@ class UserController extends BaseController {
             if ($file != "") {
                 $file->move("public/img/avatar", $file->getClientOriginalName());
                 // Borrar la imagen anterior
-                if ($user->photo != "user-controller.jpg" && $user->photo != "") {
-                    unlink("public/img/avatar/".$user->photo);
+                if ($user->photo != "user-avatar.jpg" && $user->photo != "") {
+                    unlink("public/".$user->photo);
                 }
-                $user->photo =  Input::file("photo")->getClientOriginalName();
+                $user->photo =  'img/avatar/'.Input::file("photo")->getClientOriginalName();
             }
             
 

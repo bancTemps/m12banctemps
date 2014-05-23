@@ -48,7 +48,7 @@
                 @foreach ($comments as $comment)
                 <div class="row">
                         <div class="col-md-1">
-                                <img class="thumbnail" src="http://placehold.it/60x60" alt="">
+                                <img class="thumbnail" src="{{asset($comment->author->photo)}}" alt="">
                         </div>
                         <div class="col-md-11">
                                 <div class="row">
@@ -118,7 +118,7 @@
         <div class="col-md-3 col-sm-4 col-xs-12" id="profile-in-service">
 
             <div id="profile" class="col-xs-12 col-sm-4 col-md-3">
-               <img src="{{ $service->author->photo }}" title="avatar" class="hidden-xs col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6"/>
+               <img src="{{ asset($service->author->photo) }}" title="avatar" class="hidden-xs col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6"/>
 
                 <div id="user-info" class="row col-xs-12 col-sm-12 col-md-12">
                     <p>Propietario del servicio</p>

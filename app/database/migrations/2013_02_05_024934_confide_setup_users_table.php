@@ -22,7 +22,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->integer('telephone');
             $table->string('password');
             $table->integer('points')->default('200');
-            $table->string('photo');
+            $table->string('photo')->default('img/avatar/user-avatar.jpg');
             $table->integer('status');
             $table->string('address', 25);
             $table->string('city', 25);
