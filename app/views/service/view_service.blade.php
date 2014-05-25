@@ -107,32 +107,32 @@
 
                     <h4>Añadir comentario</h4>
                     <form  method="post" action="{{{ URL::to($service->url()) }}}">
-                            <input type="hidden" name="_token" value="{{{ Session::getToken() }}}" />
-                            <div class="form-group">
-                                <textarea class="col-xs-12 col-md-9 input-block-level" rows="4" name="comment" id="comment">{{{ Request::old('comment') }}}</textarea>
-                                <div class="col-md-3 col-xs-12">
-                                    <p>Puntua el servei:</p>
-                                    <div class="col-md-12 hidden-xs">
-                                        <span class="col-md-2 glyphicon glyphicon-star"></span>
-                                        <span class="col-md-2 glyphicon glyphicon-star"></span>
-                                        <span class="col-md-2 glyphicon glyphicon-star"></span>
-                                        <span class="col-md-2 glyphicon glyphicon-star"></span>
-                                        <span class="col-md-2 glyphicon glyphicon-star"></span>                                     
-                                    </div>
-                                    <div class="row">                                        
-                                        <div class="row">
-                                            
-                                            <input class="col-md-12" type="range" name="points" min="0" max="10">
-                                        </div>
-                                        <div class="row" style="text-align:center">
-                                            
-                                            <input type="submit" class="button border-fade negrato" id="submit" value="Enviar" />
-                                            
-                                        </div>
-                                    </div>
-                                    <br /><br /><br />
+                        <input type="hidden" name="_token" value="{{{ Session::getToken() }}}" />
+                        <div class="form-group">
+                            <textarea class="col-xs-12 col-md-9 input-block-level" rows="4" name="comment" id="comment">{{{ Request::old('comment') }}}</textarea>
+                            <div class="col-md-3 col-xs-12">
+                                <p>Puntua el servei:</p>
+                                <div class="col-md-12 hidden-xs">
+                                    <span class="col-md-2 glyphicon glyphicon-star"></span>
+                                    <span class="col-md-2 glyphicon glyphicon-star"></span>
+                                    <span class="col-md-2 glyphicon glyphicon-star"></span>
+                                    <span class="col-md-2 glyphicon glyphicon-star"></span>
+                                    <span class="col-md-2 glyphicon glyphicon-star"></span>                                     
                                 </div>
+                                <div class="row">                                        
+                                    <div class="row">
+                                        
+                                        <input class="col-md-12" type="range" name="points" min="0" max="10">
+                                    </div>
+                                    <div class="row" style="text-align:center">
+                                        
+                                        <input type="submit" class="button border-fade negrato" id="submit" value="Enviar" />
+                                        
+                                    </div>
+                                </div>
+                                <br /><br /><br />
                             </div>
+                        </div>
                             
                     </form>
                 @endif

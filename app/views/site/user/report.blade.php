@@ -21,13 +21,13 @@
         <div class="form-group">
             <div class="col-sm-offset-3 col-md-offset-4 col-md-10">
                 Por estas razones:<br/>
-                <input type="textarea" name="description" id="description" cols="80" rows="4"/>
+                <textarea name="description" id="description" cols="80" rows="4"></textarea>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-3 col-md-offset-4 col-md-10">
-                <button tabindex="3" type="submit" class="btn btn-primary">{{ Lang::get('confide::confide.login.submit') }}</button>
+                <button tabindex="3" type="submit" class="btn btn-primary">Envia</button>
             </div>
         </div>
         
