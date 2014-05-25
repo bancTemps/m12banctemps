@@ -97,7 +97,7 @@ class OtherUserController extends BaseController {
         Mail::send('emails.report', $data, function($message) use($reporter)
         {
           $message->from($reporter->email, $reporter->name);
-          $message->to('paul.cfgs@gmail.com', 'Denuncia nueva');
+          $message->to('donhorchy@gmail.com', 'Denuncia nueva');
         });
         
         
