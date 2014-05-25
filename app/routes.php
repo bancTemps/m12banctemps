@@ -93,8 +93,6 @@ Route::post('user/{user}/edit', 'UserController@postEdit');
 Route::post('user/login', 'UserController@postLogin');
 
 Route::get('user/services/create','UserController@createService');
-Route::get('view/{view}/service', 'UserController@viewOtherService');
-Route::get('view/{view}', 'UserController@viewOther');
 Route::get('user/servicelist','UserController@getServices');
 Route::post('user/servicelist','UserController@getServices');
 Route::post('user/services','ServiceController@store');
@@ -129,8 +127,9 @@ Route::get('service/{serviceSlug}','ServiceController@getDetail');
 //Crear Servicio
 Route::get('view/getJson/{slug}', 'OtherUserController@getOtherServices');
 Route::get('view/{view}/service', 'OtherUserController@viewOtherService');
+Route::get('view/{view}/report', 'OtherUserController@reportForm');
+Route::post('view/{view}/report', 'OtherUserController@postReport');
 Route::get('view/{view}', 'OtherUserController@viewOther');
-
 
 
 
