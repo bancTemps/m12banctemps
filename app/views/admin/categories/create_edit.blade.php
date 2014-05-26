@@ -19,8 +19,8 @@
 			<!-- General tab -->
 			<div class="tab-pane active" id="tab-general">
 				<!-- username -->
-				<div class="form-group {{{ $errors->has('username') ? 'error' : '' }}}">
-					<label class="col-md-2 control-label" for="username">Nom Categoria</label>
+				<div class="form-group {{{ $errors->has('nom') ? 'error' : '' }}}">
+					<label class="col-md-2 control-label" for="nom">Nom Categoria</label>
 					<div class="col-md-10">
 						<input class="form-control" type="text" name="nom" id="nom" value="{{{ Input::old('nom', isset($nom) ? $category->nom : null) }}}" />
 						{{ $errors->first('nom', '<span class="help-inline">:message</span>') }}

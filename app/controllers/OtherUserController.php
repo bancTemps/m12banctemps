@@ -21,23 +21,15 @@ class OtherUserController extends BaseController {
      * @param Service $service
      * @param User $user
      */
-    public function __construct(Conversation $conversation, Service $service, User $user)
+    public function __construct(Report $report,Conversation $conversation, Service $service, User $user)
     {
         parent::__construct();
         $this->conversation = $conversation;
         $this->service = $service;
         $this->user = $user;
-    }
-    /**
-     * Inject the models.
-     * @param User $user
-     */
-    public function __construct(User $user, Report $report)
-    {
-        parent::__construct();
-        $this->user = $user;
         $this->report = $report;
     }
+
 
     public function getIndex() {
         $userModel = new User;

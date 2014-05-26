@@ -7,15 +7,21 @@ class UserController extends BaseController {
      * @var User
      */
     protected $user;
+    /**
+     * Service Model
+     * @var Service
+     */
+    protected $service;
     
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user)
+    public function __construct(User $user,Service $service)
     {
         parent::__construct();
         $this->user = $user;
+        $this->service = $service;
     }
 
     /**
@@ -85,6 +91,85 @@ class UserController extends BaseController {
      * Edits a user
      *
      */
+ public function getEditService($service){
+                    $servicio = $this->service->where('id','=',$service)->first();
+        if ($servicio){
+        	$title = 'Editar Servicio';
+
+        	return View::make('site/user/services/edit', compact('servicio', 'title'));
+        }
+        else
+        {
+            return Redirect::to('site/user/services')->with('error', Lang::get('admin/categories/messages.does_not_exist'));
+        }
+    }
+    public function postEditService($service){
+         $rules =             
+            array(
+                'nom' => 'required|unique:services|between:5,20',
+                'descripcio' => 'required|min:4',
+                'dataInici' => 'required|date_format:"Y-m-d"',
+                'dataFinal' => 'required|date_format:"Y-m-d"',
+                'duracio' =>   'required|integer',
+                'localitzacio' => 'required|alpha',
+                'punts' => 'required|integer',
+                'categoria' => 'required'
+           ); 
+         
+
+        $validator = Validator::make(Input::all(), $rules);
+
+
+        if ($validator->passes())
+        {
+            $servicio = $this->service->where('id','=',$service)->first();
+            $oldservice = clone $servicio;
+            $servicio->nom = Input::get( 'nom' );
+            $servicio->descripcio = Input::get( 'descripcio' );
+            $servicio->duracio = Input::get( 'duracio' );
+            $servicio->localitzacio = Input::get( 'localitzacio' );
+            $servicio->punts = Input::get( 'punts' );
+            $slug = Input::get( 'nom' );
+            $slugName = Str::slug($slug ,'-');
+            $servicio->slug = $slugName;
+            $servicio->save();
+            return Redirect::to('site/user/services/' . $service . '/edit')->with('success', Lang::get('admin/users/messages.edit.success'));
+        } else {
+                unset($category->slug);
+                 return Redirect::to('admin/categories/' . $service . '/edit')->with('error', Lang::get('admin/users/messages.edit.error'));
+        }
+    }
+  
+      public function getDeleteService($service)
+    {
+        // Title
+        $title = 'Eliminar Servicio';
+
+        // Show the page
+        return View::make('site/user/services/delete', compact('service', 'title'));
+    }
+
+    /**
+     * Remove the specified user from storage.
+     *
+     * @param $user
+     * @return Response
+     */
+    public function postDeleteService($service)
+    {
+        $servicio = $this->service->where('id','=',$service)->first();
+        if (empty($category) )
+        {
+           
+            $servicio->delete();
+            return Redirect::to('admin/categories')->with('success', 'Servicio elminada satisfactoriamente');
+        }
+        else
+        {
+            // There was a problem deleting the user
+            return Redirect::to('admin/categories')->with('error', 'Error al eliminar la categoria');
+        }
+    }
     public function postEdit($user)
     {
         // Validate the inputs
@@ -372,8 +457,9 @@ class UserController extends BaseController {
                     ->where('users.id','=',Auth::user()->id)
                     ->select(array('services.nom','services.id', 'services.dataInici', 'services.dataFinal','services.punts'));
         return Datatables::of($services)
-                ->add_column('action','<a class="iframe btn btn-xs btn-default" href="#">Editar</a>'
-                        . '<a class="iframe btn btn-xs btn-danger" href="#">Eliminar</a>')->make();
+                ->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/edit\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
+              <a href="{{{ URL::to(\'user/services/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>')
+              ->make();
        
     }
     /*
