@@ -9,6 +9,7 @@
                 <li><a href="{{{ URL::to('user/account') }}}" title="account">Cuenta</a></li>            
                 <li><a href="{{{ URL::to('user/friends') }}}" title="friends">Amigos</a></li>
                 <li><a href="{{{ URL::to('user/statistics') }}}" title="statistics">Estadísticas</a></li>
+                <li><a href="{{{ URL::to('view/'.$user->username.'/report') }}}" title="report">Denunciar usuario</a></li>
             </ul>
         </div>
     </div>
