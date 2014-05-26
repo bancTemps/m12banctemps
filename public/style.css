@@ -3,6 +3,7 @@
   /*a name to be used later*/
   src: url("assets/fonts/Oswald-Light.ttf");
   /*URL to font*/ }
+
 html, body {
   font-size: 100%;
   font-family: 'Oswald';
@@ -138,7 +139,8 @@ html, body {
     padding-left: 20px; }
 
   #profile, #user-menu, #messages, #friends, #historial, .message-input-text {
-    position: static; }
+    position: static;
+    height: inherit; }
     #profile ul, #user-menu ul, #messages ul, #friends ul, #historial ul, .message-input-text ul {
       position: static; }
 
