@@ -36,7 +36,7 @@ class OtherUserController extends BaseController {
             App::abort(404);
         }
         
-        return View::make('site/user/otherUser', compact('user'));
+        return View::make('site/user/otheruser', compact('user'));
     }
     
     
@@ -46,7 +46,7 @@ class OtherUserController extends BaseController {
         if (is_null($user)){
             App::abort(404);
         }       
-        return View::make('site/user/otherUserService', compact('user'));
+        return View::make('site/user/otheruserservice', compact('user'));
     }
     
     

@@ -1,4 +1,4 @@
-@extends('site.layouts.otherUser')
+@extends('site.layouts.otheruser')
 
 
 @section('menu-content')
