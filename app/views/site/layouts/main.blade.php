@@ -127,7 +127,7 @@
 
                 @else
 
-                    <li><a href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span>{{Lang::get('site.profile')}}</a></li>
+                    <li><a href="{{{ URL::to('user/services') }}}"><span class="glyphicon glyphicon-user"></span>{{Lang::get('site.profile')}}</a></li>
                     <li class="divider"></li>
 
                 @endif

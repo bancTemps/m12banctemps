@@ -203,6 +203,7 @@ html, body {
 
 	#profile, #user-menu, #messages, #friends, #historial, .message-input-text {
 		position: static;
+		height: inherit;
 
 		ul {
 			position: static;

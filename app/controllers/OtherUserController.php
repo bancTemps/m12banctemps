@@ -7,15 +7,36 @@ class OtherUserController extends BaseController {
      * @var User
      */
     protected $user;
-    
+    protected $report;
+    protected $service;
+
+    /**
+     * User Model
+     * @var User
+     */
+    protected $conversation;    
+    /**
+     * Inject the models.
+     * @param Conversation $conversation
+     * @param Service $service
+     * @param User $user
+     */
+    public function __construct(Conversation $conversation, Service $service, User $user)
+    {
+        parent::__construct();
+        $this->conversation = $conversation;
+        $this->service = $service;
+        $this->user = $user;
+    }
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user)
+    public function __construct(User $user, Report $report)
     {
         parent::__construct();
         $this->user = $user;
+        $this->report = $report;
     }
 
     public function getIndex() {
@@ -36,7 +57,25 @@ class OtherUserController extends BaseController {
             App::abort(404);
         }
         
-        return View::make('site/user/otheruser', compact('user'));
+        return View::make('site/user/otherUser', compact('user'));
+    }
+
+    public function addOther($view) {
+        $userModel = new User;
+        $receptor = $userModel->getUserByUsername($view);
+        
+        if (is_null($receptor)){
+            App::abort(404);
+        }
+        $this->conversation->nom = Input::get( 'nom' );
+        $this->conversation->descripcio = Input::get( 'descripcio' );
+        $this->conversation->dataInici = Input::get( 'dataInici' );
+      
+        $this->conversation->save();
+        return Redirect::to('/user/services')
+       ->with('servicio', 'Servicio añadido correctamente');
+        
+        return View::make('site/user/otherUser', compact('receptor'));
     }
     
     
@@ -46,7 +85,7 @@ class OtherUserController extends BaseController {
         if (is_null($user)){
             App::abort(404);
         }       
-        return View::make('site/user/otheruserservice', compact('user'));
+        return View::make('site/user/otherUserService', compact('user'));
     }
     
     
@@ -89,7 +128,7 @@ class OtherUserController extends BaseController {
         // the data that will be passed into the mail view blade template
         $data = array(
             'reporter' => $reporter->username,
-            'reported' => $reported->username,
+            'reported' => $user->username,
             'detail' => $this->report->descripcion,
         );
 
