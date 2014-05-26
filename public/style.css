@@ -1,0 +1,240 @@
+@font-face {
+  font-family: 'Oswald';
+  /*a name to be used later*/
+  src: url("assets/fonts/Oswald-Light.ttf");
+  /*URL to font*/ }
+html, body {
+  font-size: 100%;
+  font-family: 'Oswald';
+  font-weight: 300; }
+
+.border-fade:hover {
+  color: #000; }
+
+/*
+	USERS: PROFILE
+*/
+#profile {
+  background-color: #23a38f;
+  height: 100%;
+  padding: 0;
+  position: fixed; }
+  #profile img {
+    background-color: #dadada;
+    padding: 0;
+    margin-top: 42px; }
+
+#friends {
+  background-color: #eff1c2;
+  float: left;
+  height: 92%;
+  padding: 0;
+  position: fixed;
+  overflow: auto; }
+
+.message-friend {
+  float: left;
+  background-color: #d9de6f;
+  padding: 10px;
+  margin: 10px 0; }
+  .message-friend img {
+    width: 90px;
+    height: 90px;
+    float: left;
+    margin-right: 10px; }
+
+.message-friend:hover {
+  background-color: #b6bc2b; }
+
+#messages {
+  right: 0;
+  float: right;
+  height: 92%;
+  position: fixed;
+  line-height: 2em; }
+
+#historial {
+  height: 80%;
+  position: fixed;
+  overflow: auto; }
+
+.message-input-text {
+  bottom: 20px;
+  width: 94%;
+  position: absolute;
+  text-align: left; }
+
+/*
+	MENU DEL USUARIO
+*/
+#user-menu {
+  background-color: #23a38f;
+  position: fixed;
+  z-index: 1; }
+  #user-menu div {
+    padding: 10px;
+    text-transform: uppercase; }
+  #user-menu ul {
+    font-weight: 400;
+    display: inline;
+    list-style: none;
+    padding-left: 0; }
+    #user-menu ul li {
+      display: inline;
+      padding: 0 20px; }
+  #user-menu a {
+    color: #dadada;
+    text-decoration: none; }
+  #user-menu a:hover {
+    color: #fff; }
+
+#user-info {
+  background-color: #1e8e7d;
+  color: #fff;
+  padding: 20px; }
+  #user-info p:first-child {
+    text-shadow: 0px 1px 1px #4d4d4d;
+    font-weight: 400;
+    font-size: 2em;
+    text-align: center; }
+
+/*
+	CONTENIDO DE LA PAGINA
+*/
+#menu-content {
+  float: right;
+  margin-top: 40px;
+  padding-left: 0;
+  line-height: 2em; }
+
+/*
+	TEXT FORMATTING
+*/
+.embossed {
+  color: #dadada;
+  text-shadow: 0px 1px 1px #4d4d4d; }
+
+/*
+	OTROS CAMBIOS
+*/
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+#wrap > .container {
+  margin-top: 20px; }
+
+#wrap > .navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+  position: fixed;
+  background-image: linear-gradient(to bottom, #2e313d 0, #23252e 100%);
+  background-repeat: repeat-x;
+  z-index: 5; }
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 20px; }
+
+  #profile, #user-menu, #messages, #friends, #historial, .message-input-text {
+    position: static; }
+    #profile ul, #user-menu ul, #messages ul, #friends ul, #historial ul, .message-input-text ul {
+      position: static; }
+
+  #friends {
+    height: 220px; }
+
+  .message-friend img {
+    width: 80px;
+    height: 80px; }
+
+  #profile img {
+    margin-top: 0; }
+
+  #menu-content {
+    margin-top: 0; } }
+.row {
+  margin: 0; }
+
+.chart {
+  height: 300px; }
+
+#profile-in-service {
+  position: fixed;
+  height: 100%;
+  right: 0;
+  background-color: #23a38f;
+  padding: 0; }
+  #profile-in-service img {
+    background-color: #dadada; }
+  #profile-in-service li {
+    list-style-type: none; }
+
+#service {
+  position: fixed;
+  background-color: #fff;
+  position: absolute;
+  height: 100%; }
+
+#service-data {
+  background-color: #eff1c2; }
+
+@media (max-width: 768px) {
+  #profile-in-service, #service {
+    position: static; }
+
+  #service {
+    margin-bottom: 60px; } }
+.cuadro-flotante {
+  background-color: #1c8172;
+  padding: 30px;
+  top: 50px;
+  height: 100%; }
+  .cuadro-flotante li {
+    list-style-type: none;
+    font-size: 20px;
+    padding: 3px; }
+
+.negrato {
+  width: 150px;
+  height: 50px;
+  margin-top: 10px;
+  margin-right: -7px; }
+
+input[type=range] {
+  -webkit-appearance: none;
+  background-color: silver;
+  width: 150px;
+  height: 20px;
+  margin-left: 22px; }
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #666;
+  opacity: 0.5;
+  width: 10px;
+  height: 26px; }
+
+#mapas {
+  height: 300px; }
+
+input {
+  text-align: center; }
+
+.divopaco {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2; }
+
+.searchbox {
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 55%;
+  height: 55px; }
