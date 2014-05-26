@@ -92,10 +92,21 @@ Route::post('user/{user}/edit', 'UserController@postEdit');
 //:: User Account Routes ::
 Route::post('user/login', 'UserController@postLogin');
 
+//Vista del crear servicio
 Route::get('user/services/create','UserController@createService');
+//Lista de lso servicios por ajax, devolviendo un json con los datos.
 Route::get('user/servicelist','UserController@getServices');
-Route::post('user/servicelist','UserController@getServices');
+//Edita servicio desde el datatable:
+Route::get('user/services/{service}/edit','UserController@getEdit');
+Route::post('user/services/{service}/edit','UserController@postEdit');
+
+
+
+//Comentado porque no sirve de nada
+//Route::post('user/servicelist','UserController@getServices');
+//Almacenar servicio creado
 Route::post('user/services','ServiceController@store');
+//Mostrar el servicio
 Route::get('user/services','UserController@getServiceIndex');
 
 

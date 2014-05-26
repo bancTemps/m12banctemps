@@ -22,6 +22,7 @@
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.created_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.finish_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.points') }}}</th>
+                        <th class="col-md-2">{{{ Lang::get('admin/roles/table.options') }}}</th>
 		</tr>
 	</thead>
 	<tbody>
