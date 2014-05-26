@@ -19,7 +19,7 @@ Route::model('user', 'User');
 Route::model('comment', 'Comment');
 Route::model('post', 'Post');
 Route::model('role', 'Role');
-Route::model('category', 'Category');
+
 
 /** ------------------------------------------
  *  Route constraint patterns
@@ -30,8 +30,10 @@ Route::pattern('post', '[0-9]+');
 Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
+
+
 Route::pattern('blog', '[a-z]+');
-Route::pattern('category', '[0-9a-z]+');
+
 
 /** ------------------------------------------
  *  Admin Routes
@@ -39,15 +41,7 @@ Route::pattern('category', '[0-9a-z]+');
  */
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 {
-   
-    #Categories Management
-    Route::get('categories/{category}/show', 'AdminCategoriesController@getShow');
-    Route::get('categories/{category}/edit', 'AdminCategoriesController@getEdit');
-    Route::post('categories/{category}/edit', 'AdminCategoriesController@postEdit');
-    Route::get('categories/{category}/delete', 'AdminCategoriesController@getDelete');
-    Route::post('categories/{category}/delete', 'AdminCategoriesController@postDelete');
-    Route::controller('categories', 'AdminCategoriesController');
-    
+
     # Comment Management
     Route::get('comments/{comment}/edit', 'AdminCommentsController@getEdit');
     Route::post('comments/{comment}/edit', 'AdminCommentsController@postEdit');
@@ -78,8 +72,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('roles/{role}/delete', 'AdminRolesController@getDelete');
     Route::post('roles/{role}/delete', 'AdminRolesController@postDelete');
     Route::controller('roles', 'AdminRolesController');
- 
-    
+
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
 });
@@ -99,10 +92,21 @@ Route::post('user/{user}/edit', 'UserController@postEdit');
 //:: User Account Routes ::
 Route::post('user/login', 'UserController@postLogin');
 
+//Vista del crear servicio
 Route::get('user/services/create','UserController@createService');
+//Lista de lso servicios por ajax, devolviendo un json con los datos.
 Route::get('user/servicelist','UserController@getServices');
-Route::post('user/servicelist','UserController@getServices');
+//Edita servicio desde el datatable:
+Route::get('user/services/{service}/edit','UserController@getEdit');
+Route::post('user/services/{service}/edit','UserController@postEdit');
+
+
+
+//Comentado porque no sirve de nada
+//Route::post('user/servicelist','UserController@getServices');
+//Almacenar servicio creado
 Route::post('user/services','ServiceController@store');
+//Mostrar el servicio
 Route::get('user/services','UserController@getServiceIndex');
 
 

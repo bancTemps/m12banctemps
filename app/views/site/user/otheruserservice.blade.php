@@ -1,19 +1,12 @@
-@extends('site.layouts.user')
+@extends('site.layouts.otheruser')
 
 
-{{-- Web site Title --}}
-@section('title')
-	
-@stop
 @section('menu-content')
-<div class="container">
 
 <div class="page-header">
 	<h3><strong>Servicios creados</strong></h3>
 </div>
-       @if ( Session::get('servicio') )
-        <div class="alert alert-success">{{ Session::get('servicio') }}</div>
-       @endif
+
 <table id="my_services" class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -22,11 +15,9 @@
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.created_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.finish_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.points') }}}</th>
-                        <th class="col-md-2">{{{ Lang::get('admin/roles/table.options') }}}</th>
 		</tr>
 	</thead>
 	<tbody>
-            
 	</tbody>
 </table>
 
@@ -44,24 +35,15 @@
 		</tr>
 	</thead>
 	<tbody>
-            <tr>
-                
-            </tr>
 	</tbody>
 </table>
 
-<a class="button border-fade no-subrallado" href="{{{ URL::to('user/services/create')  }}}">Crear servicio</a>
-
-</div>
-
 @stop
 
-{{-- Scripts --}}
+
+
 @section('scripts')
-
-
 	<script type="text/javascript">
-
 		var oTable;
 		$(document).ready(function() {
 			oTable = $('#my_services').dataTable( {
@@ -72,12 +54,11 @@
 				},
 				"bProcessing": true,
 		        "bServerSide": true,
-		        "sAjaxSource": "{{ URL::to('user/servicelist') }}",
+		        "sAjaxSource": "{{ URL::to('view/getJson/'.$user->username) }}",
 		        "fnDrawCallback": function ( oSettings ) {
 	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 	     		}
 			});
-		});
-
+		});		
 	</script>
 @stop

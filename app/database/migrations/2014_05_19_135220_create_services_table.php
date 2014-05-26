@@ -15,16 +15,18 @@ class CreateServicesTable extends Migration {
 		Schema::create('services', function(Blueprint $table)
 		{
 			$table->increments('id');
+
 			$table->string('user_id');
 			$table->string('nom', 25);
 			$table->string('descripcio');
-                        $table->integer('categoria_id');
+            $table->integer('categoria_id');
 			$table->date('dataInici');
 			$table->date('dataFinal');
 			$table->integer('duracio');
 			$table->string('localitzacio', 25);
 			$table->integer('punts');
 			$table->string('slug', 25);
+			
 			$table->timestamps();
                         //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 		});

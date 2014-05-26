@@ -361,22 +361,30 @@ class UserController extends BaseController {
     }
 
     
-    
-    // Servicios del usuario
+    /*Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
+     * 
+     * getServices
+     * Esto extrae los servicios y crea un json para que el dataTables lo pueda interpretar
+     */
     public function getServices()
     {
-         $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
+        $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
                     ->where('users.id','=',Auth::user()->id)
                     ->select(array('services.nom','services.id', 'services.dataInici', 'services.dataFinal','services.punts'));
-
-        return Datatables::of($services)->add_column('actions', '<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
-                                @if($username == \'admin\')
-                                @else
-                                    <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" class="iframe btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
-                                @endif
-            ')->remove_column('id')->make();
-
+        return Datatables::of($services)
+                ->add_column('action','<a class="iframe btn btn-xs btn-default" href="#">Editar</a>'
+                        . '<a class="iframe btn btn-xs btn-danger" href="#">Eliminar</a>')->make();
+       
     }
+    /*
+     * Controlador para mostrar la vista de eliminar.
+     */
+    
+    
+    
+    
+    /*Muestra el template index.    
+    */
     public function getServiceIndex()
     {
           list($user,$redirect) = User::checkAuthAndRedirect('user/account');

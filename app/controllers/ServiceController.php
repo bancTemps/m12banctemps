@@ -40,7 +40,7 @@ class ServiceController extends BaseController {
                 
 	}
         
-        public function store(){
+    public function store(){
             
           $validator =             
             array(
@@ -67,7 +67,7 @@ class ServiceController extends BaseController {
                 $this->service->duracio = Input::get( 'duracio' );
                 $this->service->localitzacio = Input::get( 'localitzacio' );
                 $this->service->punts = Input::get( 'punts' );
-                $this->service->categoria_id = Input::get( 'categoria' );
+                 $this->service->categoria_id = Input::get( 'categoria' );
                 $this->service->user_id = Auth::user()->id;;
                 $slug =Input::get('nom');
                 $slugName = Str::slug($slug ,'-');

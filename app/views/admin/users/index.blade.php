@@ -20,7 +20,7 @@
 	<table id="users" class="table table-striped table-hover">
 		<thead>
 			<tr>
-                                <th class="col-md-2">{{{ Lang::get('admin/users/table.username') }}}</th>
+				<th class="col-md-2">{{{ Lang::get('admin/users/table.username') }}}</th>
 				<th class="col-md-2">{{{ Lang::get('admin/users/table.email') }}}</th>
 				<th class="col-md-2">{{{ Lang::get('admin/users/table.roles') }}}</th>
 				<th class="col-md-2">{{{ Lang::get('admin/users/table.activated') }}}</th>

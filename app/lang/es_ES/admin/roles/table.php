@@ -8,5 +8,5 @@ return array(
 	'finish_at'			=> 'Finalizado el',
 	'points'			=> 'Puntos',
 	'author'			=> 'Autor',
-
+        'options'               =>          'Opciones',
 );
