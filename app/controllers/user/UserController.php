@@ -383,10 +383,7 @@ class UserController extends BaseController {
     
     
     
-    /*Muestra el template index.
-     * 
-     * 
-     *     
+    /*Muestra el template index.    
     */
     public function getServiceIndex()
     {
