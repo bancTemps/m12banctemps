@@ -93,22 +93,21 @@ class ServiceController extends BaseController {
                 $comments = $service->comments()->orderBy('created_at', 'ASC')->get();
                 $user = $this->user->currentUser();
                 $canComment = false;
-                if(!empty($user)) {
-                    $canComment = $user->can('post_comment');
-                }
-                // Comprovar si el usuario puede solicitar un servicio
-                $servicioMinimo = $user->service->count();
                 $puedeSolicitar = false;
-                if ($servicioMinimo != 0){
-                    $canRequest = $service->solicitud()->where('solicita_id','=',Auth::user()->id)->first();
-                    if ($canRequest == NULL) {
-                       if ($user->points >= $service->punts) {
-                           $puedeSolicitar = true;
-
-                       }
-                    }
-                } 
-
+                if(!empty($user)) {  
+                    $canComment = $user->can('post_comment');
+                // Comprovar si el usuario puede solicitar un servicio.
+                    $servicioMinimo = $user->service->count();                    
+                    if ($servicioMinimo != 0){
+                        $canRequest = $service->solicitud()->where('solicita_id','=',Auth::user()->id)->first();
+                        if ($canRequest == NULL) {
+                           if ($user->points >= $service->punts) {
+                               $puedeSolicitar = true;
+                               
+                           }
+                        }
+                    } 
+                }
 
                 $solicitud = $service->solicitud();
         return View::make('service/view_service', compact('service','comments', 'canComment','solicitud','puedeSolicitar'));
