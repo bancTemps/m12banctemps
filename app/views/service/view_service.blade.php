@@ -49,8 +49,8 @@
                     <!--Solicitar servicio-->
                     <br /><br />  
                     
-                    @if ($canRequest == '')     
-                    <center><a class="button border-fade no-subrallado" href="/request/{{{$service->id}}}">Envia una sol·licitud</a>
+                    @if ($puedeSolicitar == true)     
+                        <center><a class="button border-fade no-subrallado" href="/request/{{{$service->id}}}">Envia una sol·licitud</a>
                     @endif
                     
 
