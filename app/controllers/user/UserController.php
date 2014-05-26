@@ -365,7 +365,7 @@ class UserController extends BaseController {
     // Servicios del usuario
     public function getServices()
     {
-         $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
+        $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
                     ->where('users.id','=',Auth::user()->id)
                     ->select(array('services.nom','services.id', 'services.dataInici', 'services.dataFinal','services.punts'));
 

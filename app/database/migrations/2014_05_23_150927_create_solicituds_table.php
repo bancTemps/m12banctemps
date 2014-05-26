@@ -15,12 +15,12 @@ class CreateSolicitudsTable extends Migration {
 		Schema::create('solicituds', function(Blueprint $table)
 		{
 			$table->increments('id');
-                        $table->integer('servei_id');
-                        $table->integer('estat');
-                        $table->integer('solicita_id');
+            $table->integer('servei_id');
+            $table->integer('estat');
+            $table->integer('solicita_id');
 			$table->timestamps();
-                        $table->foreign('servei_id')->references('id')->on('services')->onDelete('cascade');
-                        $table->foreign('solicita_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('servei_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreign('solicita_id')->references('id')->on('users')->onDelete('cascade');
 
 
 		});

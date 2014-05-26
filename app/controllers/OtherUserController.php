@@ -8,6 +8,26 @@ class OtherUserController extends BaseController {
      */
     protected $user;
     protected $report;
+    protected $service;
+
+    /**
+     * User Model
+     * @var User
+     */
+    protected $conversation;    
+    /**
+     * Inject the models.
+     * @param Conversation $conversation
+     * @param Service $service
+     * @param User $user
+     */
+    public function __construct(Conversation $conversation, Service $service, User $user)
+    {
+        parent::__construct();
+        $this->conversation = $conversation;
+        $this->service = $service;
+        $this->user = $user;
+    }
     /**
      * Inject the models.
      * @param User $user
@@ -38,6 +58,24 @@ class OtherUserController extends BaseController {
         }
         
         return View::make('site/user/otherUser', compact('user'));
+    }
+
+    public function addOther($view) {
+        $userModel = new User;
+        $receptor = $userModel->getUserByUsername($view);
+        
+        if (is_null($receptor)){
+            App::abort(404);
+        }
+        $this->conversation->nom = Input::get( 'nom' );
+        $this->conversation->descripcio = Input::get( 'descripcio' );
+        $this->conversation->dataInici = Input::get( 'dataInici' );
+      
+        $this->conversation->save();
+        return Redirect::to('/user/services')
+       ->with('servicio', 'Servicio añadido correctamente');
+        
+        return View::make('site/user/otherUser', compact('receptor'));
     }
     
     

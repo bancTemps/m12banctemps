@@ -40,7 +40,7 @@ class ServiceController extends BaseController {
                 
 	}
         
-        public function store(){
+    public function store(){
             
           $validator =             
             array(
