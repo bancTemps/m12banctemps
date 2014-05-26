@@ -2,6 +2,9 @@
 
 return array(
 	'name'				=> 'Nombre',
+	'user'				=> 'Usuario',
+	'service'				=> 'Servicio',
+	'status'				=> 'Estado',
 	'participants'		=> 'Participantes',
 	'users'				=> '# de Usuarios',
 	'created_at'		=> 'Iniciado el',

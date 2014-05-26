@@ -6,7 +6,8 @@
     <div id="user-menu" class="col-xs-12 col-sm-12 col-md-12 embossed">
         <div class="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-3 col-md-9">
             <ul>
-                <li><a href="{{{ URL::to('user/services') }}}" title="account">Perfil</a></li>
+                <li><a href="{{{ URL::to('user/services') }}}" title="account">Servicios</a></li>
+                <li><a href="{{{ URL::to('user/request') }}}" title="account">Solicitudes</a></li>
                 <li><a href="{{{ URL::to('user/account') }}}" title="account">Cuenta</a></li>            
                 <li><a href="{{{ URL::to('user/friends') }}}" title="friends">Amigos</a></li>
                 <li><a href="{{{ URL::to('user/statistics') }}}" title="statistics">Estadísticas</a></li>

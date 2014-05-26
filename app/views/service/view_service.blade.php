@@ -30,7 +30,7 @@
                 
                 <div class="row">
                     <div id="mapas"></div>
-                </div>    
+                </div>  
 
               
                 
@@ -40,14 +40,25 @@
             <!-- Datos del servicio -->
                 <div class="col-xs-12 col-sm-3 col-md-3" id="service-data">
                     <br />
+                    <p>Numero de veces solicitado:<b>{{ $solicitud->count() }}</b></p>
                     <p>Data d'inici: <b>{{ $service->dataInici }}</b></p>
                     <p>Data de fi: <b>{{ $service->dataFinal }}</b></p>
                     <p>Duració en hores: <b>{{ $service->duracio }}</b></p>
                     <p>Localització: <b>{{ $service->localitzacio }}</b></p>
                     <p>Punts: <b>{{ $service->punts }}</b></p>
                     <!--Solicitar servicio-->
-                    <br /><br />
-                    <center><a class="button border-fade no-subrallado" href="#">Envia una sol·licitud</a></center> 
+                    <br /><br />  
+                    
+                    @if ($puedeSolicitar == true)     
+                        <center><a class="button border-fade no-subrallado" href="/request/{{{$service->id}}}">Envia una sol·licitud</a>
+                    @endif
+                    
+
+                        @if ( Session::get('solicitud') )
+                            <div class="alert alert-success">{{ Session::get('solicitud') }}</div>
+                        @endif
+    
+                    </center> 
                 </div>
             </div>           
             
@@ -156,8 +167,7 @@
                     <p>Propietario del servicio</p>
                     <p><span class="embossed">Nombre:</span>{{ $service->author->name }}</p>
                     <p><span class="embossed">Email: </span>{{ $service->author->email }}</p>
-                    <p><span class="embossed"><a class="button border-fade no-subrallado" href="{{URL::to('view/'.$service->author->username)}}">Perfil</a></span>
-                    <span class="embossed"><a class="button border-fade no-subrallado" href="{{URL::to('view/'.$service->author->username.'/add')}}">Añadir amigo</a></span></p>
+                    <p><span class="embossed"><a class="button border-fade no-subrallado" href="{{URL::to('view/'.$service->author->username)}}">Perfil</a></span></p>
                 </div>
                 
                 

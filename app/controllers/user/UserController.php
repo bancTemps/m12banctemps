@@ -462,6 +462,15 @@ class UserController extends BaseController {
               ->make();
        
     }
+
+    // Request del usuario
+    public function getRequest()
+    {
+        list($user,$redirect) = User::checkAuthAndRedirect('user/request');
+        if($redirect){return $redirect;}
+
+        return View::make('site/user/request', compact('user'));
+    }
     /*
      * Controlador para mostrar la vista de eliminar.
      */
