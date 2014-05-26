@@ -15,10 +15,9 @@
 <table id="requests" class="table table-striped table-hover">
     <thead>
         <tr>
-            <th class="col-md-5">{{{ Lang::get('admin/roles/table.name') }}}</th>
-            <th class="col-md-3">{{{ Lang::get('admin/roles/table.author') }}}</th>
-            <th class="col-md-2">{{{ Lang::get('admin/roles/table.finish_at') }}}</th>
-            <th class="col-md-2">{{{ Lang::get('admin/roles/table.points') }}}</th>
+            <th class="col-md-5">{{{ Lang::get('admin/roles/table.user') }}}</th>
+            <th class="col-md-3">{{{ Lang::get('admin/roles/table.service') }}}</th>
+            <th class="col-md-2">{{{ Lang::get('admin/roles/table.status') }}}</th>
         </tr>
     </thead>
     <tbody>
