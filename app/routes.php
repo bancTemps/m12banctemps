@@ -19,7 +19,7 @@ Route::model('user', 'User');
 Route::model('comment', 'Comment');
 Route::model('post', 'Post');
 Route::model('role', 'Role');
-
+Route::model('category', 'Category');
 
 /** ------------------------------------------
  *  Route constraint patterns
@@ -30,10 +30,8 @@ Route::pattern('post', '[0-9]+');
 Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
-
-
 Route::pattern('blog', '[a-z]+');
-
+Route::pattern('category', '[0-9a-z]+');
 
 /** ------------------------------------------
  *  Admin Routes
@@ -41,6 +39,14 @@ Route::pattern('blog', '[a-z]+');
  */
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 {
+   
+    #Categories Management
+    Route::get('categories/{category}/show', 'AdminCategoriesController@getShow');
+    Route::get('categories/{category}/edit', 'AdminCategoriesController@getEdit');
+    Route::post('categories/{category}/edit', 'AdminCategoriesController@postEdit');
+    Route::get('categories/{category}/delete', 'AdminCategoriesController@getDelete');
+    Route::post('categories/{category}/delete', 'AdminCategoriesController@postDelete');
+    Route::controller('categories', 'AdminCategoriesController');
 
     # Comment Management
     Route::get('comments/{comment}/edit', 'AdminCommentsController@getEdit');
