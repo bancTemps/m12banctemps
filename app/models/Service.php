@@ -4,12 +4,22 @@ use Illuminate\Support\Facades\URL;
 
 class Service extends Eloquent {
 
+/*
+
+	public function getServiceById($id){
+		return $this->where('id','=',$id);
+	}*/
+
+
 	public function author() {
 		return $this->belongsTo('User', 'user_id');
 	}
 
 	public function comments() {
 		return $this->hasMany('Valoration');
+	}
+	public function solicitud() {
+		return $this->hasMany('Solicitud');
 	}
     public function category() {
 		return $this->belongsTo('Category','id');

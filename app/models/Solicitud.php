@@ -1,62 +1,25 @@
 <?php
 
-class Valoration extends Eloquent {
-
-	/**
-	 * Get the comment's content.
-	 *
-	 * @return string
-	 */
-	public function content()
-	{
-		return nl2br($this->content);
-	}
-
-	/**
-	 * Get the comment's author.
-	 *
-	 * @return User
-	 */
-	public function author()
-	{
-		return $this->belongsTo('User', 'user_id');
-	}
-
-	/**
-	 * Get the comment's post's.
-	 *
-	 * @return Blog\Post
-	 */
-	public function service()
-	{
-		return $this->belongsTo('Service','service_id');
-	}
+class Solicitud extends Eloquent {
 
 
-    /**
-     * Get the post's author.
-     *
-     * @return User
-     */
-    public function user()
-    {
-        return $this->belongsTo('User', 'user_id');
+
+    public function service(){
+        return $this->belongsTo('Service','service_id');
     }
 
-    /**
-     * Get the date the post was created.
-     *
-     * @param \Carbon|null $date
-     * @return string
-     */
-    public function date($date=null)
-    {
-        if(is_null($date)) {
-            $date = $this->created_at;
-        }
-
-        return String::date($date);
+    public function user() {
+        return $this->belongsTo('User', 'solicita_id');
     }
+    //devuelve true si esta aceptada
+    public function getStatus(){
+       $estado = true;
+       if ($this->estat == 0) {
+           $estado = false;
+       }
+        return $estado;
+    }
+
 
     /**
      * Returns the date of the blog post creation,

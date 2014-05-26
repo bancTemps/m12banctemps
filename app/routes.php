@@ -19,6 +19,9 @@ Route::model('user', 'User');
 Route::model('comment', 'Comment');
 Route::model('post', 'Post');
 Route::model('role', 'Role');
+Route::model('service', 'Service');
+Route::model('request', 'Solicitud');
+
 Route::model('category', 'Category');
 
 /** ------------------------------------------
@@ -132,7 +135,7 @@ Route::get('contact-us', function()
     // Return about us page
     return View::make('site/contact-us');
 });
-
+#Solicitudes
 
 
 
@@ -146,10 +149,11 @@ Route::get('view/getJson/{slug}', 'OtherUserController@getOtherServices');
 Route::get('view/{view}/service', 'OtherUserController@viewOtherService');
 Route::get('view/{view}/report', 'OtherUserController@reportForm');
 Route::post('view/{view}/report', 'OtherUserController@postReport');
+Route::post('view/{serviceauthor}/add', 'UserController@addFriend');
 Route::get('view/{view}', 'OtherUserController@viewOther');
 
 
-
+Route::get('request/{slug}','SolicitudController@createSolicitud');
 #Blog y cosas del blog
 Route::get('blog', 'BlogController@getIndex');
 # Posts - Second to last set, match slug

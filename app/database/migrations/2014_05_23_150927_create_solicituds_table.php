@@ -16,10 +16,10 @@ class CreateSolicitudsTable extends Migration {
 		{
 			$table->increments('id');
 
-            $table->integer('servei_id')->unsigned()->index();
+            $table->integer('service_id')->unsigned()->index();
             $table->integer('estat');
             $table->integer('solicita_id')->unsigned()->index();		
-            $table->foreign('servei_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->foreign('solicita_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
