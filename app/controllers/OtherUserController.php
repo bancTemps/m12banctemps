@@ -7,15 +7,16 @@ class OtherUserController extends BaseController {
      * @var User
      */
     protected $user;
-    
+    protected $report;
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user)
+    public function __construct(User $user, Report $report)
     {
         parent::__construct();
         $this->user = $user;
+        $this->report = $report;
     }
 
     public function getIndex() {
@@ -36,7 +37,7 @@ class OtherUserController extends BaseController {
             App::abort(404);
         }
         
-        return View::make('site/user/otheruser', compact('user'));
+        return View::make('site/user/otherUser', compact('user'));
     }
     
     
@@ -46,7 +47,7 @@ class OtherUserController extends BaseController {
         if (is_null($user)){
             App::abort(404);
         }       
-        return View::make('site/user/otheruserservice', compact('user'));
+        return View::make('site/user/otherUserService', compact('user'));
     }
     
     
@@ -89,7 +90,7 @@ class OtherUserController extends BaseController {
         // the data that will be passed into the mail view blade template
         $data = array(
             'reporter' => $reporter->username,
-            'reported' => $reported->username,
+            'reported' => $user->username,
             'detail' => $this->report->descripcion,
         );
 
