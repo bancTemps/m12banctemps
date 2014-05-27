@@ -10,7 +10,7 @@ class ServicesTableSeeder extends Seeder {
         $user_id = User::first()->id;
 
         DB::table('services')->insert( array(
-            array(
+            /*array(
                 'user_id'    => $user_id,
                 'nom'      => 'Pinto paredes',
                 'descripcio'       => 'lorem-ipsum-dolor-sit-amet',
@@ -30,7 +30,7 @@ class ServicesTableSeeder extends Seeder {
                 'dataInici'    => new DateTime('2014-01-01'),
                 'dataFinal' => new DateTime('2014-01-01'),
                 'duracio' => 3,
-                'localitzacio' => 'Barcelona',
+                'localitzacio' => 1,
                 'punts' => 125,
                 'slug' => 'pinto-paredes-cono',
                 'created_at' => new DateTime,
@@ -43,7 +43,7 @@ class ServicesTableSeeder extends Seeder {
                 'dataInici'    => new DateTime('2014-01-01'),
                 'dataFinal' => new DateTime('2014-01-01'),
                 'duracio' => 3,
-                'localitzacio' => 'Madrid',
+                'localitzacio' => 1,
                 'punts' => 125,
                 'slug' => 'pinto-paredes-cono',
                 'created_at' => new DateTime,
@@ -56,12 +56,12 @@ class ServicesTableSeeder extends Seeder {
                 'dataInici'    => new DateTime('2014-01-01'),
                 'dataFinal' => new DateTime('2014-01-01'),
                 'duracio' => 3,
-                'localitzacio' => 'Finlandia',
+                'localitzacio' => 1,
                 'punts' => 125,
                 'slug' => 'sueldo-tuercas-cono',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
-            ))
+            )*/)
         );
     $this->command->info('Servicios añadidos');
     }

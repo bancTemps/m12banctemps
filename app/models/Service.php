@@ -18,6 +18,9 @@ class Service extends Eloquent {
 	public function comments() {
 		return $this->hasMany('Valoration');
 	}
+        public function municipio(){
+                return $this->belongsTo('Municipio','municipi_id');
+        }
 	public function solicitud() {
 		return $this->hasMany('Solicitud');
 	}

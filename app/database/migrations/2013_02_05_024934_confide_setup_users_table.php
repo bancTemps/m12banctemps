@@ -25,7 +25,7 @@ class ConfideSetupUsersTable extends Migration {
             $table->string('photo')->default('img/avatar/user-avatar.jpg');
             $table->integer('status');
             $table->string('address', 25);
-            $table->string('city', 25);
+            $table->integer('municipi_id');
             $table->string('postalCode', 5);
             $table->string('confirmation_code');
             $table->string('remember_token')->nullable();

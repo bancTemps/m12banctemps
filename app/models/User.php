@@ -122,5 +122,8 @@ class User extends ConfideUser implements UserInterface, RemindableInterface{
     public function solicitud(){
         return $this->hasMany('Solicitud');
     }
+    public function municipio(){
+        return $this->belongsTo('Municipio','municipi_id');
+    }
     
 }
