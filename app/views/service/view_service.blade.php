@@ -11,30 +11,28 @@
 {{-- Content --}}
 @section('content')
 
-    <div class="row" >
+    <div class="row" >        
         
         <!-- Columna del servicio -->
         <div class="col-md-offset-1 col-md-8 col-sm-8 col-xs-12" id="service">
             <!--  -->   
             <div class="row">
+                 @include('notifications')
                 <!-- Titulo del servicio -->
                 <div class="page-header">
                     <h3><strong>{{ $service->nom  }}</strong></h3>
                 </div>
             </div>
-            <div class="row">
-            <!-- Imagen del servicio + boton solicitud -->
-            <div class="col-xs-12 col-sm-9 col-md-9">              
-                
-                
-                
-                <div class="row">
-                    <div id="mapas"></div>
-                </div>  
 
-              
-                
-            </div>
+            <div class="row">
+
+                <!-- Localizacion del servicio -->
+                <div class="col-xs-12 col-sm-9 col-md-9">  
+                    <div class="row">
+                        <div id="mapas"></div>
+                    </div>  
+                </div>
+           
             
             
             <!-- Datos del servicio -->

@@ -377,7 +377,7 @@ class UserController extends BaseController {
        
     }
 
-    // Request del usuario
+    // Solicitudes del usuario
     public function getRequest()
     {
         list($user,$redirect) = User::checkAuthAndRedirect('user/request');
