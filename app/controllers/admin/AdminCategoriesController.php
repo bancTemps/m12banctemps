@@ -132,7 +132,7 @@ class AdminCategoriesController extends AdminController {
     public function postEdit($category)
     {
         // Validate the inputs
-                 $rules = array(
+        $rules = array(
             'nom' => 'required',
             'descripcio' =>'required',
         );

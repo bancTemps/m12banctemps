@@ -106,10 +106,11 @@ Route::get('user/services/create','UserController@createService');
 //Lista de lso servicios por ajax, devolviendo un json con los datos.
 Route::get('user/servicelist','UserController@getServices');
 //Edita servicio desde el datatable:
-Route::get('user/services/{service}/edit','UserController@getEditService');
-Route::post('user/services/{service}/edit','UserController@postEditService');
-Route::get('user/services/{service}/delete','UserController@getDeleteService');
-Route::post('user/services/{service}/delete','UserController@postDeleteService');
+
+Route::get('user/services/{service}/deleteService','UserController@getDeleteService');
+Route::post('user/services/{service}/deleteService','UserController@postDeleteService');
+Route::post('user/services/{service}/editService','UserController@postEditService');
+Route::get('user/services/{service}/editService','UserController@getEditService');
 //Comentado porque no sirve de nada
 //Route::post('user/servicelist','UserController@getServices');
 //Almacenar servicio creado
