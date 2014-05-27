@@ -49,10 +49,11 @@ class ServiceController extends BaseController {
             
           $validator =             
             array(
+                'dataAvui' => 'required',
                 'nom' => 'required|unique:services|between:5,20',
                 'descripcio' => 'required|min:4',
-                'dataInici' => 'required|date_format:"Y-m-d"',
-                'dataFinal' => 'required|date_format:"Y-m-d"',
+                'dataInici' => 'required|date_format:"Y-m-d"|after:dataAvui',
+                'dataFinal' => 'required|date_format:"Y-m-d"|after:dataInici',
                 'duracio' =>   'required|integer',
                 'localitzacio' => 'required|alpha',
                 'punts' => 'required|integer',
