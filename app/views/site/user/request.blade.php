@@ -29,9 +29,8 @@
 
 @stop
 
-{{-- Scripts --}}
-@section('scripts')
 
+@section('scripts')
 
     <script type="text/javascript">
 
@@ -45,7 +44,7 @@
                 },
                 "bProcessing": true,
                 "bServerSide": true,
-                "sAjaxSource": "{{ URL::to('user/servicelist') }}",
+                "sAjaxSource": "{{ URL::to('user/requestlist') }}",
                 "fnDrawCallback": function ( oSettings ) {
                     $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
                 }

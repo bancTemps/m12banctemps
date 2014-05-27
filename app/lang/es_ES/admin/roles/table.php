@@ -7,7 +7,7 @@ return array(
 	'status'				=> 'Estado',
 	'participants'		=> 'Participantes',
 	'users'				=> '# de Usuarios',
-	'created_at'		=> 'Iniciado el',
+	'started_at'		=> 'Iniciado el',
 	'finish_at'			=> 'Finalizado el',
 	'points'			=> 'Puntos',
 	'author'			=> 'Autor',

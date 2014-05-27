@@ -21,10 +21,10 @@ class Service extends Eloquent {
 	public function solicitud() {
 		return $this->hasMany('Solicitud');
 	}
-    public function category() {
+        public function category() {
 		return $this->belongsTo('Category','id');
 	}
-
+        
 	public function date($date = null) {
 		if (is_null($date)) {
 			$date = $this->created_at;

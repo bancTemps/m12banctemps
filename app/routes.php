@@ -21,6 +21,7 @@ Route::model('post', 'Post');
 Route::model('role', 'Role');
 Route::model('service', 'Service');
 Route::model('request', 'Solicitud');
+Route::model('report', 'Report');
 
 Route::model('category', 'Category');
 
@@ -34,6 +35,7 @@ Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 Route::pattern('blog', '[a-z]+');
+Route::pattern('report', '[0-9]+');
 Route::pattern('category', '[0-9a-z]+');
 
 /** ------------------------------------------
@@ -81,6 +83,12 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('roles/{role}/delete', 'AdminRolesController@getDelete');
     Route::post('roles/{role}/delete', 'AdminRolesController@postDelete');
     Route::controller('roles', 'AdminRolesController');
+    
+    # Report Management
+    Route::get('reports/{report}/blockUser', 'AdminReportsController@getBlockUser');
+    Route::post('reports/{report}/blockUser', 'AdminReportsController@postBlockUser');
+    Route::get('reports/{report}/rejectReport', 'AdminReportsController@getRejectReport');
+    Route::controller('reports', 'AdminReportsController');
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
@@ -105,6 +113,12 @@ Route::post('user/login', 'UserController@postLogin');
 Route::get('user/services/create','UserController@createService');
 //Lista de lso servicios por ajax, devolviendo un json con los datos.
 Route::get('user/servicelist','UserController@getServices');
+//Lista de lso servicios solicitados por ajax, devolviendo un json con los datos.
+Route::get('user/doservicelist','UserController@getDoServices');
+
+//Lista de las solicitudes de un usuario
+Route::get('user/requestlist','UserController@getRequests');
+
 //Edita servicio desde el datatable:
 
 Route::get('user/services/{service}/deleteService','UserController@getDeleteService');
