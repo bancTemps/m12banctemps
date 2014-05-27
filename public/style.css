@@ -54,13 +54,14 @@ html, body {
   position: fixed;
   line-height: 2em; }
 
-#historial {
+#chatbox {
   height: 80%;
+  border: solid 1px #f0563d;
   position: fixed;
   overflow: auto; }
 
-.message-input-text {
-  bottom: 20px;
+#message-input-text {
+  bottom: 60px;
   width: 94%;
   position: absolute;
   text-align: left; }
@@ -138,10 +139,10 @@ html, body {
   .container {
     padding-left: 20px; }
 
-  #profile, #user-menu, #messages, #friends, #historial, .message-input-text {
+  #profile, #user-menu, #messages, #friends, #chatbox, #message-input-text {
     position: static;
     height: inherit; }
-    #profile ul, #user-menu ul, #messages ul, #friends ul, #historial ul, .message-input-text ul {
+    #profile ul, #user-menu ul, #messages ul, #friends ul, #chatbox ul, #message-input-text ul {
       position: static; }
 
   #friends {

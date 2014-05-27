@@ -369,6 +369,16 @@ class UserController extends BaseController {
         return View::make('site/user/friends', compact('user'));
     }
 
+    public function listMessages($id) {
+        $messages = $this->message->where('id_receptor', '=', $id)->where('id_emisor', '=', Auth::user()->get())->get();
+        $cadena = "";
+        foreach ($messages as $message) {
+
+        }
+
+        return $messages;
+    }
+
     
     /*Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
      * 

@@ -115,6 +115,8 @@ Route::get('user/services/create','UserController@createService');
 Route::get('user/servicelist','UserController@getServices');
 //Lista de lso servicios solicitados por ajax, devolviendo un json con los datos.
 Route::get('user/doservicelist','UserController@getDoServices');
+//Lista los mensajes de una conversacion
+Route::get('user/messagelist/{id}','UserController@listMessages');
 
 //Lista de las solicitudes de un usuario
 Route::get('user/requestlist','UserController@getRequests');

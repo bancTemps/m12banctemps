@@ -44,9 +44,10 @@
 
     <div id="messages" class="col-xs-12 col-sm-5 col-md-5">
         <div id="chatbox">
+fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw 
 
         </div>
-        <input type="text" class="message-input-text" />
+        <input type="text" id="message-input-text" />
     </div>
 
 </div><!--!ROW-->
@@ -74,15 +75,6 @@
 
     setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
 
-    $(document).ready(function(){
-        $("#exit").click(function(){
-            alertify.confirm("Seguro que quieres cerrar sesión? Est acción borrará la sala.", function (e) {
-                if (e) {
-                    window.location = '../index.php?logout=true';
-                } 
-            });
-        });
-    });
 
     $("#submitmsg").click(function(){   
         var clientmsg = $("#usermsg").val();
@@ -98,10 +90,11 @@
     function loadLog(){     
         var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request
 
-        $.ajax({
+        /*$.ajax({
             type : 'POST',
-            url : '../controller/imprimir_chat.php',
-            success:function (data) {
+            url : "{{ URL::to('user/messagelist/'.$friend->id) }}",
+            success: function (data) {
+                alert(data);
                 $("#chatbox").html(data);
                 //Auto-scroll           
                 var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height after the request
@@ -109,7 +102,17 @@
                     $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
                 }  
             }          
-        }); 
+        }); */
+
+        $.get("{{ URL::to('user/messagelist/'.$friend->id) }}", function(data){
+            $("#chatbox").html(data);
+             //Auto-scroll           
+            var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height after the request
+            if(newscrollHeight > oldscrollHeight){
+                $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
+            }
+        });
+            
     }
 
 </script>
