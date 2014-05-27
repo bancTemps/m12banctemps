@@ -47,7 +47,7 @@ class ServiceController extends BaseController {
         
     public function store(){
             
-          $validator =             
+          $rules =             
             array(
                 'nom' => 'required|unique:services|between:5,20',
                 'descripcio' => 'required|min:4',
@@ -58,8 +58,7 @@ class ServiceController extends BaseController {
                 'punts' => 'required|integer',
                 'categoria' => 'required'
            ); 
-        
-          $v = Validator::make(Input::all(),$validator);
+          $v = Validator::make(Input::all(),$rules);
           
          if ($v->fails())
             {

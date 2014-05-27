@@ -467,9 +467,16 @@ class UserController extends BaseController {
              ->where('solicituds.estat','=',0)
              ->where('solicituds.solicita_id','=',Auth::user()->id)
             ->select(array('solicituds.id','services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
-            return Datatables::of($solicituds)->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-danger iframe">Cancelar</a>')
+            return Datatables::of($solicituds)
+             ->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-default">Cancelar</a>')
              ->remove_column('id')
              ->make(); 
+    }
+ 
+    public function getDeleteSolicitud($solicitud){
+        $solicitud->estat=1;
+        $solicitud->save();
+        return Redirect::to('site/user/services');
     }
    
 
@@ -485,15 +492,17 @@ class UserController extends BaseController {
 
     // Lista las solicitudes que debe aceptar/rechazar un usuario
     public function getRequests() {
-        //$solicituds = DB::statement('SELECT DISTINCT solicituds.id FROM solicituds, services, users WHERE users.id = services.user_id AND services.id = solicituds.service_id AND users.id = 3');
-
-        
-        $solicituds = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
-            ->where('services.id','=', 'solicituds.service_id')
-            ->select(array('services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
-        return Datatables::of($solicituds)
-            ->add_column('action','<a class="iframe btn btn-xs btn-default" href="#">Editar</a>'
-            . '<a class="iframe btn btn-xs btn-danger" href="#">Eliminar</a>')->make();
+         $solicituds = Solicitud::leftjoin('services', 'services.id', '=', 'solicituds.service_id')
+                                 ->leftjoin('users', 'users.id', '=', 'solicituds.solicita_id')
+             //solicitud.estat = 0 ---> pendiente de confirmacion
+             ->where('solicituds.estat','=',0)
+             ->where('services.user_id','=',Auth::user()->id)
+            ->select(array('solicituds.id','users.username','services.punts'));
+            return Datatables::of($solicituds)
+             ->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-default">Cancelar</a>
+                     <a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-default">Cancelar</a>')
+             ->remove_column('id')
+             ->make();
     }
 
     

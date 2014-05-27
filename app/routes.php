@@ -127,8 +127,9 @@ Route::get('user/services/{service}/editService','UserController@getEditService'
 
 //Edita y elimina las solicitudes hechas por un usuario que aun no han sido aceptadas
 
-Route::get('user/services/{service}/deleteSolcitud','UserController@getDeleteService');
-Route::post('user/services/{service}/deleteSolcitud','UserController@postDeleteService');
+//Route::get('user/services/{service}/deleteSolicitud','UserController@getDeleteSolicitud');
+Route::post('user/services/{service}/deleteSolicitud','UserController@getDeleteSolicitud');
+            
 //Comentado porque no sirve de nada
 //Route::post('user/servicelist','UserController@getServices');
 //Almacenar servicio creado
