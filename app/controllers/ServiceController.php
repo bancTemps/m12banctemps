@@ -91,6 +91,7 @@ class ServiceController extends BaseController {
         }       
                 
                 $comments = $service->comments()->orderBy('created_at', 'ASC')->get();
+                
                 $user = $this->user->currentUser();
                 $canComment = false;
                 $puedeSolicitar = false;
@@ -109,7 +110,7 @@ class ServiceController extends BaseController {
                     } 
                 }
 
-                $solicitud = $service->solicitud();
+               $solicitud = $service->solicitud();
         return View::make('service/view_service', compact('service','comments', 'canComment','solicitud','puedeSolicitar'));
     }
 

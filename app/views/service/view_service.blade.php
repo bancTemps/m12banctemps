@@ -19,21 +19,15 @@
             <div class="row">
                 <!-- Titulo del servicio -->
                 <div class="page-header">
-                    <h3><strong>{{ $service->nom  }}</strong></h3>
+                    <h3><strong>{{ $service->nom }}</strong></h3>
+                    {{$service->comments->count()}}
                 </div>
             </div>
             <div class="row">
-            <!-- Imagen del servicio + boton solicitud -->
-            <div class="col-xs-12 col-sm-9 col-md-9">              
-                
-                
-                
+            <div class="col-xs-12 col-sm-9 col-md-9"> 
                 <div class="row">
                     <div id="mapas"></div>
-                </div>  
-
-              
-                
+                </div> 
             </div>
             
             
@@ -78,15 +72,13 @@
                         <div class="col-md-10 col-xs-12">
                                 <div class="row">
                                         <div class="col-md-10 col-xs-12">
-                                            <span class="muted"><strong>{{{ $comment->author->username }}}</strong></span>
+                                            <span class="muted">Usuario: <strong>{{{ $comment->author->username }}}</strong> Puntuacion: <strong>{{$comment->nota}}</strong></span>
                                                 &bull;
                                                 {{{ $comment->date() }}}
                                         </div>
-
                                         <div class="col-md-10 hidden-xs">
-                                                <hr />
+                                                <hr />                                                
                                         </div>
-
                                         <div class="col-md-10 col-xs-12">
                                                 {{{ $comment->content() }}}
                                         </div>
@@ -100,8 +92,8 @@
                 @endif
 
                 @if ( ! Auth::check())
-                You need to be logged in to add comments.<br /><br />
-                Click <a href="{{{ URL::to('user/login') }}}">here</a> to login into your account.
+                Necesitas estar logueado para poder comentar o pedir un servicio.<br /><br />
+                Clicka <a href="{{{ URL::to('user/login') }}}">aqui</a> para iniciar sesion.
                 @elseif ( ! $canComment )
                     No tienes permisos para comentar en esta pagina.
                 @else
@@ -122,7 +114,7 @@
                         <div class="form-group">
                             <textarea class="col-xs-12 col-md-9 input-block-level" rows="4" name="comment" id="comment">{{{ Request::old('comment') }}}</textarea>
                             <div class="col-md-3 col-xs-12">
-                                <p>Puntua el servei:</p>
+                                <p>Puntua el servicio:</p>
                                 <div class="col-md-12 hidden-xs">
                                     <span class="col-md-2 glyphicon glyphicon-star"></span>
                                     <span class="col-md-2 glyphicon glyphicon-star"></span>

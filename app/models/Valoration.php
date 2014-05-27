@@ -22,6 +22,7 @@ class Valoration extends Eloquent {
 		return $this->belongsTo('User', 'user_id');
 	}
 
+        
 	/**
 	 * Get the comment's post's.
 	 *
@@ -29,7 +30,7 @@ class Valoration extends Eloquent {
 	 */
 	public function service()
 	{
-		return $this->belongsTo('Service','service_id');
+            return $this->belongsTo('Service','service_id');
 	}
 
 
