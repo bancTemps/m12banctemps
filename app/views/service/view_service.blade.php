@@ -7,6 +7,38 @@
 
 @section('styles')
 @stop
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&region=ES"></script>
+<script>
+var geocoder;
+var map;
+var query = '{{ $service->municipio->nombre }}';
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var mapOptions = {
+    zoom:15
+  }
+  map = new google.maps.Map(document.getElementById('mapas'), mapOptions);
+  codeAddress();
+}
+
+function codeAddress() {
+  var address = query;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
 
 {{-- Content --}}
 @section('content')
@@ -39,7 +71,7 @@
                     <p>Data d'inici: <b>{{ $service->dataInici }}</b></p>
                     <p>Data de fi: <b>{{ $service->dataFinal }}</b></p>
                     <p>Duració en hores: <b>{{ $service->duracio }}</b></p>
-                    <p>Localització: <b>{{ $service->localitzacio }}</b></p>
+                    <p>Localització: <b>{{ $service->municipio->nombre }}</b></p>
                     <p>Punts: <b>{{ $service->punts }}</b></p>
                     <!--Solicitar servicio-->
                     <br /> 
@@ -168,3 +200,10 @@
     </div>
 
 @stop
+{{--Scripts--}}
+@section('scripts')
+
+
+
+@stop
+

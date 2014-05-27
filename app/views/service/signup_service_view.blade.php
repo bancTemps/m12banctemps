@@ -59,17 +59,19 @@
                     <div class="alert alert-error alert-danger">{{ $errors->first('punts') }}</div>
                 @endif
             </div>
-            <div class="form-group">
-                <label for="city">{{{ Lang::get('service.localization') }}}</label>
-                <input class="form-control" placeholder="{{{ Lang::get('service.localization') }}}" type="text" name="localitzacio" id="city" value="{{{ Input::old('city') }}}">
-                @if($errors->has('localitzacio'))
-                    <div class="alert alert-error alert-danger">{{ $errors->first('localitzacio') }}</div>
-                @endif
+             <div class="form-group">
+                <label for="provincias">Provincia</label>
+                <div>{{Form::select('provincias',Provincia::lists('provincia','id_provincia'),null,['class' => 'droponsito'])}}</div>
+            </div>
+            <div class="form-group" id="municipios">
+                
+                
             </div>
             <div class="form-group">
                 <label for="categoria">Categoria</label>
                 <div>{{Form::select('categoria',Category::lists('nom','id'))}}</div>
             </div>
+           
             <div class="form-actions form-group">
               <button type="submit" class="btn btn-primary">Crear nuevo servicio</button>
             </div>
@@ -82,4 +84,25 @@
     </form>
 </div>
     </div>
+@stop
+
+{{--Script--}}
+
+@section('scripts')
+<script>
+ jQuery( document ).ready( function( $ ) {
+     
+        $( '.droponsito' ).on( 'change', function() {
+            
+
+            
+            $.get("{{URL::to('ajax')}}",{id_municipio: $( '.droponsito' ).val()})
+                     .done(function( data ) {                         
+                       $('#municipios').append("<label id='borra' for='municipios'>Municipio:</label><br />"+data);
+             });
+            return false;
+        } );
+     
+    } );
+</script>
 @stop

@@ -1,4 +1,4 @@
-<?php
+s<?php
 
 use Illuminate\Support\Str;
 
@@ -55,7 +55,6 @@ class ServiceController extends BaseController {
                 'dataInici' => 'required|date_format:"Y-m-d"|after:dataAvui',
                 'dataFinal' => 'required|date_format:"Y-m-d"|after:dataInici',
                 'duracio' =>   'required|integer',
-                'localitzacio' => 'required|alpha',
                 'punts' => 'required|integer',
                 'categoria' => 'required'
            ); 
@@ -71,7 +70,7 @@ class ServiceController extends BaseController {
                 $this->service->dataInici = Input::get( 'dataInici' );
                 $this->service->dataFinal = Input::get( 'dataFinal' );
                 $this->service->duracio = Input::get( 'duracio' );
-                $this->service->localitzacio = Input::get( 'localitzacio' );
+                $this->service->municipi_id = Input::get( 'municipi_id' );
                 $this->service->punts = Input::get( 'punts' );
                 $this->service->categoria_id = Input::get( 'categoria' );
                 $this->service->user_id = Auth::user()->id;;

@@ -152,7 +152,6 @@ Route::get('contact-us', function()
 #Solicitudes
 
 
-
 #Serveis.
 Route::get('service','ServiceController@getIndex');
 Route::post('service/{serviceSlug}','ServiceController@postDetail');
@@ -173,7 +172,7 @@ Route::get('blog', 'BlogController@getIndex');
 # Posts - Second to last set, match slug
 Route::get('blog/{postSlug}', 'BlogController@getView');
 Route::post('blog/{postSlug}', 'BlogController@postView');
-
+Route::get('ajax','SolicitudController@ajax');
 #NICOLAS CAGE EN: La busqueda del servicio perdido (parte 1)
 Route::post('/', 'HomeController@postIndex');
 
