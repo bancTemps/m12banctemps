@@ -43,17 +43,8 @@
     </div>      
 
     <div id="messages" class="col-xs-12 col-sm-5 col-md-5">
-        <div id="historial">
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, voluptatem, dolorum, ad nulla eos deleniti consectetur laboriosam eius harum quaerat totam vero non ducimus quia nihil amet id nemo officiis.</div>
-            <div>Odio, dolor, autem dolores saepe eligendi possimus officiis soluta tempore quam quia asperiores adipisci atque inventore accusamus reiciendis ipsa officia vitae accusantium modi blanditiis excepturi delectus voluptate. Consectetur, repudiandae, excepturi.</div>
-            <div>Iure, explicabo iste cupiditate. Molestiae, accusantium, velit consequuntur quidem rem sed illo culpa tempore ex ipsum provident voluptatum! Aperiam, nihil, hic vero architecto cumque impedit voluptas voluptatibus deserunt. Aliquid, corporis.</div>
-            <div>Quae ipsam sunt cumque nam doloribus nisi et labore quibusdam recusandae laborum. Quia, enim, aliquid sit distinctio tempore tempora vel obcaecati dolorum laudantium consequuntur natus architecto dignissimos doloremque sequi recusandae.</div>
-            <div>Iste, corrupti, reprehenderit, unde qui autem neque laboriosam consectetur deserunt blanditiis hic repudiandae saepe voluptatum libero temporibus dolor ut nesciunt cumque explicabo cupiditate necessitatibus. Est autem doloremque eius voluptatum quia.</div>
-            <div>Minima, repudiandae, nostrum, corporis praesentium aliquid in eos earum sed ut magni nisi repellendus officiis perferendis voluptatibus vel sequi provident? Error, earum inventore fugit aspernatur quo dolores repudiandae molestiae in.</div>
-            <div>Non, dolores quam illo cumque suscipit quo nemo architecto explicabo. Debitis, possimus, praesentium nostrum molestiae hic quo iure libero voluptates saepe obcaecati facilis eius. Nesciunt nemo laboriosam neque perferendis mollitia!</div>
-            <div>Possimus, modi, quos, quidem enim maiores molestias rerum vero dolorum hic porro error quia accusantium illum laudantium molestiae eius assumenda laboriosam soluta voluptas impedit. Dolores magni perspiciatis qui dolorem nobis?</div>
-            <div>Blanditiis, aliquid, numquam, officiis, porro doloribus in placeat fugiat odit at ullam dicta eos ipsam eaque corporis totam nostrum natus sequi laboriosam ipsum enim unde velit vitae delectus ducimus a.</div>
-            <div>Tenetur, saepe minima sunt delectus alias quia molestiae est nulla eos quis pariatur consequuntur voluptatum libero tempora eligendi numquam doloremque nemo ea asperiores quasi laborum ipsa nihil hic repudiandae debitis!</div>
+        <div id="chatbox">
+
         </div>
         <input type="text" class="message-input-text" />
     </div>
