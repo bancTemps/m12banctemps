@@ -106,8 +106,8 @@ class ServiceController extends BaseController {
         $canComment = false;
         $puedeSolicitar = false;
         if(!empty($user)) {  
-            $canComment = $user->can('post_comment');
-        // Comprovar si el usuario puede solicitar un servicio.
+            
+            // Comprovar si el usuario puede solicitar un servicio.
             $servicioMinimo = $user->service->count();
             
             //Mira si es un servicio propio
@@ -119,6 +119,7 @@ class ServiceController extends BaseController {
             
             if (!$esMiServicio) {
                 if ($servicioMinimo != 0){
+                    //Mira si no ha sido solicitado ya
                     $canRequest = $service->solicitud()->where('solicita_id','=',$user->id);
                     if ($canRequest == NULL) {
                        if ($user->points >= $service->punts) {
@@ -127,10 +128,12 @@ class ServiceController extends BaseController {
                             // Quita los puntos i meterlos en la zona muerta
                             $user->amend();
                        }
+                    }else{
+                        //Si ya lo ha solicitado se puede comentar
+                        $canComment = $user->can('post_comment');
                     }
                 }
-            }
-             
+            }             
         }
 
         $solicitud = $service->solicitud();
