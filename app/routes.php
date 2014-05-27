@@ -105,6 +105,10 @@ Route::post('user/login', 'UserController@postLogin');
 Route::get('user/services/create','UserController@createService');
 //Lista de lso servicios por ajax, devolviendo un json con los datos.
 Route::get('user/servicelist','UserController@getServices');
+
+//Lista de las solicitudes de un usuario
+Route::get('user/requestlist','UserController@getRequests');
+
 //Edita servicio desde el datatable:
 Route::get('user/services/{service}/edit','UserController@getEdit');
 Route::post('user/services/{service}/edit','UserController@postEdit');
