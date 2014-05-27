@@ -68,10 +68,16 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav pull-right">
             <li><a href="{{ URL::to('service') }}"><span class="glyphicon glyphicon-time"></span> {{Lang::get('site.services')}}</a></li>
+
+
             
             
             @if (Auth::check())
                 @if (Auth::user()->hasRole('admin'))
+
+                    <li><a href="{{ URL::to('admin/categories') }}"><span class="glyphicon glyphicon-th"></span> {{Lang::get('site.categories')}}</a></li>
+                    <li class="divider"></li>
+
 
                     <li class="dropdown">
                         

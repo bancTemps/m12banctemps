@@ -20,5 +20,6 @@ return array(
     'profile'    => 'Perfil',
     'messages'    => 'Mensajes',
     'services'    => 'Servicios',
+    'categories'    => 'Categorias',
 
 );

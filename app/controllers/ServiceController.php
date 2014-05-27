@@ -95,10 +95,13 @@ class ServiceController extends BaseController {
         if($cantidad>0){
             foreach ($comments as $comment){
                 $media += $comment->nota;                
-            }        
+            }   
+            $media = $media/$comments->count();
+        }else{
+            $media = 'No ha sido valorado aun';
         }   
 
-$media = $media/$comments->count();    
+    
         $user = $this->user->currentUser();
         $canComment = false;
         $puedeSolicitar = false;
