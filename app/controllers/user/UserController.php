@@ -12,16 +12,22 @@ class UserController extends BaseController {
      * @var Service
      */
     protected $service;
+     /**
+     * Solcitud Model
+     * @var Solicitud
+     */
+    protected $solicitud;
     
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user,Service $service)
+    public function __construct(User $user,Service $service,Solicitud $solicitud)
     {
         parent::__construct();
         $this->user = $user;
         $this->service = $service;
+        $this->solicitud = $solicitud;
     }
 
     /**
@@ -457,12 +463,12 @@ class UserController extends BaseController {
      */
     public function getDoServices() {
         $solicituds = Solicitud::leftjoin('services', 'services.id', '=', 'solicituds.service_id')
-            ->where('solicituds.solicita_id','=',Auth::user()->id)
+             //solicitud.estat = 0 ---> pendiente de confirmacion
+             ->where('solicituds.estat','=',0)
+             ->where('solicituds.solicita_id','=',Auth::user()->id)
             ->select(array('services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
-        return Datatables::of($solicituds)
-            ->add_column('action','<a class="iframe btn btn-xs btn-default" href="#">Editar</a>'
-            . '<a class="iframe btn btn-xs btn-danger" href="#">Eliminar</a>')->make();
-       
+            return Datatables::of($solicituds)->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>')
+            ->make(); 
     }
 
     // Solicitudes del usuario
@@ -482,10 +488,12 @@ class UserController extends BaseController {
     */
     public function getServiceIndex()
     {
+          
           list($user,$redirect) = User::checkAuthAndRedirect('user/account');
           if($redirect){return $redirect;}
           $services = $user->service();
-          return View::make('site/user/services/index', compact('user','services'));
+          $solicitud = $user->solicitud();
+          return View::make('site/user/services/index', compact('user','services','solicitud'));
     }
 
     // Cuenta del usuario

@@ -22,7 +22,6 @@ Route::model('role', 'Role');
 Route::model('service', 'Service');
 Route::model('request', 'Solicitud');
 Route::model('report', 'Report');
-
 Route::model('category', 'Category');
 
 /** ------------------------------------------
@@ -119,12 +118,17 @@ Route::get('user/doservicelist','UserController@getDoServices');
 //Lista de las solicitudes de un usuario
 Route::get('user/requestlist','UserController@getRequests');
 
-//Edita servicio desde el datatable:
+//Edita servicio creado por el usuario desde el datatable:
 
 Route::get('user/services/{service}/deleteService','UserController@getDeleteService');
 Route::post('user/services/{service}/deleteService','UserController@postDeleteService');
 Route::post('user/services/{service}/editService','UserController@postEditService');
 Route::get('user/services/{service}/editService','UserController@getEditService');
+
+//Edita y elimina las solicitudes hechas por un usuario que aun no han sido aceptadas
+
+Route::get('user/services/{service}/deleteSolcitud','UserController@getDeleteService');
+Route::post('user/services/{service}/deleteSolcitud','UserController@postDeleteService');
 //Comentado porque no sirve de nada
 //Route::post('user/servicelist','UserController@getServices');
 //Almacenar servicio creado
