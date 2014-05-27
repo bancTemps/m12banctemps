@@ -42,18 +42,16 @@
                     <p>Localització: <b>{{ $service->localitzacio }}</b></p>
                     <p>Punts: <b>{{ $service->punts }}</b></p>
                     <!--Solicitar servicio-->
-                    <br /><br />  
-                    
+                    <br />                    
                     @if ($puedeSolicitar == true)     
-                        <center><a class="button border-fade no-subrallado" href="/request/{{{$service->id}}}">Envia una sol·licitud</a>
+                    <center><a class="button border-fade no-subrallado" href="/request/{{{$service->id}}}">Envia una sol·licitud</a></center>
+                    @else
+                    <center><a class="button border-fade no-subrallado" href="#">Sol·licitud Desactivada</a></center>
                     @endif
-                    
-
                         @if ( Session::get('solicitud') )
                             <div class="alert alert-success">{{ Session::get('solicitud') }}</div>
                         @endif
     
-                    </center> 
                 </div>
             </div>           
             

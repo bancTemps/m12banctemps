@@ -9,7 +9,7 @@
                 <li><a href="{{{ URL::to('user/services') }}}" title="account">Servicios</a></li>
                 <li><a href="{{{ URL::to('user/request') }}}" title="account">Solicitudes</a></li>
                 <li><a href="{{{ URL::to('user/account') }}}" title="account">Cuenta</a></li>            
-                <li><a href="{{{ URL::to('user/friends') }}}" title="friends">Amigos</a></li>
+                <!--<li><a href="{{{ URL::to('user/friends') }}}" title="friends">Amigos</a></li>-->
                 <li><a href="{{{ URL::to('user/statistics') }}}" title="statistics">Estadísticas</a></li>
             </ul>
         </div>

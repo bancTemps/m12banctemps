@@ -480,6 +480,20 @@ class UserController extends BaseController {
         return View::make('site/user/request', compact('user'));
     }
 
+
+    // Lista las solicitudes que debe aceptar/rechazar un usuario
+    public function getRequests() {
+        //$solicituds = DB::statement('SELECT DISTINCT solicituds.id FROM solicituds, services, users WHERE users.id = services.user_id AND services.id = solicituds.service_id AND users.id = 3');
+
+        
+        $solicituds = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
+            ->where('services.id','=', 'solicituds.service_id')
+            ->select(array('services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
+        return Datatables::of($solicituds)
+            ->add_column('action','<a class="iframe btn btn-xs btn-default" href="#">Editar</a>'
+            . '<a class="iframe btn btn-xs btn-danger" href="#">Eliminar</a>')->make();
+    }
+
     
     
     
