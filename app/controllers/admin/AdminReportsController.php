@@ -40,9 +40,9 @@ class AdminReportsController extends AdminController {
     }
     
     
-    public function getBlockUser($idReport){
+    public function getBlockUser($report){
         $title = 'Block User';
-        $report = $this->report->where('id','=',$idReport)->first();
+
         if ($report){
             $user = $this->user->where('id','=',$report->receptor_id)->first();
             
@@ -53,17 +53,15 @@ class AdminReportsController extends AdminController {
         
     }
     
-    public function postBlockUser($idReport){
-        $report = $this->report->where('id','=',$idReport)->first();
+    public function postBlockUser($report){
+
         $user = $this->user->where('id','=',$report->receptor_id)->first();
         
-        
-
         if ( $user ) {
             // TODO needs to delete all of that user's content
-            $user->status = 1;
-            $user->save();
-            //$report->delete();      //almenos el delete lo hace xDD
+            $user->confirmed = 0;
+            $user->update();
+            $report->delete();      //almenos el delete lo hace xDD
         }
         else
         {
@@ -73,11 +71,13 @@ class AdminReportsController extends AdminController {
     }
     
     public function getRejectReport($id){
-        //$report = $this->report->where('id','=',$id)->first();
+       // $report = $this->report->where('id','=',$id)->first();
         
         if ($id){
             $id->delete();
             return Redirect::to('admin/reports')->with('success');
+        } else {
+            return Redirect::to('admin/reports')->with('error');
         }
     }
     
