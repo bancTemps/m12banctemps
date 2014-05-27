@@ -7,15 +7,22 @@ class UserController extends BaseController {
      * @var User
      */
     protected $user;
+
+    /**
+     * Conversation Model
+     * @var Conversation
+     */
+    protected $conversation;
     
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user)
+    public function __construct(User $user, Conversation $conversation)
     {
         parent::__construct();
         $this->user = $user;
+        $this->conversation = $conversation;
     }
 
     /**
@@ -348,7 +355,9 @@ class UserController extends BaseController {
         list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
         if($redirect){return $redirect;}
 
-        return View::make('site/user/messages', compact('user'));
+        $conversations = $this->conversation->where('id_emisor', '=', Auth::user()->id)->get();
+
+        return View::make('site/user/messages', compact('user', 'conversations'));
     }
 
     // Amigos del usuario

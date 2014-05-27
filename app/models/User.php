@@ -20,6 +20,18 @@ class User extends ConfideUser implements UserInterface, RemindableInterface{
         return $this->where('username', '=', $username)->first();
     }
 
+
+    /**
+     * Get user by id
+     * @param $id
+     * @return mixed
+     */
+    public function getUserById( $id )
+    {
+        return $this->where('id', '=', $id)->first();
+    }
+
+
     /**
      * Get the date the user was created.
      *
