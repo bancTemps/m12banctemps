@@ -466,10 +466,12 @@ class UserController extends BaseController {
              //solicitud.estat = 0 ---> pendiente de confirmacion
              ->where('solicituds.estat','=',0)
              ->where('solicituds.solicita_id','=',Auth::user()->id)
-            ->select(array('services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
-            return Datatables::of($solicituds)->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>')
-            ->make(); 
+            ->select(array('solicituds.id','services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
+            return Datatables::of($solicituds)->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-danger iframe">Cancelar</a>')
+             ->remove_column('id')
+             ->make(); 
     }
+   
 
     // Solicitudes del usuario
     public function getRequest()
