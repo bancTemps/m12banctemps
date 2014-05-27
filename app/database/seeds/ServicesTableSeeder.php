@@ -10,7 +10,7 @@ class ServicesTableSeeder extends Seeder {
         $user_id = User::first()->id;
 
         DB::table('services')->insert( array(
-            array(
+            /*array(
                 'user_id'    => $user_id,
                 'nom'      => 'Pinto paredes',
                 'descripcio'       => 'lorem-ipsum-dolor-sit-amet',
@@ -61,7 +61,7 @@ class ServicesTableSeeder extends Seeder {
                 'slug' => 'sueldo-tuercas-cono',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
-            ))
+            )*/)
         );
     $this->command->info('Servicios añadidos, coño');
     }

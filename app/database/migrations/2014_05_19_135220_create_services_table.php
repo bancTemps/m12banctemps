@@ -20,8 +20,8 @@ class CreateServicesTable extends Migration {
 			$table->string('nom', 25);
 			$table->string('descripcio');
                         $table->integer('categoria_id');
-			$table->date('dataInici');
-			$table->date('dataFinal');
+			$table->string('dataInici');
+			$table->string('dataFinal');
 			$table->integer('duracio');
 			$table->integer('municipi_id');
 			$table->integer('punts');
