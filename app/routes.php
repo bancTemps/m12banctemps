@@ -113,6 +113,8 @@ Route::post('user/login', 'UserController@postLogin');
 Route::get('user/services/create','UserController@createService');
 //Lista de lso servicios por ajax, devolviendo un json con los datos.
 Route::get('user/servicelist','UserController@getServices');
+//Lista de lso servicios solicitados por ajax, devolviendo un json con los datos.
+Route::get('user/doservicelist','UserController@getDoServices');
 
 //Lista de las solicitudes de un usuario
 Route::get('user/requestlist','UserController@getRequests');

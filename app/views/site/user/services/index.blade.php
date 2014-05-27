@@ -17,12 +17,12 @@
 <table id="my_services" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th class="col-md-4">{{{ Lang::get('admin/roles/table.name') }}}</th>
-			<th class="col-md-2">{{{ Lang::get('admin/roles/table.participants') }}}</th>
-			<th class="col-md-2">{{{ Lang::get('admin/roles/table.created_at') }}}</th>
+			<th class="col-md-3">{{{ Lang::get('admin/roles/table.name') }}}</th>
+			<th class="col-md-1">{{{ Lang::get('admin/roles/table.participants') }}}</th>
+			<th class="col-md-2">{{{ Lang::get('admin/roles/table.started_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.finish_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.points') }}}</th>
-                        <th class="col-md-2">{{{ Lang::get('admin/roles/table.options') }}}</th>
+            <th class="col-md-2">{{{ Lang::get('admin/roles/table.options') }}}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -37,10 +37,11 @@
 <table id="realized_services" class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th class="col-md-5">{{{ Lang::get('admin/roles/table.name') }}}</th>
-			<th class="col-md-3">{{{ Lang::get('admin/roles/table.author') }}}</th>
+			<th class="col-md-3">{{{ Lang::get('admin/roles/table.name') }}}</th>
+			<th class="col-md-3">{{{ Lang::get('admin/roles/table.started_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.finish_at') }}}</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.points') }}}</th>
+			<th class="col-md-2">{{{ Lang::get('admin/roles/table.options') }}}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -73,6 +74,23 @@
 				"bProcessing": true,
 		        "bServerSide": true,
 		        "sAjaxSource": "{{ URL::to('user/servicelist') }}",
+		        "fnDrawCallback": function ( oSettings ) {
+	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+	     		}
+			});
+		});
+
+		var oTable;
+		$(document).ready(function() {
+			oTable = $('#realized_services').dataTable( {
+				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+				"sPaginationType": "bootstrap",
+				"oLanguage": {
+					"sLengthMenu": "_MENU_ records per page"
+				},
+				"bProcessing": true,
+		        "bServerSide": true,
+		        "sAjaxSource": "{{ URL::to('user/doservicelist') }}",
 		        "fnDrawCallback": function ( oSettings ) {
 	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 	     		}

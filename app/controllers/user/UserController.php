@@ -377,6 +377,21 @@ class UserController extends BaseController {
        
     }
 
+    /*Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
+     * 
+     * getDoServices
+     * Esto extrae los servicios solicitados y crea un json para que el dataTables lo pueda interpretar
+     */
+    public function getDoServices() {
+        $solicituds = Solicitud::leftjoin('services', 'services.id', '=', 'solicituds.service_id')
+            ->where('solicituds.solicita_id','=',Auth::user()->id)
+            ->select(array('services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
+        return Datatables::of($solicituds)
+            ->add_column('action','<a class="iframe btn btn-xs btn-default" href="#">Editar</a>'
+            . '<a class="iframe btn btn-xs btn-danger" href="#">Eliminar</a>')->make();
+       
+    }
+
     // Solicitudes del usuario
     public function getRequest()
     {
