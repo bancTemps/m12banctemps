@@ -5,6 +5,7 @@
         <div class="form-group searchbox">
             {{ Form::open(array('url' => '/'))}}
                 {{ Form::text('search', null, array('placeholder' => 'Busca persones o serveis a prop teu', 'class' => 'searchbox form-control')) }}      
+                {{ Form::select('category', $categories) }}
             {{ Form::close() }}
         </div>
     </div>
