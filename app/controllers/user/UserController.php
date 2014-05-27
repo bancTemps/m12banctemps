@@ -356,17 +356,6 @@ class UserController extends BaseController {
         return View::make('site/user/profile', compact('user'));
     }
 
-    // Mensajes del usuario
-    public function getMessages()
-    {
-        list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
-        if($redirect){return $redirect;}
-
-        $conversations = $this->conversation->where('id_emisor', '=', Auth::user()->id)->get();
-
-        return View::make('site/user/messages', compact('user', 'conversations'));
-    }
-
     // Amigos del usuario
     public function getFriends()
     {
@@ -376,15 +365,66 @@ class UserController extends BaseController {
         return View::make('site/user/friends', compact('user'));
     }
 
-    public function listMessages($id) {
-        $messages = $this->message->where('conversation_id', '=', $id)->get();
-        $cadena = "";
-        foreach ($messages as $message) {
-            $cadena .= $message->content;
+
+    // Mensajes del usuario
+        public function getMessages() {
+            list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+            if($redirect){return $redirect;}
+
+            $conversations = $this->conversation->where('id_emisor', '=', Auth::user()->id)->get();
+
+            return View::make('site/user/messages', compact('user', 'conversations'));
         }
 
-        return $cadena;
-    }
+        // Ajax
+        public function listMessages($id) {
+            $messages = $this->message
+                ->where('conversation_id', '=', $id)
+                ->orderBy('created_at', 'asc')
+                ->get();
+            $cadena = "";
+
+            $receptor = $messages->first();
+
+            if ($messages->first()->emisor_id == Auth::user()->id) {
+                //$receptor = $messages->first()->receptor_id;
+                $receptor = $this->user
+                    ->where('users.id', '=', $messages->first()->receptor_id)->first()->username;
+            } else {
+                $receptor = $messages->first()->emisor_id;
+            }
+
+            foreach ($messages as $message) {
+                
+                if ($message->emisor_id == Auth::user()->id) {
+                    $cadena .= "<div class='emisor'><span>Yo</span><br>".$message->content."</div><br>";
+                } else {
+                    $cadena .= "<div class='receptor'><span>".$receptor."</span><br>".$message->content."</div><br>";
+                }                
+            }
+
+            return $cadena;
+        }
+
+        // ajax post message
+        public function postMessage() {
+            
+        }
+
+        public function viewConversation($conversation_id) {
+            list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
+            if($redirect){return $redirect;}
+
+            //$message = new Message;
+            $messages = $this->message->getMessages($conversation_id);
+            $conversations = $this->conversation->where('id_emisor', '=', Auth::user()->id)->get();
+            
+            if (is_null($messages)){
+                App::abort(404);
+            }
+            
+            return View::make('site/user/messages', compact('user', 'messages', 'conversations'));
+        }
 
     
     /*Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
@@ -403,7 +443,8 @@ class UserController extends BaseController {
        
     }
 
-    /*Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
+
+    /* Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
      * 
      * getDoServices
      * Esto extrae los servicios solicitados y crea un json para que el dataTables lo pueda interpretar

@@ -117,6 +117,7 @@ Route::get('user/servicelist','UserController@getServices');
 Route::get('user/doservicelist','UserController@getDoServices');
 //Lista los mensajes de una conversacion
 Route::get('user/messagelist/{id}','UserController@listMessages');
+Route::get('user/messages/{id}', 'UserController@viewConversation');
 
 //Lista de las solicitudes de un usuario
 Route::get('user/requestlist','UserController@getRequests');

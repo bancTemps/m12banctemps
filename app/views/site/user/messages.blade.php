@@ -8,7 +8,182 @@
 
 {{-- New Laravel 4 Feature in use --}}
 @section('styles')
+<style>
+#followingBallsG{
+position:relative;
+width:256px;
+height:20px;
+}
 
+.followingBallsG{
+background-color:#E0E0E0;
+position:absolute;
+top:0;
+left:0;
+width:20px;
+height:20px;
+-moz-border-radius:10px;
+-moz-animation-name:bounce_followingBallsG;
+-moz-animation-duration:2.7s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-webkit-border-radius:10px;
+-webkit-animation-name:bounce_followingBallsG;
+-webkit-animation-duration:2.7s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-ms-border-radius:10px;
+-ms-animation-name:bounce_followingBallsG;
+-ms-animation-duration:2.7s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-o-border-radius:10px;
+-o-animation-name:bounce_followingBallsG;
+-o-animation-duration:2.7s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+border-radius:10px;
+animation-name:bounce_followingBallsG;
+animation-duration:2.7s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+}
+
+#followingBallsG_1{
+-moz-animation-delay:0s;
+}
+
+#followingBallsG_1{
+-webkit-animation-delay:0s;
+}
+
+#followingBallsG_1{
+-ms-animation-delay:0s;
+}
+
+#followingBallsG_1{
+-o-animation-delay:0s;
+}
+
+#followingBallsG_1{
+animation-delay:0s;
+}
+
+#followingBallsG_2{
+-moz-animation-delay:0.27s;
+-webkit-animation-delay:0.27s;
+-ms-animation-delay:0.27s;
+-o-animation-delay:0.27s;
+animation-delay:0.27s;
+}
+
+#followingBallsG_3{
+-moz-animation-delay:0.54s;
+-webkit-animation-delay:0.54s;
+-ms-animation-delay:0.54s;
+-o-animation-delay:0.54s;
+animation-delay:0.54s;
+}
+
+#followingBallsG_4{
+-moz-animation-delay:0.81s;
+-webkit-animation-delay:0.81s;
+-ms-animation-delay:0.81s;
+-o-animation-delay:0.81s;
+animation-delay:0.81s;
+}
+
+@-moz-keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+50%{
+left:236px;
+background-color:#F0563D;
+}
+
+100%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+}
+
+@-webkit-keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+50%{
+left:236px;
+background-color:#F0563D;
+}
+
+100%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+}
+
+@-ms-keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+50%{
+left:236px;
+background-color:#F0563D;
+}
+
+100%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+}
+
+@-o-keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+50%{
+left:236px;
+background-color:#F0563D;
+}
+
+100%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+}
+
+@keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+50%{
+left:236px;
+background-color:#F0563D;
+}
+
+100%{
+left:0px;
+background-color:#E0E0E0;
+}
+
+}
+
+</style>
 
 @stop
 
@@ -28,7 +203,7 @@
                 <div class="col-md-4">
                     <!-- normal -->
                     <div class="ih-item square effect3 bottom_to_top">
-                        <a onclick="abrirChat()">
+                        <a href="{{ URL::to('user/messages/'.$conversation->id) }}">
                             <div class="img"><img class="img-responsive" src="{{ asset($friend->photo)}}" alt="img"></div>
                             <div class="info">
                               <h3>{{ $friend->username }}</h3>
@@ -44,8 +219,21 @@
 
     <div id="messages" class="col-xs-12 col-sm-5 col-md-5">
         <div id="chatbox">
-fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw 
-
+            <div style="visibility: hidden;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, cupiditate, autem facere quos hic iste est consectetur soluta eius rem.
+            </div>
+            <center>
+                <div id="followingBallsG">
+                    <div id="followingBallsG_1" class="followingBallsG">
+                    </div>
+                    <div id="followingBallsG_2" class="followingBallsG">
+                    </div>
+                    <div id="followingBallsG_3" class="followingBallsG">
+                    </div>
+                    <div id="followingBallsG_4" class="followingBallsG">
+                    </div>
+                </div>
+            </center>
+            
         </div>
         <input type="text" id="message-input-text" />
     </div>
@@ -63,6 +251,7 @@ fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfq
 <script type="text/javascript">
     (function($){
         $(window).load(function(){
+            loadLog();
             $("#historial, #friends").mCustomScrollbar({
                 scrollButtons:{
                     enable: true
@@ -73,12 +262,7 @@ fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfq
         });
     })(jQuery);
 
-    setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
-
-    function abrirChat() {
-
-    }
-
+    //setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
 
     $("#submitmsg").click(function(){   
         var clientmsg = $("#usermsg").val();
@@ -90,26 +274,12 @@ fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfq
 
         return false;
     });
-//document.URL;
 
-    function loadLog(){     
-        var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request
+    function loadLog(){ 
+        var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request        
 
-        /*$.ajax({
-            type : 'POST',
-            url : "{{ URL::to('user/messagelist/'.$friend->id) }}",
-            success: function (data) {
-                alert(data);
-                $("#chatbox").html(data);
-                //Auto-scroll           
-                var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height after the request
-                if(newscrollHeight > oldscrollHeight){
-                    $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
-                }  
-            }          
-        }); */
-
-        $.get("{{ URL::to('user/messagelist/'.$conversation->id) }}", function(data){
+        // getIdFromUrl(document.URL) para conseguir la id de la conversacion actual
+        $.get("{{ URL::to('user/messagelist/') }}"+"/"+getIdFromUrl(document.URL), function(data){
             $("#chatbox").html(data);
              //Auto-scroll           
             var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height after the request
@@ -118,6 +288,11 @@ fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfq
             }
         });
             
+    }
+
+    function getIdFromUrl(url) {
+        urlArray = url.split("/");
+        return(urlArray[urlArray.length-1]);
     }
 
 </script>

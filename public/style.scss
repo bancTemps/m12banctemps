@@ -84,9 +84,60 @@ html, body {
 
 #chatbox {
 	height: 80%;
-	border: solid 1px $color4;
+	padding-left: 10px;
 	position: fixed;
 	overflow: auto;
+
+	.emisor, .receptor {
+		line-height: 1em;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		display: block;
+		margin: .4em;
+		padding: 0.5em;
+		background: darken(#B7C11E, 10%);
+		text-decoration: none;
+		color: #000;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		display: inline-block;
+		position: relative;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+		span {
+			color: lighten(#B7C11E, 10%);
+			font-size: 0.8em;
+			display: block;
+		}
+	}  
+	.emisor:before, .receptor:before {
+		pointer-events: none;
+		position: absolute;
+		z-index: -1;
+		content: '';
+		border-style: solid;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-property: left;
+		transition-property: left;
+		top: calc(50% - 10px);
+		left:-10px;
+		border-width: 10px 10px 10px 0;
+		border-color: transparent darken(#B7C11E, 10%) transparent transparent;
+	}
+
+	.receptor {
+		background: lighten(#B7C11E, 10%);
+
+		span {
+			color: darken(#B7C11E, 10%);
+		}
+	}
+
+	.receptor:before {
+		border-color: transparent lighten(#B7C11E, 10%) transparent transparent;
+	}
+
 }
 
 #message-input-text {
