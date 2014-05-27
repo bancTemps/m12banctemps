@@ -21,7 +21,7 @@ class OtherUserController extends BaseController {
      * @param Service $service
      * @param User $user
      */
-    public function __construct(Report $report,Conversation $conversation, Service $service, User $user)
+    public function __construct(Conversation $conversation, Service $service, User $user,Report $report)
     {
         parent::__construct();
         $this->conversation = $conversation;
@@ -29,6 +29,7 @@ class OtherUserController extends BaseController {
         $this->user = $user;
         $this->report = $report;
     }
+
 
 
     public function getIndex() {
@@ -67,7 +68,7 @@ class OtherUserController extends BaseController {
         return Redirect::to('/user/services')
        ->with('servicio', 'Servicio añadido correctamente');
         
-        return View::make('site/user/otherUser', compact('receptor'));
+        //return View::make('site/user/otherUser', compact('receptor'));
     }
     
     
@@ -77,7 +78,7 @@ class OtherUserController extends BaseController {
         if (is_null($user)){
             App::abort(404);
         }       
-        return View::make('site/user/otherUserService', compact('user'));
+        return View::make('site/user/otheruserservice', compact('user'));
     }
     
     
