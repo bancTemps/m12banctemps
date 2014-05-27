@@ -76,7 +76,7 @@ fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfq
     setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
 
     function abrirChat() {
-        
+
     }
 
 
@@ -90,6 +90,7 @@ fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfq
 
         return false;
     });
+//document.URL;
 
     function loadLog(){     
         var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request
