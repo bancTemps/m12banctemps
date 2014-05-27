@@ -21,6 +21,7 @@ Route::model('post', 'Post');
 Route::model('role', 'Role');
 Route::model('service', 'Service');
 Route::model('request', 'Solicitud');
+Route::model('report', 'Report');
 
 Route::model('category', 'Category');
 
@@ -34,6 +35,7 @@ Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 Route::pattern('blog', '[a-z]+');
+Route::pattern('report', '[0-9]+');
 Route::pattern('category', '[0-9a-z]+');
 
 /** ------------------------------------------
@@ -81,6 +83,12 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('roles/{role}/delete', 'AdminRolesController@getDelete');
     Route::post('roles/{role}/delete', 'AdminRolesController@postDelete');
     Route::controller('roles', 'AdminRolesController');
+    
+    # Report Management
+    Route::get('reports/{report}/blockUser', 'AdminReportsController@getBlockUser');
+    Route::post('reports/{report}/blockUser', 'AdminReportsController@postBlockUser');
+    Route::get('reports/{report}/rejectReport', 'AdminReportsController@getRejectReport');
+    Route::controller('reports', 'AdminReportsController');
 
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
