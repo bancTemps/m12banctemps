@@ -90,27 +90,30 @@ class ServiceController extends BaseController {
             return App::abort(404);
         }       
                 
-                $comments = $service->comments()->orderBy('created_at', 'ASC')->get();
-                
-                $user = $this->user->currentUser();
-                $canComment = false;
-                $puedeSolicitar = false;
-                if(!empty($user)) {  
-                    $canComment = $user->can('post_comment');
-                // Comprovar si el usuario puede solicitar un servicio.
-                    $servicioMinimo = $user->service->count();                    
-                    if ($servicioMinimo != 0){
-                        $canRequest = $service->solicitud()->where('solicita_id','=',Auth::user()->id)->first();
-                        if ($canRequest == NULL) {
-                           if ($user->points >= $service->punts) {
-                               $puedeSolicitar = true;
-                               
-                           }
-                        }
-                    } 
-                }
+        $comments = $service->comments()->orderBy('created_at', 'ASC')->get();
+        $user = $this->user->currentUser();
+        $canComment = false;
+        $puedeSolicitar = false;
+        if(!empty($user)) {  
+            $canComment = $user->can('post_comment');
+        // Comprovar si el usuario puede solicitar un servicio.
+            $servicioMinimo = $user->service->count();                    
+            if ($servicioMinimo != 0){
+                $canRequest = $service->solicitud()->where('solicita_id','=',Auth::user()->id)->first();
+                if ($canRequest == NULL) {
+                   if ($user->points >= $service->punts) {
+                        $puedeSolicitar = true;
+                        $user->points = $user->points-$service->punts;
 
-               $solicitud = $service->solicitud();
+                        // Save if valid. Password field will be hashed before save
+                        $user->amend();
+                   }
+                }
+            } 
+        }
+
+        $solicitud = $service->solicitud();
+
         return View::make('service/view_service', compact('service','comments', 'canComment','solicitud','puedeSolicitar'));
     }
 

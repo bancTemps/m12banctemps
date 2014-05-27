@@ -1,9 +1,7 @@
 @extends('site.layouts.main')
 
 
-@section('main') 
-
-    @include('notifications')
+@section('main')     
     @yield('content')
 
 @stop

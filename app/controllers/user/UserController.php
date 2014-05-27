@@ -377,7 +377,22 @@ class UserController extends BaseController {
        
     }
 
-    // Request del usuario
+    /*Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
+     * 
+     * getDoServices
+     * Esto extrae los servicios solicitados y crea un json para que el dataTables lo pueda interpretar
+     */
+    public function getDoServices() {
+        $solicituds = Solicitud::leftjoin('services', 'services.id', '=', 'solicituds.service_id')
+            ->where('solicituds.solicita_id','=',Auth::user()->id)
+            ->select(array('services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
+        return Datatables::of($solicituds)
+            ->add_column('action','<a class="iframe btn btn-xs btn-default" href="#">Editar</a>'
+            . '<a class="iframe btn btn-xs btn-danger" href="#">Eliminar</a>')->make();
+       
+    }
+
+    // Solicitudes del usuario
     public function getRequest()
     {
         list($user,$redirect) = User::checkAuthAndRedirect('user/request');
@@ -385,9 +400,7 @@ class UserController extends BaseController {
 
         return View::make('site/user/request', compact('user'));
     }
-    /*
-     * Controlador para mostrar la vista de eliminar.
-     */
+
     
     
     

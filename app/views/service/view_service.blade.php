@@ -11,12 +11,13 @@
 {{-- Content --}}
 @section('content')
 
-    <div class="row" >
+    <div class="row" >        
         
         <!-- Columna del servicio -->
         <div class="col-md-offset-1 col-md-8 col-sm-8 col-xs-12" id="service">
             <!--  -->   
             <div class="row">
+                 @include('notifications')
                 <!-- Titulo del servicio -->
                 <div class="page-header">
                     <h3><strong>{{ $service->nom }}</strong></h3>

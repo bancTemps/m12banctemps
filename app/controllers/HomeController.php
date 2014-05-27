@@ -42,9 +42,9 @@ class HomeController extends BaseController {
             $search = Input::get('search');
             
             $services = $this->service->where('slug', 'LIKE', '%'.$search.'%')->get();
-            //$users = $this->user->where('username', 'LIKE', '%'.$search.'%')->get();
+            $users = $this->user->where('username', 'LIKE', '%'.$search.'%')->get();
             
-            return View::make('site/search', compact('search','services'));
+            return View::make('site/search', compact('search','services', 'users'));
         }
 
 
