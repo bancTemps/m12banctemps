@@ -21,7 +21,7 @@
                 <!-- Titulo del servicio -->
                 <div class="page-header">
                     <h3><strong>{{ $service->nom }}</strong></h3>
-                    {{$service->comments->count()}}
+                    <h4>Puntuacion del servicio: {{$media}}</h4>
                 </div>
             </div>
             <div class="row">

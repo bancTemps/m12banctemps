@@ -89,8 +89,16 @@ class ServiceController extends BaseController {
         {
             return App::abort(404);
         }       
-                
         $comments = $service->comments()->orderBy('created_at', 'ASC')->get();
+        $media = 0;
+        $cantidad = $comments->count(); 
+        if($cantidad>0){
+            foreach ($comments as $comment){
+                $media += $comment->nota;                
+            }        
+        }   
+
+$media = $media/$comments->count();    
         $user = $this->user->currentUser();
         $canComment = false;
         $puedeSolicitar = false;
@@ -114,7 +122,7 @@ class ServiceController extends BaseController {
 
         $solicitud = $service->solicitud();
 
-        return View::make('service/view_service', compact('service','comments', 'canComment','solicitud','puedeSolicitar'));
+        return View::make('service/view_service', compact('service','comments', 'canComment','solicitud','puedeSolicitar','media'));
     }
 
     public function postDetail($slug){
