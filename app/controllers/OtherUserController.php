@@ -50,7 +50,7 @@ class OtherUserController extends BaseController {
             App::abort(404);
         }
         
-        return View::make('site/user/otherUser', compact('user'));
+        return View::make('site/user/otheruserservice', compact('user'));
     }
 
     public function addOther($view) {

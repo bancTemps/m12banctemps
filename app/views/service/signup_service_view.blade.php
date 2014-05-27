@@ -73,6 +73,10 @@
             <div class="form-actions form-group">
               <button type="submit" class="btn btn-primary">Crear nuevo servicio</button>
             </div>
+            
+            
+            {{ Form::hidden('dataAvui', date('Y-m-d')) }}
+
 
         </fieldset>
     </form>

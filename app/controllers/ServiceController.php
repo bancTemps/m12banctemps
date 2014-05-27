@@ -49,9 +49,10 @@ class ServiceController extends BaseController {
             
           $rules =             
             array(
+                'dataAvui' => 'required',
                 'nom' => 'required|unique:services|between:5,20',
                 'descripcio' => 'required|min:4',
-                'dataInici' => 'required|date_format:"Y-m-d"',
+                'dataInici' => 'required|date_format:"Y-m-d"|after:dataAvui',
                 'dataFinal' => 'required|date_format:"Y-m-d"|after:dataInici',
                 'duracio' =>   'required|integer',
                 'localitzacio' => 'required|alpha',
@@ -114,14 +115,15 @@ class ServiceController extends BaseController {
             if($service->user_id == $user->id){
                 $esMiServicio = true;
             }
-            var_dump($esMiServicio);
             
             if (!$esMiServicio) {
                 if ($servicioMinimo != 0){
                     //Mira si no ha sido solicitado ya
                     $canRequest = $service->solicitud()->where('solicita_id','=',$user->id);
-                    if ($canRequest == NULL) {
+                     
+                    if ($canRequest != NULL) {
                        if ($user->points >= $service->punts) {
+                            var_dump("hola");
                             $puedeSolicitar = true;
                             $user->points = $user->points-$service->punts;
                             // Quita los puntos i meterlos en la zona muerta
