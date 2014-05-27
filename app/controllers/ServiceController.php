@@ -115,14 +115,15 @@ class ServiceController extends BaseController {
             if($service->user_id == $user->id){
                 $esMiServicio = true;
             }
-            var_dump($esMiServicio);
             
             if (!$esMiServicio) {
                 if ($servicioMinimo != 0){
                     //Mira si no ha sido solicitado ya
                     $canRequest = $service->solicitud()->where('solicita_id','=',$user->id);
-                    if ($canRequest == NULL) {
+                     
+                    if ($canRequest != NULL) {
                        if ($user->points >= $service->punts) {
+                            var_dump("hola");
                             $puedeSolicitar = true;
                             $user->points = $user->points-$service->punts;
                             // Quita los puntos i meterlos en la zona muerta

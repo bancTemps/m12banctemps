@@ -3,20 +3,28 @@
 class SolicitudController extends BaseController {
 	protected $solicitud;
  	protected $service;
+    protected $conversation;
 
-    public function __construct(Solicitud $solicitud, Service $service)
+    public function __construct(Solicitud $solicitud, Service $service, Conversation $conversation)
     {
         parent::__construct();
         $this->solicitud = $solicitud;
         $this->service = $service;
+        $this->conversation = $conversation;
     }
 
 
-    public function createSolicitud($id){
+    public function createSolicitud($id, $user_id){
     	$this->solicitud->service_id = $id;
     	$this->solicitud->solicita_id = Auth::user()->id;
     	$this->solicitud->save();
+
         $servicio = $this->service->where('id','=',$id)->first()->slug();
+
+        $this->conversation->id_emisor = Auth::user()->id;
+        $this->conversation->id_receptor = $user_id;
+        $this->conversation->save();
+
         return Redirect::to('service/'.$servicio)->with('solicitud', 'Solicitud añadida correctamente');
     }
 

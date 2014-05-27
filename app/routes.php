@@ -167,7 +167,7 @@ Route::post('view/{serviceauthor}/add', 'UserController@addFriend');
 Route::get('view/{view}', 'OtherUserController@viewOther');
 
 
-Route::get('request/{slug}','SolicitudController@createSolicitud');
+Route::get('request/{service_id}/{user_id}','SolicitudController@createSolicitud');
 #Blog y cosas del blog
 Route::get('blog', 'BlogController@getIndex');
 # Posts - Second to last set, match slug
