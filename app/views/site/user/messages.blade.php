@@ -28,7 +28,7 @@
                 <div class="col-md-4">
                     <!-- normal -->
                     <div class="ih-item square effect3 bottom_to_top">
-                        <a href="#">
+                        <a onclick="abrirChat()">
                             <div class="img"><img class="img-responsive" src="{{ asset($friend->photo)}}" alt="img"></div>
                             <div class="info">
                               <h3>{{ $friend->username }}</h3>
@@ -75,6 +75,10 @@ fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfq
 
     setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
 
+    function abrirChat() {
+        
+    }
+
 
     $("#submitmsg").click(function(){   
         var clientmsg = $("#usermsg").val();
@@ -104,7 +108,7 @@ fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfqwfw fwqfqwfq
             }          
         }); */
 
-        $.get("{{ URL::to('user/messagelist/'.$friend->id) }}", function(data){
+        $.get("{{ URL::to('user/messagelist/'.$conversation->id) }}", function(data){
             $("#chatbox").html(data);
              //Auto-scroll           
             var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height after the request

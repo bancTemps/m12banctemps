@@ -13,16 +13,23 @@ class UserController extends BaseController {
      * @var Conversation
      */
     protected $conversation;
+
+    /**
+     * Message Model
+     * @var Message
+     */
+    protected $message;
     
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user, Conversation $conversation)
+    public function __construct(User $user, Conversation $conversation, Message $message)
     {
         parent::__construct();
         $this->user = $user;
         $this->conversation = $conversation;
+        $this->message = $message;
     }
 
     /**
@@ -370,13 +377,13 @@ class UserController extends BaseController {
     }
 
     public function listMessages($id) {
-        $messages = $this->message->where('id_receptor', '=', $id)->where('id_emisor', '=', Auth::user()->get())->get();
+        $messages = $this->message->where('conversation_id', '=', $id)->get();
         $cadena = "";
         foreach ($messages as $message) {
-
+            $cadena .= $message->content;
         }
 
-        return $messages;
+        return $cadena;
     }
 
     
