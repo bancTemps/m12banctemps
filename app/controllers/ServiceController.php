@@ -123,7 +123,7 @@ class ServiceController extends BaseController {
                      
                     if ($canRequest != NULL) {
                        if ($user->points >= $service->punts) {
-                            var_dump("hola");
+                           
                             $puedeSolicitar = true;
                             $user->points = $user->points-$service->punts;
                             // Quita los puntos i meterlos en la zona muerta

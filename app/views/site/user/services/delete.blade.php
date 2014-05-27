@@ -8,7 +8,7 @@
         </ul>
     <!-- ./ tabs -->
     {{-- Delete Blog Comment Form --}}
-    <form id="deleteForm" class="form-horizontal" method="post" action="{{ URL::to('user/services/' . $service . '/delete') }}" autocomplete="off">
+    <form id="deleteForm" class="form-horizontal" method="post" action="{{ URL::to('user/services/' . $service->id  . '/deleteService') }}" autocomplete="off">
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
         <input type="hidden" name="id" value="{{ $service }}" />

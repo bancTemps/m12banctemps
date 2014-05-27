@@ -17,6 +17,7 @@
         <tr>
             <th class="col-md-5">{{{ Lang::get('admin/roles/table.user') }}}</th>
             <th class="col-md-3">{{{ Lang::get('admin/roles/table.service') }}}</th>
+            <th class="col-md-2">Fecha inicio</th>
             <th class="col-md-2">{{{ Lang::get('admin/roles/table.status') }}}</th>
         </tr>
     </thead>

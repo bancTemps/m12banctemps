@@ -13,16 +13,22 @@ class UserController extends BaseController {
      * @var Conversation
      */
     protected $conversation;
+     /**
+     * Service Model
+     * @var Service
+     */
+    protected $service;
     
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user, Conversation $conversation)
+    public function __construct(User $user, Conversation $conversation,Service $service)
     {
         parent::__construct();
         $this->user = $user;
         $this->conversation = $conversation;
+        $this->service = $service;
     }
 
     /**
@@ -98,7 +104,7 @@ class UserController extends BaseController {
             $title = 'Editar Servicio';
             return View::make('site/user/services/edit', compact('servicio', 'title'));
         }else{
-            return Redirect::to('site/user/services/index')->with('error', 'Error al editar servicio');
+            return Redirect::to('site/user/services')->with('error', 'Error al editar servicio');
         }
     }
     
@@ -107,8 +113,6 @@ class UserController extends BaseController {
             array(
                 'nom' => 'required|unique:services|between:5,20',
                 'descripcio' => 'required|min:4',
-                'dataInici' => 'required|date_format:"Y-m-d"',
-                'dataFinal' => 'required|date_format:"Y-m-d"',
                 'duracio' =>   'required|integer',
                 'localitzacio' => 'required|alpha',
                 'punts' => 'required|integer',
@@ -127,10 +131,10 @@ class UserController extends BaseController {
             $slugName = Str::slug($slug ,'-');
             $servicio->slug = $slugName;
             $servicio->save();
-            return Redirect::to('site/user/services/index')->with('success', 'Servicio Editado.');
+            return Redirect::to('user/services')->with('success', 'Servicio Editado.');
         } else {
                 unset($servicio->slug);
-                return Redirect::to('site/user/services/index')->with('error', 'Error al editar el servicio');
+                return Redirect::to('user/services')->with('error', 'Error al editar el servicio');
         }
     }
   
@@ -149,13 +153,9 @@ class UserController extends BaseController {
     public function postDeleteService($service){
          $id=$service->id;
          $service->delete();
-         $service = Service::find($id);
-        if (empty($service)){
-            return Redirect::to('site/user/services')->with('success', 'Categoria elminada satisfactoriamente');
-        }else{
-            // There was a problem deleting the user
-            return Redirect::to('site/user/services')->with('error', 'Error al eliminar la categoria');
-        }
+
+        return Redirect::to('user/services')->with('success', 'Servicio elminado.');
+       
     }
        
     public function postEdit($user)
@@ -463,20 +463,20 @@ class UserController extends BaseController {
              //solicitud.estat = 0 ---> pendiente de confirmacion
              ->where('solicituds.estat','=',0)
              ->where('solicituds.solicita_id','=',Auth::user()->id)
-            ->select(array('solicituds.id','services.nom','services.dataInici', 'services.dataInici', 'services.dataFinal','services.punts'));
+            ->select(array('solicituds.id','services.nom','services.dataInici', 'services.dataFinal','services.punts'));
             return Datatables::of($solicituds)
              ->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-default">Cancelar</a>')
              ->remove_column('id')
              ->make(); 
     }
  
-    public function getDeleteSolicitud($solicitud){
+    public function getDeleteSolicitud($id){
+        $solicitud = Solicitud::find($id);
         $solicitud->estat=1;
         $solicitud->save();
-        return Redirect::to('site/user/services');
+        return Redirect::to('user/services')->with('success','Solicitud eliminada');
     }
-   
-
+    
     // Solicitudes del usuario
     public function getRequest()
     {
@@ -494,16 +494,35 @@ class UserController extends BaseController {
              //solicitud.estat = 0 ---> pendiente de confirmacion
              ->where('solicituds.estat','=',0)
              ->where('services.user_id','=',Auth::user()->id)
-            ->select(array('solicituds.id','users.username','services.punts'));
+            ->select(array('solicituds.id','users.username','services.nom','services.dataInici'));
             return Datatables::of($solicituds)
-             ->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-default">Cancelar</a>
-                     <a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-default">Cancelar</a>')
+             ->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/acceptSolicitud\' ) }}}" class="btn btn-xs btn-default">Aceptar</a>
+                     <a href="{{{ URL::to(\'user/services/\' . $id . \'/rejectSolicitud\' ) }}}" class="btn btn-xs btn-danger">Rechazar</a>')
              ->remove_column('id')
              ->make();
     }
 
-    
-    
+  
+    public function getAcceptSolicitud($id){
+        $solicitud = Solicitud::find($id);
+        $solicitud->estat=1;
+        $solicitud->save();
+        $service = $this->service->where('id', '=', $solicitud->service_id)->first();
+        $user = $this->user->where('id', '=', Auth::user()->id)->first();
+        $user->points = $user->points+$service->punts;
+        $user->amend();
+        return Redirect::to('user/services')->with('success', 'Servicio aceptado');  
+    }
+     public function getRejectSolicitud($id){
+        $solicitud = Solicitud::find($id);
+        $user = $this->user->where('id', '=', $solicitud->solicita_id);
+        $user->points = $user->points+$service->punts;
+        $user->amend();
+        $solicitud->estat=2;
+        $solicitud->save();
+        return Redirect::to('user/services')->with('error', 'Servicio rechazado');  
+    }
+
     
     
     /*Muestra el template index.    
