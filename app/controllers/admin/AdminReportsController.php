@@ -73,10 +73,10 @@ class AdminReportsController extends AdminController {
     }
     
     public function getRejectReport($id){
-        $report = $this->report->where('id','=',$id)->first();
+        //$report = $this->report->where('id','=',$id)->first();
         
-        if ($report){
-            $report->delete();
+        if ($id){
+            $id->delete();
             return Redirect::to('admin/reports')->with('success');
         }
     }

@@ -385,9 +385,7 @@ class UserController extends BaseController {
 
         return View::make('site/user/request', compact('user'));
     }
-    /*
-     * Controlador para mostrar la vista de eliminar.
-     */
+
     
     
     

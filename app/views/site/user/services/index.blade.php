@@ -31,7 +31,7 @@
 </table>
 
 <div class="page-header">
-	<h3><strong>Servicios realizados</strong></h3>
+	<h3><strong>Servicios solicitados</strong></h3>
 </div>
 
 <table id="realized_services" class="table table-striped table-hover">
