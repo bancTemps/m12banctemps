@@ -1,4 +1,4 @@
-@extends('site.layouts.otherUser')
+@extends('site.layouts.otheruser')
 
 @section('menu-content')
 <form class="form-horizontal" method="POST" action="{{ URL::to('view/'.$user->username.'/report') }}" accept-charset="UTF-8">
