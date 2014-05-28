@@ -2,8 +2,8 @@
 
 
 @section('menu-content')
-        @foreach($estadisticas as $estadistica)
-        <pre>{{var_dump($estadistica)}}</pre>
+        @foreach($municipis as $municipi)
+        
         
         @endforeach
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">

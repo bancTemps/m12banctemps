@@ -247,8 +247,8 @@ background-color:#E0E0E0;
 <script src="{{asset('assets/js/scroll/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 
 <script type="text/javascript">
-    //setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
-    loadLog();
+    setInterval(loadLog, 100);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
+    //loadLog();
 
     $("#message-input-text").keypress(function(e) {
         if (e.which == 13) {
@@ -272,13 +272,13 @@ background-color:#E0E0E0;
     }
 
     function loadLog(){ 
-        var oldscrollHeight = $("#chatbox").prop("scrollHeight") - 20; //Scroll height before the request        
+        //var oldscrollHeight = $("#chatbox").prop("scrollHeight") - 20; //Scroll height before the request        
 
         // getIdFromUrl(document.URL) para conseguir la id de la conversacion actual
         $.get("{{ URL::to('user/messagelist/') }}"+"/"+getIdFromUrl(), function(data){
             $("#chatbox").html(data);
              //Auto-scroll           
-            var newscrollHeight = $("#chatbox").prop("scrollHeight") + 20;
+            //var newscrollHeight = $("#chatbox").prop("scrollHeight") + 20;
                 $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
         });
             

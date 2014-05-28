@@ -22,15 +22,14 @@ class AdminDashboardController extends AdminController {
 	 * Admin dashboard
 	 *
 	 */
-	public function getIndex()
-	{
-        
+	public function getIndex(){        
         list($user,$redirect) = $this->user->checkAuthAndRedirect('user');
         if($redirect){return $redirect;}
-        $estadisticas = DB::table('users')->get();
+        $municipis = DB::table('municipis')->get();
+        
         // Show the page
-        return View::make('admin/home/home', compact('user','estadisticas'));
-        //return View::make('admin/home/home');
+        return View::make('admin/home/home', compact('user','municipis'));
+        
 	}
 
 }
