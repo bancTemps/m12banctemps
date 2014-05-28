@@ -19,6 +19,15 @@ class RolesTableSeeder extends Seeder {
 
         $user = User::where('username','=','pau')->first();
         $user->attachRole( $commentRole );
+        
+        $user = User::where('username','=','natu')->first();
+        $user->attachRole( $commentRole );
+        
+        $user = User::where('username','=','oscar')->first();
+        $user->attachRole( $commentRole );
+        
+        $user = User::where('username','=','isma')->first();
+        $user->attachRole( $commentRole );
     }
 
 }

@@ -53,9 +53,26 @@ class InactiveService extends Command {
                         $fechaConsum = $serv->created_at;
                     }
                     
+                    
                     if (strtotime($fechaConsum) < strtotime('-'.$diesInactivitat.' days', strtotime($dataAvui))){
                         
-                        $this->info("se debe congelar el servicio");
+                        DB::table('services')
+                            ->where('id', $serv->id)
+                            ->update(array('estat' => 1));
+                        
+                        
+                        $user = DB::table('users')->where('id', $serv->user_id)->first();
+                        $data = array(
+                            'user' => $user->username,
+                            'service' => $serv->nom,
+                            'inactivity' => $diesInactivitat,
+                        );
+                        
+                        Mail::send('emails.service_freeze_reminder', $data, function($message) use($serv, $user)
+                        {
+                              $message->from("donhorchy@banctemps.com", "Sistema");
+                              $message->to($user->email, 'Service freezed');
+                        });
                     }
                 }
 	}

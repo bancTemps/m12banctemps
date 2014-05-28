@@ -37,7 +37,6 @@ class InactiveLuser extends Command {
 	 */
 	public function fire()
 	{
-                $admin = DB::table('users')->where('id', 1)->first();
                 $users = DB::table('users')->get();
                 $dataAvui = date('Y-m-d');
                 
@@ -67,10 +66,10 @@ class InactiveLuser extends Command {
                                 'user' => $user->username,
                             );
 
-                            Mail::send('emails.recomendation', $data, function($message) use($admin,$user)
+                            Mail::send('emails.recomendation', $data, function($message) use($user)
                             {
-                              $message->from($admin->email, $admin->username);
-                              $message->to('paul.cfgs@gmail.com', 'Services recomendations');
+                              $message->from("donhorchy@banctemps.com", "Sistema");
+                              $message->to($user->email, 'Services recomendations');
                             });
 
                         }
