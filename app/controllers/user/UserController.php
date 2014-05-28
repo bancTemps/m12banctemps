@@ -406,11 +406,6 @@ class UserController extends BaseController {
             return $cadena;
         }
 
-        // ajax post message
-        public function postMessage() {
-            
-        }
-
         public function viewConversation($conversation_id) {
             list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
             if($redirect){return $redirect;}

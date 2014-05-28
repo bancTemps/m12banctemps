@@ -219,6 +219,7 @@ background-color:#E0E0E0;
 
     <div id="messages" class="col-xs-12 col-sm-5 col-md-5">
         <div id="chatbox">
+
             <div style="visibility: hidden;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, cupiditate, autem facere quos hic iste est consectetur soluta eius rem.
             </div>
             <center>
@@ -251,7 +252,6 @@ background-color:#E0E0E0;
 <script type="text/javascript">
     (function($){
         $(window).load(function(){
-            loadLog();
             $("#historial, #friends").mCustomScrollbar({
                 scrollButtons:{
                     enable: true
@@ -262,18 +262,33 @@ background-color:#E0E0E0;
         });
     })(jQuery);
 
-    //setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
+    setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
 
-    $("#submitmsg").click(function(){   
-        var clientmsg = $("#usermsg").val();
+    $("#message-input-text").keypress(function(e) {
+        if (e.which == 13) {
+            enviarComentari();
+        }
+    });
+
+    function enviarComentari() {
+        var usuari = $("#usuari").val();
+        var comentari = $("#comentari").val();
         // jquery post request: envia un valor post. 
-        $.post("../controller/enviar_mensaje.php", {
-            text: clientmsg
-        });              
-        $("#usermsg").attr("value", "");
+
+        if (usuari != "" && comentari != "") {
+            $.post("../controller/comentari_enviar.php", {
+                usuari: usuari,
+                comentari: escape(comentari)
+            });              
+            $("#usuari").attr("value", "");
+            $("#comentari").attr("value", "");
+            $("#usuari").focus();
 
         return false;
-    });
+        }  
+
+    
+    }
 
     function loadLog(){ 
         var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request        
