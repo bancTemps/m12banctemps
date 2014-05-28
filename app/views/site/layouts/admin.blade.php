@@ -6,7 +6,6 @@
     <div id="user-menu" class="col-xs-12 col-sm-12 col-md-12 embossed">
         <div class="col-xs-12 col-sm-offset-5 col-sm-7 col-md-offset-3 col-md-9">
             <ul>
-                <li><a href="{{{ URL::to('admin/statistics') }}}" title="statistics">Estadísticas</a></li>
                 <li><a href="{{{ URL::to('admin/reports') }}}" title="reports">Denuncias</a></li>
             </ul>
         </div>

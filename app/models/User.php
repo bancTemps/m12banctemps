@@ -123,7 +123,7 @@ class User extends ConfideUser implements UserInterface, RemindableInterface{
         return $this->hasMany('Solicitud');
     }
     public function municipio(){
-        return $this->belongsTo('Municipio','id_municipio');
+        return $this->belongsTo('Municipio','municipio_id');
     }
     
 }

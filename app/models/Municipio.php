@@ -10,4 +10,7 @@ class Municipio extends Eloquent {
     public function servicio(){
         return $this->hasMany('Service');
     }
+    public function usuarios(){
+        return $this->hasMany('User');
+    }
 }
