@@ -96,7 +96,7 @@
             
 
             
-            $.get("{{URL::to('ajax')}}",{id_municipio: $( '.droponsito' ).val()})
+            $.get("{{URL::to('ajax')}}",{id_provincia: $( '.droponsito' ).val()})
                      .done(function( data ) {                         
                        $('#municipios').append("<label id='borra' for='municipios'>Municipio:</label><br />"+data);
              });

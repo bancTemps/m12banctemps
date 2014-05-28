@@ -39,7 +39,7 @@ class SolicitudController extends BaseController {
     }
 
     public function ajax(){
-        $datos =  DB::table('municipios')->where('id_provincia','=',Input::get('id_municipio'))->lists('nombre','id_municipio',null,'borra');
+        $datos =  DB::table('municipios')->where('id_provincia','=',Input::get('id_provincia'))->lists('nombre','id',null,'borra');
         return Form::select('municipi_id',$datos);
          
     }
