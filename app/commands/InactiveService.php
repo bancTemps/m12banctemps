@@ -54,7 +54,7 @@ class InactiveService extends Command {
                     }
                     
                     
-                    if (strtotime($fechaConsum) < strtotime('-'.$diesInactivitat.' days', strtotime($dataAvui))){
+                    if (strtotime($fechaConsum) < strtotime('-'.$diesInactivitat.' days', strtotime($dataAvui)) || $serv->estat == 1){
                         
                         DB::table('services')
                             ->where('id', $serv->id)
