@@ -39,13 +39,23 @@ class InactiveService extends Command {
 	{
 		$dataAvui = date("Y-m-d");
                 $services = DB::table('services')->get();
+                
+                $config = DB::table('banctemps')->first();
+                $diesInactivitat = $config->dias_inactividad_servicio;
+                
                 foreach($services as $serv){
                     $id = $serv->id;
                     $darreraConsumicio = DB::table('service_consumed')->where('id',$id)->first();
+                    
                     if ($darreraConsumicio){    //si el servicio ya ha sido consumido alguna vez
-                        $this->info("LEL");
+                        $fechaConsum = $darreraConsumicio->created_at;
                     } else {                    //sino
-                        $this->info("djfgbjksglsnepgfn");
+                        $fechaConsum = $serv->created_at;
+                    }
+                    
+                    if (strtotime($fechaConsum) < strtotime('-'.$diesInactivitat.' days', strtotime($dataAvui))){
+                        
+                        $this->info("se debe congelar el servicio");
                     }
                 }
 	}
