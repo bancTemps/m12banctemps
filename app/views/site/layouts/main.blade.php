@@ -182,7 +182,7 @@
 <script src="{{asset('assets/js/datatables.fnReloadAjax.js')}}"></script>
 <script src="{{asset('assets/js/jquery.colorbox.js')}}"></script>
 <script src="{{asset('assets/js/prettify.js')}}"></script>
-{{ HTML::script('assets/js/gmaps.js'); }}
+
 @yield('scripts')
 
 </body>

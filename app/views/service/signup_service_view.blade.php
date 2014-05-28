@@ -99,7 +99,7 @@
             
             $.get("{{URL::to('ajax')}}",{id_provincia: $( '.droponsito' ).val()})
                      .done(function( data ) {                         
-                       $('#municipios').append("<label id='borra' for='municipios'>Municipio:</label><br />"+data);
+                       $('#municipios').empty().append("<label id='borra' for='municipios'>Municipio:</label><br />"+data);
              });
             return false;
         } );

@@ -98,3 +98,19 @@ App::down(function()
 */
 
 require __DIR__.'/../filters.php';
+
+
+Event::listen('cron.collectJobs', function() {
+    Cron::add('inactiveLuser', '*/5 * * * *', function() {
+        InactiveLuser::fire();
+    });
+
+    Cron::add('inactiveService', '*/5 * * *', function() {
+        InactiveService::fire();
+    });
+
+    Cron::add('deleteFrozenService', '*/5 * * * *', function() {
+        DeleteFrozenService::fire();
+    });
+
+});
