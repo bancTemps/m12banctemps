@@ -19,17 +19,30 @@ class UserController extends BaseController {
      * @var Message
      */
     protected $message;
+      /**
+     * Service Model
+     * @var Service
+     */
+    protected $service;
+    /**
+     * ServiceConsumed Model
+     * @var ServiceConsumed
+     */
+    protected $serviceConsumed;
     
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user, Conversation $conversation, Message $message)
+    
+    public function __construct(User $user, Conversation $conversation, Message $message, Service $service, ServiceConsumed $serviceConsumed)
     {
         parent::__construct();
         $this->user = $user;
         $this->conversation = $conversation;
         $this->message = $message;
+        $this->service = $service;
+        $this->serviceConsumed = $serviceConsumed;
     }
 
     /**
@@ -512,16 +525,47 @@ class UserController extends BaseController {
              ->remove_column('id')
              ->make();
     }
-
-  
+    
+  public function getConsumedServices() {         
+      $serviceConsumed = ServiceConsumed::leftjoin('users', 'users.id', '=', 'service_consumeds.idUsuari')
+               ->leftjoin('services', 'services.id', '=', 'service_consumeds.id')  
+               ->where('service_consumeds.idUsuari','=',Auth::user()->id)
+               ->select(array('service_consumeds.id','service_consumeds.estat','services.nom','services.user_id as idUsuari','services.dataInici'));
+               return Datatables::of($serviceConsumed)
+               ->add_column('pep','@if ($idUsuari)
+                                      <?php $user = User::find($idUsuari)?>
+                                       {{{$user->username}}}
+                                      @endif')
+               ->add_column('action','@if ($estat == 1)
+                                        Ya consumido
+                                      @else
+                                   <a href="{{{ URL::to(\'user/services/\' . $id . \'/consumService\' ) }}}" class="btn btn-xs btn-default">Consumir</a>
+                                      @endif')
+               
+                       ->remove_column('id')
+                       ->remove_column('idUsuari')
+                       ->remove_column('estat')
+               ->make();
+    }
+  public function consumService ($id){
+       $consum = ServiceConsumed::find($id);
+       $consum->estat=1;
+       $consum->save();
+       return Redirect::to('user/services')->with('success', 'Servicio consumido');  
+  }
     public function getAcceptSolicitud($id){
         $solicitud = Solicitud::find($id);
         $solicitud->estat=1;
         $solicitud->save();
         $service = $this->service->where('id', '=', $solicitud->service_id)->first();
-        $user = $this->user->where('id', '=', Auth::user()->id)->first();
+        $user = $this->user->where('id', '=', $solicitud->solicita_id)->first();
         $user->points = $user->points+$service->punts;
         $user->amend();
+        $this->serviceConsumed->id = $service->id;
+        $this->serviceConsumed->idUsuari = $user->id;
+        $this->serviceConsumed->estat = 0;
+        $this->serviceConsumed->save();
+        
         return Redirect::to('user/services')->with('success', 'Servicio aceptado');  
     }
      public function getRejectSolicitud($id){

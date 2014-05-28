@@ -114,11 +114,13 @@ Route::get('user/services/create','UserController@createService');
 Route::get('user/servicelist','UserController@getServices');
 //Lista de lso servicios solicitados por ajax, devolviendo un json con los datos.
 Route::get('user/doservicelist','UserController@getDoServices');
+//Lista de los servicios consumidos por ajax, devolviendo un json con los datos.
+Route::get('user/doconsumedlist','UserController@getConsumedServices');
+//Lista de las solicitudes de un usuario
+Route::get('user/requestlist','UserController@getRequests');
 //Lista los mensajes de una conversacion
 Route::get('user/messagelist/{id}','UserController@listMessages');
 
-//Lista de las solicitudes de un usuario
-Route::get('user/requestlist','UserController@getRequests');
 
 //Edita servicio creado por el usuario desde el datatable:
 
@@ -132,7 +134,8 @@ Route::get('user/services/{service}/editService','UserController@getEditService'
 //Route::get('user/services/{service}/deleteSolicitud','UserController@getDeleteSolicitud');
 Route::get('user/services/{solicitud}/deleteSolicitud','UserController@getDeleteSolicitud');
 Route::get('user/services/{solicitud}/acceptSolicitud','UserController@getAcceptSolicitud'); 
-Route::get('user/services/{solicitud}/rejectSolicitud','UserController@getRejectSolicitud');        
+Route::get('user/services/{solicitud}/rejectSolicitud','UserController@getRejectSolicitud');  
+Route::get('user/services/{consumedService}/consumService','UserController@consumService');        
 //Comentado porque no sirve de nada
 //Route::post('user/servicelist','UserController@getServices');
 //Almacenar servicio creado

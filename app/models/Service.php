@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\URL;
 
 class Service extends Eloquent {
 
-/*
+
 
 	public function getServiceById($id){
 		return $this->where('id','=',$id);
-	}*/
+	}
 
 
 	public function author() {
