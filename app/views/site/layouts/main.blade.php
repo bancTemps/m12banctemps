@@ -116,15 +116,7 @@
                     <li><a href="{{ URL::to('user/messages') }}"><span class="glyphicon glyphicon-comment"></span> {{Lang::get('site.messages')}}</a></li>
 
                 @endif
-
-                <!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user') }}}"><span class="glyphicon glyphicon-user"></span>{{{ Auth::user()->username }}}<span class="caret"></span></a>-->
-
                 
-                    <!--<ul class="dropdown-menu">-->
-
-                        
-                    <!-- </ul> -->
-
                 @if (Auth::user()->hasRole('admin'))
 
                     <li><a href="{{ URL::to('admin') }}">{{Lang::get('site.admin_panel')}}</a></li>
