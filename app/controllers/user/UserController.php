@@ -126,9 +126,9 @@ class UserController extends BaseController {
             $user->email = Input::get( 'email' );
             $user->name = Input::get( 'name' );
             $user->surname = Input::get( 'surname' );
-            $user->address = Input::get( 'address' );
-            $user->city = Input::get( 'city' );
-            $user->postalCode = Input::get( 'postalCode' );
+            $user->municipi_id = Input::get( 'municipi_id' );
+            //$user->city = Input::get( 'city' );
+            //$user->postalCode = Input::get( 'postalCode' );
             $user->telephone = Input::get( 'telephone' );
 
             $password = Input::get( 'password' );

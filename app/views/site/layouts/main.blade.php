@@ -157,12 +157,12 @@
 
 
 <div id="push"></div>
-
+<!--
 <div id="footer">
     <div class="container">
         <p class="muted credit">Banc del temps todas las perras reservadas.</p>
     </div>
-</div>
+</div>-->
 
 </div>
 <!-- ./wrap -->

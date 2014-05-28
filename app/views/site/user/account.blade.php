@@ -71,7 +71,10 @@
         </div>
     -->
         <!-- ./ username -->
+
+
         <input type="hidden" value="{{{ Input::old('username', $user->username) }}}" id="username" name="username"/>
+
 
         <!-- Email -->
         <div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
@@ -83,34 +86,67 @@
         </div>
         <!-- ./ email -->
 
+        <!--Provincia-->
+        <div class="form-group {{{ $errors->has('provincia') ? 'error' : '' }}}">
+            <label class="col-xs-offset-1 col-md-3 control-label" for="provincia">Provincia</label>
+            <div class="col-xs-10 col-md-6">
+                <div>{{Form::select('provincias',Provincia::lists('provincia','id_provincia'),null,['class' => 'droponsito'])}}</div>
+                {{ $errors->first('provincia', '<span class="help-inline">:message</span>') }}
+            </div>
+        </div>
+        <!-- ./ Provincia -->
+
+        <!--Municipio-->
+        <div class="form-group {{{ $errors->has('municipio') ? 'error' : '' }}}">
+            <label class="col-xs-offset-1 col-md-3 control-label" for="provincia" id='borra'  for='municipios'>Municipios</label>
+            <div class="col-xs-10 col-md-6" id="municipios">
+
+            </div>
+        </div>
+        <!-- ./ Municipio -->
+
+
+        <!--Categorias-->
+        <div class="form-group {{{ $errors->has('categoria') ? 'error' : '' }}}">
+            <label class="col-xs-offset-1 col-md-3 control-label" for="provincia">Categoria</label>
+            <div class="col-xs-10 col-md-6">
+                <div>{{Form::select('categoria',Category::lists('nom','id'))}}</div>
+                {{ $errors->first('categoria', '<span class="help-inline">:message</span>') }}
+            </div>
+        </div>
+        <!-- ./ Categorias -->
+
         <!-- Address -->
+        <!--
         <div class="form-group {{{ $errors->has('address') ? 'error' : '' }}}">
             <label class="col-xs-offset-1 col-md-3 control-label" for="address">{{ Lang::get('messages.address')}}</label>
             <div class="col-xs-10 col-md-6">
                 <input class="form-control" type="text" name="address" id="address" value="{{{ Input::old('address', $user->address) }}}" />
                 {{ $errors->first('address', '<span class="help-inline">:message</span>') }}
             </div>
-        </div>
+        </div>-->
         <!-- ./ address -->
 
         <!-- City -->
+        <!--
         <div class="form-group {{{ $errors->has('city') ? 'error' : '' }}}">
             <label class="col-xs-offset-1 col-md-3 control-label" for="city">{{ Lang::get('messages.city')}}</label>
             <div class="col-xs-10 col-md-6">
                 <input class="form-control" type="text" name="city" id="city" value="{{{ Input::old('city', $user->city) }}}" />
                 {{ $errors->first('city', '<span class="help-inline">:message</span>') }}
             </div>
-        </div>
+        </div>-->
         <!-- ./ city -->
 
         <!-- Postal Code -->
+        <!--
         <div class="form-group {{{ $errors->has('postalCode') ? 'error' : '' }}}">
             <label class="col-xs-offset-1 col-md-3 control-label" for="postalCode">{{ Lang::get('messages.postal_code')}}</label>
             <div class="col-xs-10 col-md-6">
                 <input class="form-control" type="text" name="postalCode" id="postalCode" value="{{{ Input::old('postalCode', $user->postalCode) }}}" />
                 {{ $errors->first('postalCode', '<span class="help-inline">:message</span>') }}
             </div>
-        </div>
+        </div>-->
         <!-- ./ postalCode -->
 
         <!-- Telephone -->
@@ -164,4 +200,21 @@
 </form>
 
 
+@stop
+
+
+@section('scripts')
+<script>
+ jQuery( document ).ready( function( $ ) {
+     
+    $( '.droponsito' ).on( 'change', function() {
+        $.get("{{URL::to('ajax')}}",{id_provincia: $( '.droponsito' ).val()})
+                .done(function( data ) {                         
+                   $('#municipios').append(data);
+         });
+        return false;
+    } );
+     
+    } );
+</script>
 @stop

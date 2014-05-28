@@ -2,5 +2,5 @@
 
 
 @section('menu-content')
-LELELELELE
+Denuncia realizada con éxito.
 @stop
