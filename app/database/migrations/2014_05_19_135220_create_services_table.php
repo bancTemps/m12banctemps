@@ -16,10 +16,10 @@ class CreateServicesTable extends Migration {
 		{
 			$table->increments('id');
 
-			$table->string('user_id');
+			$table->integer('user_id');
 			$table->string('nom', 25);
 			$table->string('descripcio');
-                        $table->integer('categoria_id');
+            $table->integer('categoria_id');
 			$table->string('dataInici');
 			$table->string('dataFinal');
 			$table->integer('duracio');

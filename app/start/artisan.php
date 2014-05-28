@@ -13,3 +13,4 @@
 
 Artisan::add(new InactiveLuser);
 Artisan::add(new InactiveService);
+Artisan::add(new DeleteFrozenService);
