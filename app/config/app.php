@@ -113,12 +113,14 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Illuminate\Remote\RemoteServiceProvider',
+                
 		
         /* Additional Providers */
         'Zizaco\Confide\ConfideServiceProvider', // Confide Provider
         'Zizaco\Entrust\EntrustServiceProvider', // Entrust Provider for roles
         'Bllim\Datatables\DatatablesServiceProvider', // Datatables
-        'Orangehill\Iseed\IseedServiceProvider'
+        'Orangehill\Iseed\IseedServiceProvider',
+        'Liebig\Cron\CronServiceProvider'   // Cron provider
 
         /* Uncomment for use in development */
 //        'Way\Generators\GeneratorsServiceProvider', // Generators
