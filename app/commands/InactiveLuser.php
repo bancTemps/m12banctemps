@@ -60,7 +60,7 @@ class InactiveLuser extends Command {
                         //si la data de la darrera consumició és més petita que la data d'avui - els dies marcats, llavors s'envia el mail
                         if (strtotime($darreraConsumicio) < strtotime('-'.$diesInactivitat.' days', strtotime($dataAvui))){
 
-                            $this->info('Fa mes de 60 dies que no ');
+                            //$this->info('Fa mes de 60 dies que no ');
 
                             $data = array(
                                 'services' => DB::table('services')->where('municipi_id',$user->municipi_id)->take(5)->get(),
