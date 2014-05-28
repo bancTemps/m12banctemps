@@ -106,15 +106,6 @@
         <!-- ./ Municipio -->
 
 
-        <!--Categorias-->
-        <div class="form-group {{{ $errors->has('categoria') ? 'error' : '' }}}">
-            <label class="col-xs-offset-1 col-md-3 control-label" for="provincia">Categoria</label>
-            <div class="col-xs-10 col-md-6">
-                <div>{{Form::select('categoria',Category::lists('nom','id'))}}</div>
-                {{ $errors->first('categoria', '<span class="help-inline">:message</span>') }}
-            </div>
-        </div>
-        <!-- ./ Categorias -->
 
         <!-- Address -->
         <!--

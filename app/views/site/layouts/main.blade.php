@@ -51,8 +51,7 @@
     <div class="container">
         <div class="navbar-header">
             <a href="{{ URL::to('') }}">
-            <!--<img src="{{asset('img/logo-banc.png')}}" title="Logo">-->
-                Banc del Temps
+            <img src="{{asset('img/logo-banc.png')}}" title="Logo">
             </a>
 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -66,7 +65,7 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav pull-right">
-            <li><a href="{{ URL::to('service') }}"><span class="glyphicon glyphicon-time"></span> {{Lang::get('site.services')}}</a></li>
+        
 
 
             

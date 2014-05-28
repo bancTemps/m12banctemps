@@ -179,6 +179,7 @@ Route::get('service/{serviceSlug}','ServiceController@getDetail');
 
 //Crear Servicio
 Route::get('view/getJson/{slug}', 'OtherUserController@getOtherServices');
+Route::get('view/getJsonService/{slug}', 'OtherUserController@getOtherConsumedServices');
 Route::get('view/{view}/service', 'OtherUserController@viewOtherService');
 Route::get('view/{view}/report', 'OtherUserController@reportForm');
 Route::post('view/{view}/report', 'OtherUserController@postReport');
@@ -194,7 +195,7 @@ Route::get('blog/{postSlug}', 'BlogController@getView');
 Route::post('blog/{postSlug}', 'BlogController@postView');
 Route::get('ajax','SolicitudController@ajax');
 #NICOLAS CAGE EN: La busqueda del servicio perdido (parte 1)
-Route::post('/', 'HomeController@postIndex');
+Route::post('/', 'ServiceController@getIndex');
 
 # Index Page - Last route, no matches
-Route::get('/', array('before' => 'detectLang','uses' => 'HomeController@getIndex'));
+Route::get('/', array('before' => 'detectLang','uses' => 'ServiceController@getIndex'));

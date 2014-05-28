@@ -9,7 +9,11 @@ class OtherUserController extends BaseController {
     protected $user;
     protected $report;
     protected $service;
-
+     /**
+     * ServiceConsumed Model
+     * @var ServiceConsumed
+     */
+    protected $serviceConsumed;
     /**
      * User Model
      * @var User
@@ -21,13 +25,14 @@ class OtherUserController extends BaseController {
      * @param Service $service
      * @param User $user
      */
-    public function __construct(Conversation $conversation, Service $service, User $user,Report $report)
+    public function __construct(Conversation $conversation, Service $service, User $user,Report $report, ServiceConsumed $serviceConsumed)
     {
         parent::__construct();
         $this->conversation = $conversation;
         $this->service = $service;
         $this->user = $user;
         $this->report = $report;
+        $this->serviceConsumed = $serviceConsumed;
     }
 
 
@@ -87,8 +92,18 @@ class OtherUserController extends BaseController {
             $user = $userModel->getUserByUsername($slug);
             $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id' )
                     ->where('users.id','=',$user->id)
-                    ->select(array('services.nom','services.id', 'services.dataInici', 'services.dataFinal','services.punts'));
+                    ->select(array('services.nom','services.dataInici', 'services.dataFinal','services.punts'));
 
+            return Datatables::of($services)->make();
+
+    }
+     public function getOtherConsumedServices($slug)
+    {       $userModel = new User;
+            $user = $userModel->getUserByUsername($slug);
+            $services = ServiceConsumed::leftjoin('users', 'users.id', '=', 'service_consumeds.idUsuari' )
+                    ->leftjoin('services', 'services.id', '=', 'service_consumeds.id' )
+                    ->where('service_consumeds.idUsuari','=',$user->id)
+                    ->select(array('services.nom','services.dataInici', 'services.dataFinal','services.punts'));
             return Datatables::of($services)->make();
 
     }

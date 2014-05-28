@@ -57,8 +57,8 @@
 	<thead>
 		<tr>
 			<th class="col-md-3">{{{ Lang::get('admin/roles/table.name') }}} Servicio</th>
-			<th class="col-md-3">Propietario del Servicio</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.started_at') }}}</th>
+                        <th class="col-md-3">Propietario del Servicio</th>
 			<th class="col-md-2">{{{ Lang::get('admin/roles/table.options') }}}</th>
 		</tr>
 	</thead>
