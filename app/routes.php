@@ -119,7 +119,15 @@ Route::get('user/doconsumedlist','UserController@getConsumedServices');
 //Lista de las solicitudes de un usuario
 Route::get('user/requestlist','UserController@getRequests');
 //Lista los mensajes de una conversacion
+
+Route::get('user/messages/{id}', 'UserController@viewConversation');
 Route::get('user/messagelist/{id}','UserController@listMessages');
+/*Route::get('user/newmessage/{id}/{comment}', 'UserController@postMessage')
+->where(array('id' => '[0-9]+', 'comment' => '[a-z]+'));*/
+
+
+Route::any('user/newmessage/{id}/{comentario}', 'UserController@postMessage')
+->where(array('id' => '[0-9]+', 'comentario' => '(\w|\W)+'));
 
 
 //Edita servicio creado por el usuario desde el datatable:
@@ -163,7 +171,6 @@ Route::get('contact-us', function()
 #Solicitudes
 
 
-
 #Serveis.
 Route::get('service','ServiceController@getIndex');
 Route::post('service/{serviceSlug}','ServiceController@postDetail');
@@ -184,7 +191,7 @@ Route::get('blog', 'BlogController@getIndex');
 # Posts - Second to last set, match slug
 Route::get('blog/{postSlug}', 'BlogController@getView');
 Route::post('blog/{postSlug}', 'BlogController@postView');
-
+Route::get('ajax','SolicitudController@ajax');
 #NICOLAS CAGE EN: La busqueda del servicio perdido (parte 1)
 Route::post('/', 'HomeController@postIndex');
 

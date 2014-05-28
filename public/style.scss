@@ -84,9 +84,90 @@ html, body {
 
 #chatbox {
 	height: 80%;
-	border: solid 1px $color4;
-	position: fixed;
+	padding-left: 10px;
 	overflow: auto;
+
+	.emisor {
+		line-height: 1em;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		display: block;
+		margin: .4em;
+		width: 95%;
+		padding: 0.5em;
+		background: darken(#B7C11E, 10%);
+		text-decoration: none;
+		color: #000;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		display: inline-block;
+		position: relative;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+		span {
+			color: lighten(#B7C11E, 10%);
+			font-size: 0.8em;
+			display: block;
+		}
+	}
+
+	.emisor:before {
+		pointer-events: none;
+		position: absolute;
+		z-index: -1;
+		content: '';
+		border-style: solid;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-property: left;
+		transition-property: left;
+		top: calc(50% - 10px);
+		left: -10px;
+		border-width: 10px 10px 10px 0;
+		border-color: transparent darken(#B7C11E, 10%) transparent transparent;
+	}
+
+	.receptor {
+		line-height: 1em;
+		position: relative;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		display: inline-block;
+		margin: .4em;
+		width: 95%;
+		padding: 0.5em;
+		background: lighten(#B7C11E, 10%);
+		text-decoration: none;
+		color: #000;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+		span {
+			color: darken(#B7C11E, 10%);
+			font-size: 0.8em;
+			display: block;
+		}
+	}
+
+
+	.receptor:before {
+		pointer-events: none;
+		position: absolute;
+		z-index: -1;
+		content: '';
+		border-style: solid;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-property: right;
+		transition-property: right;
+		top: calc(50% - 10px);
+		right: -10px;
+		border-width: 10px 0 10px 10px;
+		border-color: transparent transparent transparent lighten(#B7C11E, 10%);
+	}
+
+
 }
 
 #message-input-text {
@@ -204,11 +285,19 @@ html, body {
 
 	#profile, #user-menu, #messages, #friends, #chatbox, #message-input-text {
 		position: static;
-		height: inherit;
+		max-height: 300px;
 
 		ul {
 			position: static;
 		}
+	}
+
+	#messages, #menu-content {
+		padding-right: 0;
+	}
+
+	#messages {
+		height: 300px;
 	}
 
 	#friends {

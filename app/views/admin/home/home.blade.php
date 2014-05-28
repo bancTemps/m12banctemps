@@ -2,7 +2,10 @@
 
 
 @section('menu-content')
-
+        @foreach($estadisticas as $estadistica)
+        <pre>{{var_dump($estadistica)}}</pre>
+        
+        @endforeach
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 		<h3>Usuarios registrados este mes</h3>
 		<div id="registerMonth" class="chart">

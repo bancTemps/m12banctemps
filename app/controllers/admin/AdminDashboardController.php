@@ -24,12 +24,12 @@ class AdminDashboardController extends AdminController {
 	 */
 	public function getIndex()
 	{
-
-		list($user,$redirect) = $this->user->checkAuthAndRedirect('user');
+        
+        list($user,$redirect) = $this->user->checkAuthAndRedirect('user');
         if($redirect){return $redirect;}
-
+        $estadisticas = DB::table('users')->get();
         // Show the page
-        return View::make('admin/home/home', compact('user'));
+        return View::make('admin/home/home', compact('user','estadisticas'));
         //return View::make('admin/home/home');
 	}
 

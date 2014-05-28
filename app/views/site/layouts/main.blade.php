@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es_ES">
 <head>
 	<!-- Basic Page Needs
 	================================================== -->
@@ -17,8 +17,7 @@
 	
     <!-- Mobile Specific Metas================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	{{ HTML::style('bootstrap/css/bootstrap.min.css')}}
+    {{ HTML::style('bootstrap/css/bootstrap.min.css')}}
     {{ HTML::style('bootstrap/css/bootstrap-theme.min.css')}}
     {{ HTML::style('assets/css/hover.css')}}
     {{ HTML::style('assets/css/ihover.css')}}
@@ -180,10 +179,11 @@
 
 <!-- Javascripts
 ================================================== -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?sensor=false">
+  </script>
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/wysihtml5/wysihtml5-0.3.0.js')}}"></script>
 <script src="{{asset('assets/js/wysihtml5/bootstrap-wysihtml5.js')}}"></script>
 <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
@@ -191,10 +191,7 @@
 <script src="{{asset('assets/js/datatables.fnReloadAjax.js')}}"></script>
 <script src="{{asset('assets/js/jquery.colorbox.js')}}"></script>
 <script src="{{asset('assets/js/prettify.js')}}"></script>
-{{ HTML::script('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'); }}
 {{ HTML::script('assets/js/gmaps.js'); }}
-
-
 @yield('scripts')
 
 </body>

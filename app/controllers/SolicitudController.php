@@ -38,5 +38,9 @@ class SolicitudController extends BaseController {
                         . '<a class="iframe btn btn-xs btn-danger" href="#">Eliminar</a>')->make();
     }
 
-
+    public function ajax(){
+        $datos =  DB::table('municipios')->where('id_provincia','=',Input::get('id_provincia'))->lists('nombre','id',null,'borra');
+        return Form::select('municipi_id',$datos);
+         
+    }
 }
