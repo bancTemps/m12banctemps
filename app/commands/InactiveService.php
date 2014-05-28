@@ -37,6 +37,8 @@ class InactiveService extends Command {
 	 */
 	public function fire()
 	{
+                $this->info("lol");
+            
 		$dataAvui = date("Y-m-d");
                 $services = DB::table('services')->get();
                 
