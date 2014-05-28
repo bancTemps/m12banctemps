@@ -23,7 +23,7 @@
                 <p>{{Input::old('name', $user->points) }}<span class="embossed"> pts</span></p>
                 <p><span class="embossed">Nombre:</span> {{Input::old('name', $user->name) }} {{Input::old('surname', $user->surname) }}</p>
                 <p><span class="embossed">Correo:</span> {{Input::old('email', $user->email) }}</p>
-                <p><span class="embossed">Dirección:</span> {{Input::old('address', $user->address) }}, {{Input::old('city', $user->city) }}, {{Input::old('postalCode', $user->postalCode) }}</p>
+                <p><span class="embossed">Dirección:</span> {{Input::old('address', $user->address) }}, {{Input::old('postalCode', $user->postalCode) }}</p>
                 <p><span class="embossed">Teléfono:</span> {{Input::old('telephone', $user->telephone) }}</p>
             </div>
         </div>   

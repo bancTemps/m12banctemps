@@ -59,7 +59,8 @@
                     <div class="alert alert-error alert-danger">{{ $errors->first('punts') }}</div>
                 @endif
             </div>
-             <div class="form-group">
+            
+            <div class="form-group">
                 <label for="provincias">Provincia</label>
                 <div>{{Form::select('provincias',Provincia::lists('provincia','id_provincia'),null,['class' => 'droponsito'])}}</div>
             </div>

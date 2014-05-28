@@ -119,8 +119,8 @@ Route::get('user/doservicelist','UserController@getDoServices');
 
 Route::get('user/messages/{id}', 'UserController@viewConversation');
 Route::get('user/messagelist/{id}','UserController@listMessages');
-/*Route::get('user/newmessage/{id}/{comment}', 'UserController@postMessage')
-->where(array('id' => '[0-9]+', 'comment' => '[a-z]+'));*/
+Route::get('user/newmessage/{id}/{comment}', 'UserController@postMessage')
+->where(array('id' => '[0-9]+', 'comment' => '[a-z]+'));
 
 
 Route::any('user/newmessage/{id}/{comentario}', 'UserController@postMessage')
