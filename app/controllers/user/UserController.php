@@ -421,6 +421,27 @@ class UserController extends BaseController {
             return View::make('site/user/messages', compact('user', 'messages', 'conversations'));
         }
 
+    public function postMessage($conversation_id, $comment) {
+        $this->message->conversation_id = $conversation_id;
+        $user_id = Auth::user()->id;
+        $this->message->emisor_id = $user_id;
+
+
+        $receptor = $this->conversation
+            ->where('id', '=', $conversation_id)
+            ->first();
+
+        if ($receptor->id_emisor == $user_id) {
+            $receptor = $receptor->id_receptor;
+        } else {
+            $receptor = $receptor->id_emisor;
+        }
+
+        $this->message->receptor_id = $receptor;
+        $this->message->content = $comment;
+        $this->message->save();
+    }
+
     
     /*Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
      * 

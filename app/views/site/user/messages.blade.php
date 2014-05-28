@@ -18,7 +18,7 @@ height:20px;
 .followingBallsG{
 background-color:#E0E0E0;
 position:absolute;
-top:0;
+top:50px;
 left:0;
 width:20px;
 height:20px;
@@ -219,9 +219,6 @@ background-color:#E0E0E0;
 
     <div id="messages" class="col-xs-12 col-sm-5 col-md-5">
         <div id="chatbox">
-
-            <div style="visibility: hidden;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, cupiditate, autem facere quos hic iste est consectetur soluta eius rem.
-            </div>
             <center>
                 <div id="followingBallsG">
                     <div id="followingBallsG_1" class="followingBallsG">
@@ -236,7 +233,7 @@ background-color:#E0E0E0;
             </center>
             
         </div>
-        <input type="text" id="message-input-text" />
+        <input type="text" id="message-input-text" value=""/>
     </div>
 
 </div><!--!ROW-->
@@ -250,18 +247,6 @@ background-color:#E0E0E0;
 <script src="{{asset('assets/js/scroll/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 
 <script type="text/javascript">
-    (function($){
-        $(window).load(function(){
-            $("#historial, #friends").mCustomScrollbar({
-                scrollButtons:{
-                    enable: true
-                },
-                theme:"dark-thick",
-                scrollInertia: 200
-            });
-        });
-    })(jQuery);
-
     setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
 
     $("#message-input-text").keypress(function(e) {
@@ -271,30 +256,30 @@ background-color:#E0E0E0;
     });
 
     function enviarComentari() {
-        var usuari = $("#usuari").val();
-        var comentari = $("#comentari").val();
+        var comentari = $("#message-input-text").val();
+        var conversationID = getIdFromUrl();
         // jquery post request: envia un valor post. 
 
-        if (usuari != "" && comentari != "") {
-            $.post("../controller/comentari_enviar.php", {
-                usuari: usuari,
-                comentari: escape(comentari)
+        if (comentari != "") {
+            /*$.post("{{ URL::to('user/newmessage/') }}"+"/"+ conversationID + "/"+  comentari, {
+                conversationID: conversationID,
+                comentari: comentari
             });              
-            $("#usuari").attr("value", "");
-            $("#comentari").attr("value", "");
-            $("#usuari").focus();
+            $("#message-input-text").attr("value", "");
+            $("#message-input-text").focus();
 
-        return false;
-        }  
-
-    
+            return false;*/
+            $.get("{{ URL::to('user/newmessage/') }}"+"/"+conversationID + "/"+  escape(comentari), function(data){
+                
+            });
+        }     
     }
 
     function loadLog(){ 
         var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request        
 
         // getIdFromUrl(document.URL) para conseguir la id de la conversacion actual
-        $.get("{{ URL::to('user/messagelist/') }}"+"/"+getIdFromUrl(document.URL), function(data){
+        $.get("{{ URL::to('user/messagelist/') }}"+"/"+getIdFromUrl(), function(data){
             $("#chatbox").html(data);
              //Auto-scroll           
             var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height after the request
@@ -305,7 +290,8 @@ background-color:#E0E0E0;
             
     }
 
-    function getIdFromUrl(url) {
+    function getIdFromUrl() {
+        url = document.URL;
         urlArray = url.split("/");
         return(urlArray[urlArray.length-1]);
     }
