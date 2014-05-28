@@ -63,7 +63,7 @@ class ServicesTableSeeder extends Seeder {
                 'updated_at' => new DateTime,
             )*/)
         );
-    $this->command->info('Servicios añadidos, coño');
+    $this->command->info('Servicios añadidos');
     }
 
 }

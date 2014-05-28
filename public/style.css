@@ -54,13 +54,52 @@ html, body {
   position: fixed;
   line-height: 2em; }
 
-#historial {
+#chatbox {
   height: 80%;
-  position: fixed;
+  padding-left: 10px;
   overflow: auto; }
+  #chatbox .emisor, #chatbox .receptor {
+    line-height: 1em;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    display: block;
+    margin: .4em;
+    padding: 0.5em;
+    background: #8d9517;
+    text-decoration: none;
+    color: #000;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    display: inline-block;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0); }
+    #chatbox .emisor span, #chatbox .receptor span {
+      color: #d5df33;
+      font-size: 0.8em;
+      display: block; }
+  #chatbox .emisor:before, #chatbox .receptor:before {
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    border-style: solid;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: left;
+    transition-property: left;
+    top: calc(50% - 10px);
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #8d9517 transparent transparent; }
+  #chatbox .receptor {
+    background: #d5df33; }
+    #chatbox .receptor span {
+      color: #8d9517; }
+  #chatbox .receptor:before {
+    border-color: transparent #d5df33 transparent transparent; }
 
-.message-input-text {
-  bottom: 20px;
+#message-input-text {
+  bottom: 60px;
   width: 94%;
   position: absolute;
   text-align: left; }
@@ -138,10 +177,10 @@ html, body {
   .container {
     padding-left: 20px; }
 
-  #profile, #user-menu, #messages, #friends, #historial, .message-input-text {
+  #profile, #user-menu, #messages, #friends, #chatbox, #message-input-text {
     position: static;
     height: inherit; }
-    #profile ul, #user-menu ul, #messages ul, #friends ul, #historial ul, .message-input-text ul {
+    #profile ul, #user-menu ul, #messages ul, #friends ul, #chatbox ul, #message-input-text ul {
       position: static; }
 
   #friends {
