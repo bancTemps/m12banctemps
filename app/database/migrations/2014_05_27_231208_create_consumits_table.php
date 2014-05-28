@@ -12,7 +12,7 @@ class CreateConsumitsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('service_consumed', function(Blueprint $table)
+		Schema::create('service_consumeds', function(Blueprint $table)
 		{
 			$table->integer('id');
                         $table->integer('idUsuari');
@@ -28,7 +28,7 @@ class CreateConsumitsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('service_consumed');
+		Schema::drop('service_consumeds');
 	}
 
 }

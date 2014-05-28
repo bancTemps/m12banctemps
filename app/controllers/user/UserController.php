@@ -128,7 +128,6 @@ class UserController extends BaseController {
                 'nom' => 'required|unique:services|between:5,20',
                 'descripcio' => 'required|min:4',
                 'duracio' =>   'required|integer',
-                'localitzacio' => 'required|alpha',
                 'punts' => 'required|integer',
                 'categoria' => 'required'
            ); 
@@ -139,23 +138,16 @@ class UserController extends BaseController {
             $servicio->nom = Input::get( 'nom' );
             $servicio->descripcio = Input::get( 'descripcio' );
             $servicio->duracio = Input::get( 'duracio' );
-            $servicio->localitzacio = Input::get( 'localitzacio' );
             $servicio->punts = Input::get( 'punts' );
             $slug = Input::get( 'nom' );
             $slugName = Str::slug($slug ,'-');
             $servicio->slug = $slugName;
             $servicio->save();
-            return Redirect::to('user/services')->with('success', 'Servicio Editado.');
+            return Redirect::to('user/services/')->with('success', 'Servicio Editado.');
         } else {
                 unset($servicio->slug);
                 return Redirect::to('user/services')->with('error', 'Error al editar el servicio');
         }
-    }
-  
-      public function getDeleteService($service){
-        $title = 'Eliminar Servicio';
-        // Show the page
-        return View::make('site/user/services/delete', compact('service', 'title'));
     }
 
     /**
@@ -164,11 +156,10 @@ class UserController extends BaseController {
      * @param $user
      * @return Response
      */
-    public function postDeleteService($service){
-         $id=$service->id;
-         $service->delete();
-
-        return Redirect::to('user/services')->with('success', 'Servicio elminado.');
+    public function getDeleteService($service){
+         $service->estat=1;
+         $service->save();
+        return Redirect::to('user/services')->with('success', 'Servicio congelado temporalmente.');
        
     }
        
@@ -461,7 +452,7 @@ class UserController extends BaseController {
             $cadena = "";
 
             $receptor = $messages->first();
-
+            
             if ($messages->first()->emisor_id == Auth::user()->id) {
                 //$receptor = $messages->first()->receptor_id;
                 $receptor = $this->user
@@ -529,16 +520,22 @@ class UserController extends BaseController {
      */
     public function getServices()
     {
-        
         $services = Service::leftjoin('users', 'users.id', '=', 'services.user_id')
                     ->where('users.id','=',Auth::user()->id)
-                    ->select(array('services.nom','services.id', 'services.dataInici', 'services.dataFinal','services.punts'));
+                    ->select(array('services.estat','services.nom','services.id', 'services.dataInici', 'services.dataFinal','services.punts'));
         return Datatables::of($services)
-                ->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/editService\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
-                                       <a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteService\' ) }}}" class="btn btn-xs btn-danger iframe">{{{ Lang::get(\'button.delete\') }}}</a>')
-                ->make(); 
+                ->add_column('action','@if ($estat==1)
+                                       <a href="{{{ URL::to(\'user/services/\' . $id . \'/descongelarService\' ) }}}" class="btn btn-xs btn-default">Descongelar</a>
+                                       @else
+                                       <a href="{{{ URL::to(\'user/services/\' . $id . \'/editService\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
+                                       <a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteService\' ) }}}" class="btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>        
+                                       @endif')
+                ->remove_column('id')
+                ->remove_column('idConsumit')
+                ->remove_column('estat')
+                ->make();
+ 
     }
-
 
     /* Aqui estan todas las acciones relacionadas con modificar/crear/eliminar servicios
      * 
@@ -555,6 +552,11 @@ class UserController extends BaseController {
              ->add_column('action','<a href="{{{ URL::to(\'user/services/\' . $id . \'/deleteSolicitud\' ) }}}" class="btn btn-xs btn-default">Cancelar</a>')
              ->remove_column('id')
              ->make(); 
+    }
+    public function descongelarService($service){
+       $service->estat=0;
+       $service->save();
+       return Redirect::to('user/services')->with('success', 'Servicio descongelado');  
     }
  
     public function getDeleteSolicitud($id){
@@ -625,7 +627,7 @@ class UserController extends BaseController {
         $user->points = $user->points+$service->punts;
         $user->amend();
         $this->serviceConsumed->id = $service->id;
-        $this->serviceConsumed->idUsuari = $user->id;
+        $this->serviceConsumed->idUsuari = $solicitud->solicita_id;
         $this->serviceConsumed->estat = 0;
         $this->serviceConsumed->save();
         

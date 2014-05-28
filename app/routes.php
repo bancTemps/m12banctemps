@@ -122,8 +122,8 @@ Route::get('user/requestlist','UserController@getRequests');
 
 Route::get('user/messages/{id}', 'UserController@viewConversation');
 Route::get('user/messagelist/{id}','UserController@listMessages');
-/*Route::get('user/newmessage/{id}/{comment}', 'UserController@postMessage')
-->where(array('id' => '[0-9]+', 'comment' => '[a-z]+'));*/
+Route::get('user/newmessage/{id}/{comment}', 'UserController@postMessage')
+->where(array('id' => '[0-9]+', 'comment' => '[a-z]+'));
 
 
 Route::any('user/newmessage/{id}/{comentario}', 'UserController@postMessage')
@@ -133,6 +133,7 @@ Route::any('user/newmessage/{id}/{comentario}', 'UserController@postMessage')
 //Edita servicio creado por el usuario desde el datatable:
 
 Route::get('user/services/{service}/deleteService','UserController@getDeleteService');
+Route::get('user/services/{service}/descongelarService','UserController@descongelarService');
 Route::post('user/services/{service}/deleteService','UserController@postDeleteService');
 Route::post('user/services/{service}/editService','UserController@postEditService');
 Route::get('user/services/{service}/editService','UserController@getEditService');

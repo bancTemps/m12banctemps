@@ -9,6 +9,9 @@ class Service extends Eloquent {
 	public function getServiceById($id){
 		return $this->where('id','=',$id);
 	}
+        public function usuarios() {
+                return $this->hasMany('User');
+        }
 
 
 	public function author() {

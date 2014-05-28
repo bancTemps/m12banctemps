@@ -138,7 +138,7 @@ class AdminCategoriesController extends AdminController {
         );
 
         $validator = Validator::make(Input::all(), $rules);
-
+        var_dump($category);
 
         if ($validator->passes())
         {
@@ -147,12 +147,12 @@ class AdminCategoriesController extends AdminController {
             $category->descripcion = Input::get( 'descripcio' );
             $slug = Input::get( 'nom' );
             $slugName = Str::slug($slug ,'-');
-            $this->category->slug = $slugName;
-            $this->category->save();
-            return Redirect::to('admin/categories/' . $user->id . '/edit')->with('success', Lang::get('admin/users/messages.edit.success'));
+            $category->slug = $slugName;
+            $category->save();
+            return Redirect::to('admin/categories/' . $category->id . '/edit')->with('success', Lang::get('admin/users/messages.edit.success'));
         } else {
                 unset($category->slug);
-                 return Redirect::to('admin/categories/' . $user->id . '/edit')->with('error', Lang::get('admin/users/messages.edit.error'));
+                 return Redirect::to('admin/categories/' . $category->id . '/edit')->with('error', Lang::get('admin/users/messages.edit.error'));
         }
     }
 

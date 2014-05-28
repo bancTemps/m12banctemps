@@ -51,13 +51,7 @@
 						{{ $errors->first('punts', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
-                                <div class="form-group {{{ $errors->has('localitzacio') ? 'error' : '' }}}">
-					<label class="col-md-2 control-label" for="localitzacio">Localizacion</label>
-					<div class="col-md-10">
-						<input class="form-control" type="text" name="localitzacio" id="loc" value="{{ Input::old('localitzacio', $servicio->localitzacio) }}" />
-						{{ $errors->first('localitzacio', '<span class="help-inline">:message</span>') }}
-					</div>
-				</div>
+                                
                                  <div class="form-group">
                                     <label for="categoria">Categoria</label>
                                  <div>{{Form::select('categoria',Category::lists('nom','id'))}}</div>

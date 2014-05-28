@@ -21,7 +21,8 @@
         <div class="col-sm-12 col-md-12">
             <div class="row">
 
-                @foreach ($services as $service)          
+                @foreach ($services as $service)   
+                @if($service->estat == 0)
                  <div class="col-sm-4 col-md-4">
                     <!-- normal -->
                     <div class="ih-item square effect3 bottom_to_top">
@@ -35,6 +36,7 @@
                     </div>
                     <!-- end normal -->
                   </div>
+                @endif
                 @endforeach
 
             </div>    
