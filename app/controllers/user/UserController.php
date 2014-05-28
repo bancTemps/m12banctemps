@@ -371,7 +371,10 @@ class UserController extends BaseController {
             list($user,$redirect) = User::checkAuthAndRedirect('user/messages');
             if($redirect){return $redirect;}
 
-            $conversations = $this->conversation->where('id_emisor', '=', Auth::user()->id)->get();
+            $conversations = $this->conversation
+                ->where('id_emisor', '=', Auth::user()->id)
+                ->orwhere('id_receptor','=', Auth::user()->id)
+                ->get();
 
             return View::make('site/user/messages', compact('user', 'conversations'));
         }
@@ -412,7 +415,10 @@ class UserController extends BaseController {
 
             //$message = new Message;
             $messages = $this->message->getMessages($conversation_id);
-            $conversations = $this->conversation->where('id_emisor', '=', Auth::user()->id)->get();
+            $conversations = $this->conversation
+                ->where('id_emisor', '=', Auth::user()->id)
+                ->orwhere('id_receptor','=', Auth::user()->id)
+                ->get();
             
             if (is_null($messages)){
                 App::abort(404);

@@ -200,7 +200,7 @@ background-color:#E0E0E0;
                 <?php  $userModel = new User;
                     $friend = $userModel->getUserById($conversation->id_receptor)
                 ?>        
-                <div class="col-md-4">
+                <div class="col-xs-6 col-md-4">
                     <!-- normal -->
                     <div class="ih-item square effect3 bottom_to_top">
                         <a href="{{ URL::to('user/messages/'.$conversation->id) }}">
@@ -247,7 +247,8 @@ background-color:#E0E0E0;
 <script src="{{asset('assets/js/scroll/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 
 <script type="text/javascript">
-    setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
+    //setInterval(loadLog, 2500);    //Reload file every 2500 ms or x ms if you wish to change the second parameter
+    loadLog();
 
     $("#message-input-text").keypress(function(e) {
         if (e.which == 13) {
@@ -256,36 +257,29 @@ background-color:#E0E0E0;
     });
 
     function enviarComentari() {
+        var oldscrollHeight = $("#chatbox").prop("scrollHeight") - 20;
         var comentari = $("#message-input-text").val();
         var conversationID = getIdFromUrl();
         // jquery post request: envia un valor post. 
 
         if (comentari != "") {
-            /*$.post("{{ URL::to('user/newmessage/') }}"+"/"+ conversationID + "/"+  comentari, {
-                conversationID: conversationID,
-                comentari: comentari
-            });              
-            $("#message-input-text").attr("value", "");
-            $("#message-input-text").focus();
-
-            return false;*/
             $.get("{{ URL::to('user/newmessage/') }}"+"/"+conversationID + "/"+  escape(comentari), function(data){
-                
+                $("#message-input-text").val("");
+                var newscrollHeight = $("#chatbox").prop("scrollHeight") + 20;
+                $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
             });
         }     
     }
 
     function loadLog(){ 
-        var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request        
+        var oldscrollHeight = $("#chatbox").prop("scrollHeight") - 20; //Scroll height before the request        
 
         // getIdFromUrl(document.URL) para conseguir la id de la conversacion actual
         $.get("{{ URL::to('user/messagelist/') }}"+"/"+getIdFromUrl(), function(data){
             $("#chatbox").html(data);
              //Auto-scroll           
-            var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height after the request
-            if(newscrollHeight > oldscrollHeight){
+            var newscrollHeight = $("#chatbox").prop("scrollHeight") + 20;
                 $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
-            }
         });
             
     }
