@@ -10,7 +10,7 @@
     
     <div>To unfreeze it, simply login in your account and check the services page in your profile.</div>
     
-    <div>If in the next <b>{{ inactivity }}</b> days the service keeps frozen, it will be erased from our database.</div>
+    <div>If in the next <b>{{ $inactivity }}</b> days the service keeps frozen, it will be erased from our database.</div>
     
   </body>
 </html>

@@ -71,8 +71,9 @@ class InactiveService extends Command {
                         Mail::send('emails.service_freeze_reminder', $data, function($message) use($serv, $user)
                         {
                               $message->from("donhorchy@banctemps.com", "Sistema");
-                              $message->to($user->email, 'Service freezed');
+                              $message->to("donhorchy@banctemps.com", 'Service freezed');
                         });
+                        $this->info("Nose que coi es");
                     }
                 }
 	}

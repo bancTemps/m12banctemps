@@ -20,7 +20,7 @@ class ServicesTableSeeder extends Seeder {
                 'duracio' => 3,
                 'municipi_id' => 2,
                 'punts' => 125,
-                'slug' => 'pinto-paredes-cono',
+                'slug' => 'pinto-paredes',
             ),
             array(
                 'user_id'    => 2,
@@ -32,7 +32,7 @@ class ServicesTableSeeder extends Seeder {
                 'duracio' => 3,
                 'municipi_id' => 1,
                 'punts' => 125,
-                'slug' => 'pinto-paredes-cono',
+                'slug' => 'cambio-puertas',
             ),
             array(
                 'user_id'    => 3,
@@ -44,7 +44,7 @@ class ServicesTableSeeder extends Seeder {
                 'duracio' => 3,
                 'municipi_id' => 1,
                 'punts' => 125,
-                'slug' => 'pinto-paredes-cono',
+                'slug' => 'pinto-casuchas',
             ),
             array(
                 'user_id'    => 4,
@@ -56,7 +56,7 @@ class ServicesTableSeeder extends Seeder {
                 'duracio' => 3,
                 'municipi_id' => 1,
                 'punts' => 125,
-                'slug' => 'sueldo-tuercas-cono',
+                'slug' => 'sueldo-tuercas',
             ))
         );
     $this->command->info('Servicios añadidos');
