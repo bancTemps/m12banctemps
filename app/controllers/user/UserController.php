@@ -13,22 +13,23 @@ class UserController extends BaseController {
      * @var Conversation
      */
     protected $conversation;
-     /**
-     * Service Model
-     * @var Service
+
+    /**
+     * Message Model
+     * @var Message
      */
-    protected $service;
+    protected $message;
     
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user, Conversation $conversation,Service $service)
+    public function __construct(User $user, Conversation $conversation, Message $message)
     {
         parent::__construct();
         $this->user = $user;
         $this->conversation = $conversation;
-        $this->service = $service;
+        $this->message = $message;
     }
 
     /**
@@ -433,6 +434,16 @@ class UserController extends BaseController {
         if($redirect){return $redirect;}
 
         return View::make('site/user/friends', compact('user'));
+    }
+
+    public function listMessages($id) {
+        $messages = $this->message->where('conversation_id', '=', $id)->get();
+        $cadena = "";
+        foreach ($messages as $message) {
+            $cadena .= $message->content;
+        }
+
+        return $cadena;
     }
 
     
